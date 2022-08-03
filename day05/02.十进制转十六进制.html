@@ -11,54 +11,51 @@
 <body>
 
 
-
-    <script>
-
+<script>
 
 
-        var str = ''
-        function fn(num) {
-            // 判断条件跳出去
-            if (num == 0) {
-                return str
-            }
+    var str = ''
 
-            str = sixTen((num % 16)) + str
-
-            return fn(parseInt(num / 16))
+    function fn(num) {
+        // 判断条件跳出去
+        if (num === 0) {
+            return str
         }
 
+        str = sixTen((num % 16)) + str
 
-        function sixTen(data) {
-            // 通过我这个值  去返回  10  A   11 B
+        return fn(parseInt(num / 16))
+    }
 
-            switch (data) {
-                case 10:
-                    return 'A';
-                case 11:
-                    return 'B';
-                case 12:
-                    return 'C';
-                case 13:
-                    return 'D';
-                case 14:
-                    return 'E';
-                case 15:
-                    return 'F';
-                default:
-                   return data
-            }
+
+    function sixTen(data) {
+        // 通过我这个值  去返回  10  A   11 B
+
+        switch (data) {
+            case 10:
+                return 'A';
+            case 11:
+                return 'B';
+            case 12:
+                return 'C';
+            case 13:
+                return 'D';
+            case 14:
+                return 'E';
+            case 15:
+                return 'F';
+            default:
+                return data
         }
+    }
 
 
+    //  0 1 2 3 4 5 6 7 8 9 A B C D E F
+
+    console.log(fn(60));
 
 
-        //  0 1 2 3 4 5 6 7 8 9 A B C D E F 
-
-        console.log(fn(60));
-
-
-    </script>
+</script>
 </body>
 
 </html>

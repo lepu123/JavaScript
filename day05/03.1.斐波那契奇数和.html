@@ -11,99 +11,93 @@
 <body>
 
 
-    <script>
-        // 有一个简单的方式   但是有缺点  遍历的次数多
-        // 公式：  F(0)=0，F(1)=1, F(n)=F(n - 1)+F(n - 2)（n ≥ 2，n ∈ N*）
-        // 0,1,1,2,3,5,8,13,21,34,55,89
+<script>
+    // 有一个简单的方式   但是有缺点  遍历的次数多
+    // 公式：  F(0)=0，F(1)=1, F(n)=F(n - 1)+F(n - 2)（n ≥ 2，n ∈ N*）
+    // 0,1,1,2,3,5,8,13,21,34,55,89
 
-        // 创建 fibonacci 函数接收 n 作为参数，n 表示需要获取的斐波那契数的下标数
-        // 调用 fibonacci 函数传入下标返回斐波那契数列中指定下标的数字
-        //使用递归实现该功能
-        // fibonacci(4) //3
+    // 创建 fibonacci 函数接收 n 作为参数，n 表示需要获取的斐波那契数的下标数
+    // 调用 fibonacci 函数传入下标返回斐波那契数列中指定下标的数字
+    //使用递归实现该功能
+    // fibonacci(4) //3
 
-        // fibonacci(10) // 55
+    // fibonacci(10) // 55
 
-        // function fibonacci(n) {
-        //     if (n == 0) {
-        //         return 0
-        //     } else if (n == 1) {
-        //         return 1
-        //     } else {
-        //         return fibonacci(n - 1) + fibonacci(n - 2)
-        //     }
-        // }
+    // function fibonacci(n) {
+    //     if (n == 0) {
+    //         return 0
+    //     } else if (n == 1) {
+    //         return 1
+    //     } else {
+    //         return fibonacci(n - 1) + fibonacci(n - 2)
+    //     }
+    // }
 
-        // function fibonacci(n) {
-        //     if (n <= 1) {
-        //         return n
-        //     } else {
-        //         return fibonacci(n - 1) + fibonacci(n - 2)
-        //     }
-        // }
+    // function fibonacci(n) {
+    //     if (n <= 1) {
+    //         return n
+    //     } else {
+    //         return fibonacci(n - 1) + fibonacci(n - 2)
+    //     }
+    // }
 
-        // var count = 0   // 这种遍历的方式 10  =>177
-        // function fibonacci(n) {
-        //     count++
-        //     // if (n <= 1) {
-        //     //     return n
-        //     // } else {
-        //     //     return fibonacci(n - 1) + fibonacci(n - 2)
-        //     // }
+    // var count = 0   // 这种遍历的方式 10  =>177
+    // function fibonacci(n) {
+    //     count++
+    //     // if (n <= 1) {
+    //     //     return n
+    //     // } else {
+    //     //     return fibonacci(n - 1) + fibonacci(n - 2)
+    //     // }
 
-        //     return n<=1 ? n :fibonacci(n - 1) + fibonacci(n - 2)
-        // }
+    //     return n<=1 ? n :fibonacci(n - 1) + fibonacci(n - 2)
+    // }
 
-        // console.log(fibonacci(10));
-        // console.log(count);
+    // console.log(fibonacci(10));
+    // console.log(count);
 
-        
-        var fibonacciArr = [0,1]  // [0,1,1,2,3]
-                             
-        //  假设 我要去下标为 4 值    [0,1,1,2,3]   arr.length -1 == 4  我想要下标为4的数组   [1,2,3,4,5]
-                                    //0 1 2 3 4   下标是4  实际生成了 5 五个
-                                    // 0 1 2 3
-        function fn(n){
-            //   1 2 3 4 5
-            //  [0,1,1,2,3]
-            var index = fibonacciArr.length -2 
-            // 判断满足条件我就跳出
-            if(fibonacciArr.length-1==n){
-                // console.log(fibonacciArr);
-                var result = 0 ;
-                //                  fibonacciArr.length-1 ==n
-                for (var i = 0; i < fibonacciArr.length-1; i++) {
-                    //  0 1 2 3
-                    if(fibonacciArr[i]%2!=0){
-                        result = result + fibonacciArr[i]
-                    }
-                    
+
+    var fibonacciArr = [0, 1]  // [0,1,1,2,3]
+
+    //  假设 我要去下标为 4 值    [0,1,1,2,3]   arr.length -1 == 4  我想要下标为4的数组   [1,2,3,4,5]
+    //0 1 2 3 4   下标是4  实际生成了 5 五个
+    // 0 1 2 3
+    function fn(n) {
+        //   1 2 3 4 5
+        //  [0,1,1,2,3]
+        var index = fibonacciArr.length - 2
+        // 判断满足条件我就跳出
+        if (fibonacciArr.length - 1 === n) {
+            // console.log(fibonacciArr);
+            var result = 0;
+            //                  fibonacciArr.length - 1 === n
+            for (var i = 0; i < fibonacciArr.length - 1; i++) {
+                //  0 1 2 3
+                if (fibonacciArr[i] % 2 !== 0) {
+                    result = result + fibonacciArr[i]
                 }
-                console.log(fibonacciArr,12345);
-                return [result,fibonacciArr]
+
             }
-
-            // 每次计算 最后一个数组的值 
-            var value = fibonacciArr[index] + fibonacciArr[index+1]
-            // 给他 添加进去
-            fibonacciArr.push(value)
-
-            // index++;
-            // 不断的递归
-           return   fn(n)
+            console.log(fibonacciArr, 12345);
+            return [result, fibonacciArr]
         }
 
-        //  0 1 2 3 4  = 数组的长度是五个
-        console.log(fn(4)); // 因为这里是下标n=4意为着 生成 数组为   fibonacciArr= [0,1,1,2,3]    然后题目要求的是取n个的数字    
-        //                                                                                    就意为我取的值是前四个下标 0 1 2 3
+        // 每次计算 最后一个数组的值
+        var value = fibonacciArr[index] + fibonacciArr[index + 1]
+        // 给他 添加进去
+        fibonacciArr.push(value)
+
+        // index++;
+        // 不断的递归
+        return fn(n)
+    }
+
+    //  0 1 2 3 4  = 数组的长度是五个
+    console.log(fn(4)); // 因为这里是下标n=4意为着 生成 数组为   fibonacciArr= [0,1,1,2,3]    然后题目要求的是取n个的数字
+    //                                                                                    就意为我取的值是前四个下标 0 1 2 3
 
 
-
-
-
-        
- 
-
-    </script>
+</script>
 </body>
 
 </html>
