@@ -66,53 +66,53 @@
 </head>
 
 <body>
-    <script>
-        var gameMap = [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0],
-            [0, 0, 1, 1, 1, 3, 0, 3, 2, 1, 0, 0],
-            [0, 0, 1, 2, 0, 3, 4, 1, 1, 1, 0, 0],
-            [0, 0, 1, 1, 1, 1, 3, 1, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        ]
+<script>
+    var gameMap = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0],
+        [0, 0, 1, 1, 1, 3, 0, 3, 2, 1, 0, 0],
+        [0, 0, 1, 2, 0, 3, 4, 1, 1, 1, 0, 0],
+        [0, 0, 1, 1, 1, 1, 3, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ]
 
-        var mapStr = ''
+    var mapStr = ''
 
-        for (var i = 0; i < gameMap.length; i++) {
-            // 遍历大数组获取内部的子数组    
-            var subArr = gameMap[i]
+    for (var i = 0; i < gameMap.length; i++) {
+        // 遍历大数组获取内部的子数组
+        var subArr = gameMap[i]
 
-            // 遍历内部的子数组,获取子数组的每一项
-            for (var j = 0; j < subArr.length; j++) {
-                // 遍历子数组的每一项获取格子的类型
-                var type = subArr[j]
+        // 遍历内部的子数组,获取子数组的每一项
+        for (var j = 0; j < subArr.length; j++) {
+            // 遍历子数组的每一项获取格子的类型
+            var type = subArr[j]
 
-                var className = 'floor'
-                // 根据不同的格子类型设置不同class名
-                if (type === 1) {
-                    className += ' wall'
-                } else if (type === 2) {
-                    className += ' ball'
-                } else if (type === 3) {
-                    className += ' box'
-                } else if (type === 4) {
-                    className += ' user'
-                }
-                // 字符串拼接创建span元素,并指定计算后的className
-                mapStr += '<span class="'+ className +'"></span>'
+            var className = 'floor'
+            // 根据不同的格子类型设置不同class名
+            if (type === 1) {
+                className += ' wall'
+            } else if (type === 2) {
+                className += ' ball'
+            } else if (type === 3) {
+                className += ' box'
+            } else if (type === 4) {
+                className += ' user'
             }
-            // 大数组每一重循环都是单独的一行,字符串拼接在每一行的末尾添加br换行符
-            mapStr += '<br>'
+            // 字符串拼接创建span元素,并指定计算后的className
+            mapStr += '<span class="' + className + '"></span>'
         }
+        // 大数组每一重循环都是单独的一行,字符串拼接在每一行的末尾添加br换行符
+        mapStr += '<br>'
+    }
 
-        document.write(mapStr)
-    </script>
+    document.write(mapStr)
+</script>
 </body>
 
 </html>
