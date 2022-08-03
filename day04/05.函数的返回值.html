@@ -9,92 +9,92 @@
 </head>
 
 <body>
-    <script>
-        var str = prompt('请输入点内容')
+<script>
+    var str = prompt('请输入点内容')
 
-        // 当一个函数被调用时,函数是可以有返回值的
-        // 若想要给自己定义的函数添加返回值功能 我们可以使用return关键字
-        // 语法: 在函数内 return 返回值
-        // return 有两个作用
-        // 作用一: 在开发中绝大多数函数都是一个工具方法帮助开发者处理数据,函数内代码块需要使用return把处理的结果返回到函数外面,继续执行其他逻辑
-        // 作用二: 终止函数的代码继续向下执行,当函数内执行return后,函数的代码将会被return直接终止跳出函数的执行逻辑,不再继续执行后面的代码块
+    // 当一个函数被调用时,函数是可以有返回值的
+    // 若想要给自己定义的函数添加返回值功能 我们可以使用return关键字
+    // 语法: 在函数内 return 返回值
+    // return 有两个作用
+    // 作用一: 在开发中绝大多数函数都是一个工具方法帮助开发者处理数据,函数内代码块需要使用return把处理的结果返回到函数外面,继续执行其他逻辑
+    // 作用二: 终止函数的代码继续向下执行,当函数内执行return后,函数的代码将会被return直接终止跳出函数的执行逻辑,不再继续执行后面的代码块
 
-        //  注意 函数如果没有return 或 return 关键字后没有值其返回值都是undefined
+    //  注意 函数如果没有return 或 return 关键字后没有值其返回值都是undefined
 
-        function maxNumber() {
-            var maxN = 0
+    function maxNumber() {
+        var maxN = 0
 
-            for (var i = 0; i < arguments.length; i++) {
+        for (var i = 0; i < arguments.length; i++) {
 
-                var num = arguments[i]
+            var num = arguments[i]
 
-                if (maxN < num) {
+            if (maxN < num) {
 
-                    maxN = num
-                }
+                maxN = num
             }
-
-            return maxN
-            console.log('红红火火恍恍惚惚或或或');
         }
 
-        var a = 12
+        return maxN
+        console.log('红红火火恍恍惚惚或或或');
+    }
 
-        var b = 27
+    var a = 12
 
-        var c = 19
+    var b = 27
 
-        var d = 33
+    var c = 19
 
-        var max = maxNumber(a, b, c, d)
+    var d = 33
 
-        console.log(max);
+    var max = maxNumber(a, b, c, d)
 
-        // 练习 阶乘练习,创建一个函数返回其阶乘的值,  factorial(5)   5*4*3*2  返回 120
+    console.log(max);
 
-        function factorial(num) {
+    // 练习 阶乘练习,创建一个函数返回其阶乘的值,  factorial(5)   5*4*3*2  返回 120
 
-            var result = 1;
+    function factorial(num) {
 
-            while (num > 0) {
+        var result = 1;
 
-                result *= num
+        while (num > 0) {
 
-                num--
-            }
+            result *= num
 
-            return result
-
+            num--
         }
 
-        var val = factorial(10)
+        return result
 
-        console.log(val);
+    }
 
-        // 函数接受2个数num1 和 num2 求最大公约数
-        function zuiDaGongYueshu(a, b) {
-            var min = a > b ? b : a
+    var val = factorial(10)
 
-            // var n = min
-            // while (n > 0) {
-            //     if (a % n === 0 && b % n === 0) {
-            //         break
-            //     }
-            //     n--
-            // }
+    console.log(val);
 
-            for (var i = min; i > 0; i--) {
-                if (a % i === 0 && b % i === 0) {
-                    break
-                }
+    // 函数接受2个数num1 和 num2 求最大公约数
+    function zuiDaGongYueshu(a, b) {
+        var min = a > b ? b : a
+
+        // var n = min
+        // while (n > 0) {
+        //     if (a % n === 0 && b % n === 0) {
+        //         break
+        //     }
+        //     n--
+        // }
+
+        for (var i = min; i > 0; i--) {
+            if (a % i === 0 && b % i === 0) {
+                break
             }
-
-            return i
         }
 
-        console.log(zuiDaGongYueshu(97, 100));
+        return i
+    }
 
-    </script>
+    console.log(zuiDaGongYueshu(97, 100));
+
+</script>
 </body>
 
 </html>

@@ -9,73 +9,68 @@
 </head>
 
 <body>
-    <script>
-        // 在js中一段代码变量并不是在任何地方都可以被访问到的,限制其访问的区间就是作用域
-        // 在ES6之前, js 中只有两种作用域分别是 全局作用域 函数作用域     
-        // 全局作用域就在script标签内创建,不能能是函数内部创建的
-        var myAge = 12
+<script>
+    // 在js中一段代码变量并不是在任何地方都可以被访问到的,限制其访问的区间就是作用域
+    // 在ES6之前, js 中只有两种作用域分别是 全局作用域 函数作用域
+    // 全局作用域就在script标签内创建,不能能是函数内部创建的
+    var myAge = 12
 
 
-        
+    function aaa() {
+        // 函数作用域就是在某个函数内部声明的变量
+        // 子作用域可以访问上级作用域创建声明函数\变量
+        // 上级作用域无法获取内部作用域的变量或方法
+        // 在js中变量或函数的访问遵循作用域就近原则,首先代码会查询当前作用域中是否包含你调用的值,如果包含使用当前作用域的值,若不包含使用上一级,直到访问到全局作用域
+        var myAge = 18
 
-        function aaa() {
-            // 函数作用域就是在某个函数内部声明的变量
-            // 子作用域可以访问上级作用域创建声明函数\变量
-            // 上级作用域无法获取内部作用域的变量或方法
-            // 在js中变量或函数的访问遵循作用域就近原则,首先代码会查询当前作用域中是否包含你调用的值,如果包含使用当前作用域的值,若不包含使用上一级,直到访问到全局作用域
-            var myAge = 18
+        console.log(myAge)
 
-            console.log(myAge)
+        function bbb() {
 
-            function bbb() {
-
-                console.log(myAge);
-            }
+            console.log(myAge);
         }
+    }
 
 
-        aaa()
+    aaa()
 
 
-        // 全局作用域的address
-        var address = '中国'
+    // 全局作用域的address
+    var address = '中国'
 
-        function subfunc() {
+    function subfunc() {
 
-            // 访问 address , 这里使用作用域就近原则访问address,当前函数内是有address变量的
-            // 所以他会访问当前函数内的address
-            // 但是address又是在console之后创建,这时候js为了避免产生错误,他会引起变量的提前声明
-            // 在当前作用域提前访问变量时, 变量的声明会被提前到js代码访问当前变量之前
+        // 访问 address , 这里使用作用域就近原则访问address,当前函数内是有address变量的
+        // 所以他会访问当前函数内的address
+        // 但是address又是在console之后创建,这时候js为了避免产生错误,他会引起变量的提前声明
+        // 在当前作用域提前访问变量时, 变量的声明会被提前到js代码访问当前变量之前
 
-            // var address; 等价于 先把变量提前声明好,但是不会提前赋值
-            console.log(address) // undefined  变量声明但没有值
-            // address = '深圳'
-            var address = '深圳'
+        // var address; 等价于 先把变量提前声明好,但是不会提前赋值
+        console.log(address) // undefined  变量声明但没有值
+        // address = '深圳'
+        var address = '深圳'
 
-        }
+    }
 
-        subfunc()
-
-
-        console.log(funcA);
-        // 变量的赋值操作,遵循变量提前声明原理
-        var funcA = function () {
-            console.log('hello world')
-        }
+    subfunc()
 
 
-        funcB() // 为什么函数可以提前调用
-        //  具名函数 funcB
-        //  原理 定义的函数,会被浏览器直接读取(js代码还没执行就已经将函数注册到指定的作用域里了),浏览器知道这是一个函数并读取其内部的代码块,但是不会立即执行该代码,而是等待其他地方调用了此函数
-        function funcB () {
-            console.log('hello world')
-        }
+    console.log(funcA);
+    // 变量的赋值操作,遵循变量提前声明原理
+    var funcA = function () {
+        console.log('hello world')
+    }
 
 
+    funcB() // 为什么函数可以提前调用
+    //  具名函数 funcB
+    //  原理 定义的函数,会被浏览器直接读取(js代码还没执行就已经将函数注册到指定的作用域里了),浏览器知道这是一个函数并读取其内部的代码块,但是不会立即执行该代码,而是等待其他地方调用了此函数
+    function funcB() {
+        console.log('hello world')
+    }
 
 
-
-    </script>
+</script>
 </body>
 
 </html>
