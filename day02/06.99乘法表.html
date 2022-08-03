@@ -17,22 +17,22 @@
 </head>
 
 <body>
-    <script>
-        // 定义一个空字符串,用于拼接99乘法表的html字符
-        var str = ''
+<script>
+    // 定义一个空字符串,用于拼接99乘法表的html字符
+    var str = ''
 
-        // 开启第一重for循环,生成指定数量的行
-        for (var i = 1; i <= 9; i++) {
-            // 99乘法表中,第i行有i个子元素,实现方法开启双重循环,设置内部循环变量值小于等于i
-            for (var j = 1; j <= i; j++) {
-                str += '<span>' + j + 'x' + i + '=' + i * j + '</span>'
-            }
-
-            str += '<br>'
+    // 开启第一重for循环,生成指定数量的行
+    for (var i = 1; i <= 9; i++) {
+        // 99乘法表中,第i行有i个子元素,实现方法开启双重循环,设置内部循环变量值小于等于i
+        for (var j = 1; j <= i; j++) {
+            str += '<span>' + j + 'x' + i + '=' + i * j + '</span>'
         }
 
-        document.write(str)
-    </script>
+        str += '<br>'
+    }
+
+    document.write(str)
+</script>
 </body>
 
 </html>
