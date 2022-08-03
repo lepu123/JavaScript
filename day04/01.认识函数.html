@@ -9,77 +9,77 @@
 </head>
 
 <body>
-    <script>
-        // 我们在开发中会发现,经常需要对不同的数据/行为执行同一套逻辑,这时我们会发现需要将逻辑代码不停地复制粘贴,
-        // 这样导致代码十分臃肿,并且不利于维护和更新,
-        //  解决方法是 js 提供了函数的概念,他可以将重复执行的代码块进行封装,在需要执行该逻辑的地方直接调用此函数就可以了
-        // 函数可以帮助开发人员减少页面重复的代码,并提高页面的可维护性
+<script>
+    // 我们在开发中会发现,经常需要对不同的数据/行为执行同一套逻辑,这时我们会发现需要将逻辑代码不停地复制粘贴,
+    // 这样导致代码十分臃肿,并且不利于维护和更新,
+    //  解决方法是 js 提供了函数的概念,他可以将重复执行的代码块进行封装,在需要执行该逻辑的地方直接调用此函数就可以了
+    // 函数可以帮助开发人员减少页面重复的代码,并提高页面的可维护性
 
-        var studentA = 99
+    var studentA = 99
 
-        var studentB = 80
+    var studentB = 80
 
-        var studentC = 94
+    var studentC = 94
 
-        var studentD = 72
+    var studentD = 72
 
-        var studentE = 15
+    var studentE = 15
 
 
-        // function 是一个关键字,用于声明js的函数
-        // function 函数的括号内指定0个或多个形参( 形参,是一个形式上的参数,他用来接受外部传递的数据,并拿到函数内部进行相应的逻辑运算 )
-        function scoreTestFunc(score, studetName) {
-            // 大括号内的就是我们封装的代码块
+    // function 是一个关键字,用于声明js的函数
+    // function 函数的括号内指定0个或多个形参( 形参,是一个形式上的参数,他用来接受外部传递的数据,并拿到函数内部进行相应的逻辑运算 )
+    function scoreTestFunc(score, studetName) {
+        // 大括号内的就是我们封装的代码块
 
-            if (score >= 95) {
-                console.log( studetName +  ': 优秀');
-            } else if (score >= 85 && score < 95) {
-                console.log(studetName +  ': 优');
-            } else if (score >= 75 && score < 85) {
-                console.log(studetName +  ': 良');
-            } else if (score >= 60 && score < 75) {
-                console.log(studetName +  ': 及格');
-            } else if (score < 60) {
-                console.log(studetName +  ': 不及格');
-            } else {
-                console.log(studetName +  '成绩异常');
-            }
+        if (score >= 95) {
+            console.log(studetName + ': 优秀');
+        } else if (score >= 85 && score < 95) {
+            console.log(studetName + ': 优');
+        } else if (score >= 75 && score < 85) {
+            console.log(studetName + ': 良');
+        } else if (score >= 60 && score < 75) {
+            console.log(studetName + ': 及格');
+        } else if (score < 60) {
+            console.log(studetName + ': 不及格');
+        } else {
+            console.log(studetName + '成绩异常');
         }
+    }
 
-        // 函数的调用, 函数名后直接跟()就表示执行指定函数名的函数
-        // 函数后面的小括号可以接受0个或多个实参(实际参数, 需要让函数具体计算值)
-        scoreTestFunc(55)
+    // 函数的调用, 函数名后直接跟()就表示执行指定函数名的函数
+    // 函数后面的小括号可以接受0个或多个实参(实际参数, 需要让函数具体计算值)
+    scoreTestFunc(55)
 
-        scoreTestFunc(studentA, '小明')
-        
-        console.log(123);
+    scoreTestFunc(studentA, '小明')
 
-        scoreTestFunc(studentB, '小刚')
+    console.log(123);
 
-        scoreTestFunc(studentC, '小燕')
+    scoreTestFunc(studentB, '小刚')
 
-        scoreTestFunc(studentD, '老康')
+    scoreTestFunc(studentC, '小燕')
 
-        scoreTestFunc(studentE, '老李头')
+    scoreTestFunc(studentD, '老康')
 
-        scoreTestFunc()
+    scoreTestFunc(studentE, '老李头')
 
-        /*
-         函数的工作原理
-        
-         1. 定义的函数,会被浏览器直接读取,浏览器知道这是一个函数并读取其内部的代码块,但是不会立即执行该代码,而是等待其他地方调用了此函数
+    scoreTestFunc()
 
-         2. 函数是可以接受形参的,每个形参之间使用逗号隔开,在函数调用时函数的调用者需要根据形参顺序个个数向其传递对应的数据(实参)
+    /*
+     函数的工作原理
 
-         3. 函数调用后, 函数内部拿到对应的实参,js就会执行函数封装的代码块
+     1. 定义的函数,会被浏览器直接读取,浏览器知道这是一个函数并读取其内部的代码块,但是不会立即执行该代码,而是等待其他地方调用了此函数
 
-         4. 函数执行完毕后,js代码就会从调用函数那句话之后继续执行后面的代码
+     2. 函数是可以接受形参的,每个形参之间使用逗号隔开,在函数调用时函数的调用者需要根据形参顺序个个数向其传递对应的数据(实参)
 
-         
-         */
+     3. 函数调用后, 函数内部拿到对应的实参,js就会执行函数封装的代码块
+
+     4. 函数执行完毕后,js代码就会从调用函数那句话之后继续执行后面的代码
 
 
-    </script>
+     */
+
+
+</script>
 </body>
 
 </html>
