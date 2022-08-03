@@ -9,79 +9,79 @@
 </head>
 
 <body>
-    <script>
-        var car = {
-            make: '雪佛兰',
-            model: 'Bel Air',
-            year: 1957,
-            color: 'red',
-            passengers: 2,
-            convertible: false,
-            mileage: 1021
-        }
+<script>
+    var car = {
+        make: '雪佛兰',
+        model: 'Bel Air',
+        year: 1957,
+        color: 'red',
+        passengers: 2,
+        convertible: false,
+        mileage: 1021
+    }
 
-        // 对象中每个键值对就是一个属性,用来描述当前对象的某一个特征
-        // 对象支持使用点语法/中括号语法来访问其内部的属性
-        // 符合js变量命名规范的key,都可以使用点语法访问或设置,(我们也推荐使用点语法)
-        console.log(car.color);
-        console.log(car.year);
-        car.mileage = 2000
-        // 对象的key值不符合js变量命名规范的需要使用中括号语法,我们尽可能避免对象key值不符合js命名规范
-        car['user-name'] = '老张' // 对象没有的属性将被添加,但是不推荐给对象添加新属性
-        console.log(car['user-name']);
-        // 中括号语法支持变量的传入,需要动态获取对象内部属性时需要配个中括号使用
-        var keyName = 'convertible'
+    // 对象中每个键值对就是一个属性,用来描述当前对象的某一个特征
+    // 对象支持使用点语法/中括号语法来访问其内部的属性
+    // 符合js变量命名规范的key,都可以使用点语法访问或设置,(我们也推荐使用点语法)
+    console.log(car.color);
+    console.log(car.year);
+    car.mileage = 2000
+    // 对象的key值不符合js变量命名规范的需要使用中括号语法,我们尽可能避免对象key值不符合js命名规范
+    car['user-name'] = '老张' // 对象没有的属性将被添加,但是不推荐给对象添加新属性
+    console.log(car['user-name']);
+    // 中括号语法支持变量的传入,需要动态获取对象内部属性时需要配个中括号使用
+    var keyName = 'convertible'
 
-        console.log(car[keyName]);
+    console.log(car[keyName]);
 
-        // 注意, 一般在开发中一个对象应该拥有那些属性都是明确.所以在对象一开始创建时就应该将其所拥有的的所有key都声明好这样对象的数据结构会比较清晰,不要后面添加新的键值对
+    // 注意, 一般在开发中一个对象应该拥有那些属性都是明确.所以在对象一开始创建时就应该将其所拥有的的所有key都声明好这样对象的数据结构会比较清晰,不要后面添加新的键值对
 
-        // 对象枚举,遍历将对象的属性遍历出来
-        for (var key in car) {
-            // key 当前对象遍历出的每一个key,想要通过key获取值就可以使用
+    // 对象枚举,遍历将对象的属性遍历出来
+    for (var key in car) {
+        // key 当前对象遍历出的每一个key,想要通过key获取值就可以使用
 
-            console.log(car[key], key);
+        console.log(car[key], key);
 
-        }
-        // for in循环也可以遍历数组,但是不要这么干.for in 枚举伪数组时会枚举出一些其他属性,枚举key顺序也是混乱,不推荐使用for in 枚举数组.
+    }
+    // for in循环也可以遍历数组,但是不要这么干.for in 枚举伪数组时会枚举出一些其他属性,枚举key顺序也是混乱,不推荐使用for in 枚举数组.
 
-        /*
-        注意：
+    /*
+    注意：
 
-            for in 语句会遍历你可能不关心的原型中的属性，如何过滤我们会在后面的课程中讲解
-            for in 遍历时属性名的出现顺序时不确定的，因此要对任何可能出现的顺序有所准备。如果你想要确保属性以特定顺序出现，最好的办法就是完全避免使用for in语句，而是创建一个数组在其中以正确的顺序包含对象的属性名。使用for得到我们想要的属性。
+        for in 语句会遍历你可能不关心的原型中的属性，如何过滤我们会在后面的课程中讲解
+        for in 遍历时属性名的出现顺序时不确定的，因此要对任何可能出现的顺序有所准备。如果你想要确保属性以特定顺序出现，最好的办法就是完全避免使用for in语句，而是创建一个数组在其中以正确的顺序包含对象的属性名。使用for得到我们想要的属性。
 
-          */
-        // 更推荐的遍历形式
-        var stooge = {
-            "first-name": 'Jackly',
-            "middle-name": 'Jafferson',
-            "last-name": 'Howard',
-            nickName: 'mike'
-        }
+      */
+    // 更推荐的遍历形式
+    var stooge = {
+        "first-name": 'Jackly',
+        "middle-name": 'Jafferson',
+        "last-name": 'Howard',
+        nickName: 'mike'
+    }
 
-        var properties = [
-            "first-name",
-            "middle-name",
-            "last-name",
-            "nickName"
-        ]
+    var properties = [
+        "first-name",
+        "middle-name",
+        "last-name",
+        "nickName"
+    ]
 
-        for (var i = 0; i < properties.length; i++) {
-            var key = properties[i]
-            var value = stooge[key]
-            console.log(key + ' : ' + value)
-        }
+    for (var i = 0; i < properties.length; i++) {
+        var key = properties[i]
+        var value = stooge[key]
+        console.log(key + ' : ' + value)
+    }
 
-        // delete 运算符可以删除掉对象的属性,但是在真实开发中,我们不会使用delete属性去删除掉对象的任何属性,我们在开发中对象的结构都是固定的
-        delete stooge.nickName
+    // delete 运算符可以删除掉对象的属性,但是在真实开发中,我们不会使用delete属性去删除掉对象的任何属性,我们在开发中对象的结构都是固定的
+    delete stooge.nickName
 
-        console.log(stooge);
+    console.log(stooge);
 
-        // 注意开发中对对象的操作有枚举,可以索引,可以修改某个属性的值,但是不要添加新的键值对,也不要使用delete删除对象已有的键值对的
+    // 注意开发中对对象的操作有枚举,可以索引,可以修改某个属性的值,但是不要添加新的键值对,也不要使用delete删除对象已有的键值对的
 
 
-    </script>
+</script>
 </body>
 
 </html>

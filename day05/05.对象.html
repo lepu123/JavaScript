@@ -9,99 +9,99 @@
 </head>
 
 <body>
-    <script>
-        // 数组 数据集合
+<script>
+    // 数组 数据集合
 
-        // 在开发中会发现有些数据他是需要包含多种信息,比如说一个人可能会携带 姓名\年龄\住址\性别\籍贯\学历等等信息
-        // 以目前所学的数据类型没有办法完美的将其呈现
+    // 在开发中会发现有些数据他是需要包含多种信息,比如说一个人可能会携带 姓名\年龄\住址\性别\籍贯\学历等等信息
+    // 以目前所学的数据类型没有办法完美的将其呈现
 
-        //    var pName = '小明'
+    //    var pName = '小明'
 
-        //    var pAge = 19
+    //    var pAge = 19
 
-        //    var pMarried = false
+    //    var pMarried = false
 
-        //    var address = '广州'
+    //    var address = '广州'
 
-        // 如果用上述形式描述同一个人的不同信息,在代码的关系层面上述代码之间并没有直接的联系,没有办法明确表示上述代码是一个整体描述同一个对象
-
-
-        var pMessage = ['小明', 19, false, '广州', true]
-        // 使用数组描述一个对象的所有信息,虽然从代码的角度来说是一个整体,但是每一项数据变得难以理解,可读性变差.
+    // 如果用上述形式描述同一个人的不同信息,在代码的关系层面上述代码之间并没有直接的联系,没有办法明确表示上述代码是一个整体描述同一个对象
 
 
-        // 为了解决以上问题js提供了新的数据类型,叫做 对象 Object,该数据类型专门用来描述一个物体的所有信息,并将这些信息存放在同一个集合中
-        // 对象语法:
-        // { key1: value2, key2: value2 }
-        // 注意对象的 key 若遵循变量的命名规则时,可以不加引号.否则必须使用引号将 key 包含起来表示为一个字符串
-        //           key 不要使用保留字
-        //           一个对象中key值不能同名
-        //           良好的代码风格中对象中最后一个键值对无需添加逗号
-        //           对象是一个引用数据类型
-
-        // 字面量创建
-        var person = {
-            name: '小明',
-            age: 19,
-            'is-married': false, // 对象的key本质上都是字符串
-            'address': '广州',
-            address: '深圳'
-        }
-
-        var person2 = {
-            name: '小明',
-            age: 19,
-            'is-married': false, // 对象的key本质上都是字符串
-            'address': '广州'
-        }
-
-        console.log(person);
-
-        // 构造函数创建对象
-        var person3 = new Object() // 不推荐
-
-        // var person3 = {} 创建一个空对象推荐使用该字面量形式
-
-        person3['name'] = '老王'
-        person3.age = 12
-        // 不符合变量命名规则的属性必须使用中括号进行访问
-        person3['is-married'] = false
-
-        var str = 'hello'
-
-        person3[str] = 'world' // 将变量作为对象属性动态属性本质上是 person.hello
-
-        console.log(person3);
+    var pMessage = ['小明', 19, false, '广州', true]
+    // 使用数组描述一个对象的所有信息,虽然从代码的角度来说是一个整体,但是每一项数据变得难以理解,可读性变差.
 
 
-        /*
-        
-     
+    // 为了解决以上问题js提供了新的数据类型,叫做 对象 Object,该数据类型专门用来描述一个物体的所有信息,并将这些信息存放在同一个集合中
+    // 对象语法:
+    // { key1: value2, key2: value2 }
+    // 注意对象的 key 若遵循变量的命名规则时,可以不加引号.否则必须使用引号将 key 包含起来表示为一个字符串
+    //           key 不要使用保留字
+    //           一个对象中key值不能同名
+    //           良好的代码风格中对象中最后一个键值对无需添加逗号
+    //           对象是一个引用数据类型
 
-        要求：分别使用对象字面量和对象构造函数创建包含下面汽车信息的对象
+    // 字面量创建
+    var person = {
+        name: '小明',
+        age: 19,
+        'is-married': false, // 对象的key本质上都是字符串
+        'address': '广州',
+        address: '深圳'
+    }
 
-            品牌"雪佛兰"      make
-            型号"Bel Air"     model
-            生产年份1957      year
-            颜色"red"        color   
-            限载人数2        passengers
-            无折叠车篷       convertible
-            里程数1021。     mileage
-        
-        */
-        var car = {
-            make: '雪佛兰',
-            model: 'Bel Air',
-            year: 1957,
-            color: 'red',
-            passengers: 2,
-            convertible: false,
-            mileage: 1021
-        }
+    var person2 = {
+        name: '小明',
+        age: 19,
+        'is-married': false, // 对象的key本质上都是字符串
+        'address': '广州'
+    }
 
-        console.log(car);
+    console.log(person);
 
-    </script>
+    // 构造函数创建对象
+    var person3 = new Object() // 不推荐
+
+    // var person3 = {} 创建一个空对象推荐使用该字面量形式
+
+    person3['name'] = '老王'
+    person3.age = 12
+    // 不符合变量命名规则的属性必须使用中括号进行访问
+    person3['is-married'] = false
+
+    var str = 'hello'
+
+    person3[str] = 'world' // 将变量作为对象属性动态属性本质上是 person.hello
+
+    console.log(person3);
+
+
+    /*
+
+
+
+    要求：分别使用对象字面量和对象构造函数创建包含下面汽车信息的对象
+
+        品牌"雪佛兰"      make
+        型号"Bel Air"     model
+        生产年份1957      year
+        颜色"red"        color
+        限载人数2        passengers
+        无折叠车篷       convertible
+        里程数1021。     mileage
+
+    */
+    var car = {
+        make: '雪佛兰',
+        model: 'Bel Air',
+        year: 1957,
+        color: 'red',
+        passengers: 2,
+        convertible: false,
+        mileage: 1021
+    }
+
+    console.log(car);
+
+</script>
 </body>
 
 </html>

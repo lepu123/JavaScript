@@ -9,85 +9,80 @@
 </head>
 
 <body>
-    <script>
-        // a 基本数据类型 深拷贝
-        var a = 1
-        var b = a
+<script>
+    // a 基本数据类型 深拷贝
+    var a = 1
+    var b = a
 
-        a++
-        // b 等于多少 1
-        console.log(b);
-
-
-        // c 是一个对象是引用数据类型,拷贝是浅拷贝
-        var c = {
-            age: 1
-        }
-
-        var d = c
-
-        c.age++
-        // d 等于多少
-        console.log(d);
+    a++
+    // b 等于多少 1
+    console.log(b);
 
 
-        // 数组引用数据类型,浅拷贝只拷贝指针地址
-        var e = [1]
+    // c 是一个对象是引用数据类型,拷贝是浅拷贝
+    var c = {
+        age: 1
+    }
 
-        f = e
+    var d = c
 
-        e[0]++
-
-        console.log(f); //2
-
-
-        // 
-        var g = {age: 1}
-
-        var h = g.age
-
-        h++
-
-        // g ?
-        console.log(g);
-
-        var i = {age: [1,2]}
-
-        var j = i.age
-
-        j[0]++
-
-        console.log(i); 
-
-        var arr = {
-            name: 1,
-            age: 12,
-            hobby: [{
-
-            },]
-        }
-
-        var arr2 = deepClone(arr)
-
-        function deepClone() {
-
-        }
-
-        null
-
-        var arr1 = []
-        // 判断一个数据是否为数组的方法
-        console.log(arr1 !== null && typeof arr1 === 'object' && arr1.constructor === Array);
-
-        var arr2 = {}
-        // 判断一个数据是否为对象的方法
-        console.log(arr2 !== null && typeof arr2 === 'object' && arr2.constructor !== Array);
+    c.age++
+    // d 等于多少
+    console.log(d);
 
 
+    // 数组引用数据类型,浅拷贝只拷贝指针地址
+    var e = [1]
 
-        
-        
-    </script>
+    f = e
+
+    e[0]++
+
+    console.log(f); //2
+
+
+    //
+    var g = {age: 1}
+
+    var h = g.age
+
+    h++
+
+    // g ?
+    console.log(g); // 1
+
+    var i = {age: [1, 2]}
+
+    var j = i.age // 拷贝的是对象中的数组浅拷贝
+
+    j[0]++
+
+    console.log(i);
+
+    var arr = {
+        name: 1,
+        age: 12,
+        hobby: [{},]
+    }
+
+    var arr2 = deepClone(arr)
+
+    function deepClone() {
+
+    }
+
+    null
+
+    var arr1 = []
+    // 判断一个数据是否为数组的方法
+    console.log(typeof arr1 === 'object' && arr1.constructor === Array);
+
+    var arr2 = {}
+    // 判断一个数据是否为对象的方法
+    console.log(typeof arr2 === 'object' && arr2.constructor !== Array);
+
+
+</script>
 </body>
 
 </html>
