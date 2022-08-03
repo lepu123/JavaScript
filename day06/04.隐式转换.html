@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <script>
+        // 运算符 就可能包含隐式转换
+        // + 运算符配合字符串使用时无论对方是什么数据类型,都会被转化为字符串进行拼接
+        var a =  3 + '5'
+        console.log(true + '1')
+        console.log(undefined + '1')
+        console.log(null + '1')
+
+        // + 运算符 (除了字符串) 其他数据类型会转为数字,再与数字进行数学运算
+        // - * / % >= <= > < 算数运算符 使用时都会将其他数据类型转为数字
+        console.log(true + 1) // 1 + 1
+        console.log(false + 1) // 0 + 1
+        console.log(null + 1) // 0 + 1
+        console.log(undefined + 1) // NaN + 1
+
+        // ++  -- 自增自减运算符会将其他类型转化为数字
+        var a = '19'
+        a++
+        console.log(a); // 200
+
+        /*
+            字符串和数字进行比较, 字符串会转为数字
+            数字和布尔值比较,    布尔值会转数字
+            字符串跟布尔值比较时, 两者都会转化为数字
+            console.log('true' == true) // false  他会将两者先转化为数字 NaN == 1
+            对象与布尔值比较时. 两者转为数字
+            对象与布尔值比较时. 两者转为数字
+        */
+
+        // === !== 不支持类型转换的,这两个运算符是没有隐式转换.在严格项目开发中.工程师会要求开发者不要使用== !=请用 === !==代替
+
+
+        // 三目运算符也是支持类型转换的  表达式 ? A : B ,表达式的结果会被转换为布尔值, 只有这五个值转换成布尔值时为假  undefined null 0 NaN ''
+     </script>
+</body>
+</html>

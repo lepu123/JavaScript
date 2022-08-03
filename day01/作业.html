@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+
+        }
+
+        table,
+        td,
+        th {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        /*
+        实验二：需要实现用户在页面输入的摄氏转换为华氏度?
+        要求：
+        摄氏度与华氏度转换关系为 
+        
+        摄氏度 = 5/9 * (华氏度 - 32)使用 
+
+        方法可以创建一个变量，并获取页面上弹出输入对话框中用户输入的值使用 alert 输出换算的华氏度var celsius =  prompt('请输入摄氏度')
+        */
+
+        // var celsius = prompt('请输入摄氏度');
+
+        // var fahrenheit = 9 / 5 * celsius + 32;
+
+        // alert('你输入的华氏度为:' + fahrenheit + '℉');
+
+        /*
+            实验三：使用字符串拼接配合 document.write() 方法输出下图所示HTML结构
+        */
+        var userName = "慢羊羊";
+
+        var sex = "男";
+
+        var age = "54岁";
+
+        var education = "博士后";
+
+        var graduationDate = "1988年";
+
+        var graduateInstitutions = "清华大学";
+
+        var workingTime = "1988年7月30日";
+
+        var responsibilities = "哈哈哈哈,工作职责就是工作者具体工作的内容所负的责任及达到岗位要求的标准，完成上级交付的任务。";
+
+        var str = "<table>";
+
+        str += '<tr><th colspan="4">' + userName + '-个人简历</th></tr>'
+
+        str += '<tr><td>姓名:</td><td>' + userName + '</td><td>性别:</td><td>' + sex + '</td></tr>'
+
+        str += '<tr><td>年龄:</td><td>' + age + '</td><td>学历:</td><td>' + education + '</td></tr>'
+
+        str += '<tr><td>毕业时间:</td><td>' + graduationDate + '</td><td>毕业学校:</td><td>' + graduateInstitutions + '</td></tr>'
+        
+        str += '<tr><td>工作时间:</td><td>' + workingTime + '</td><td>工作职责:</td><td>' + responsibilities + '</td></tr>'
+
+        str += "</table>";
+
+        document.write(str)
+
+
+    </script>
+</body>
+
+</html>

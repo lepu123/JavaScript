@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p id="array"></p>
+<p id="new-array"></p>
+<script>
+    let uniteUnique = [
+            [1, 3, 2],
+            [5, 2, 1, 4],
+            [2, 1, 6]
+        ],
+        newUniteUnique = [], temp, textNew = '以下为合并数组' + '<br>', textOld = '';
+
+    for (let i = 0; i < uniteUnique.length; i++) {
+
+        for (let j = 0; j < uniteUnique[i].length; j++) {
+            let repeat = true;
+            for (let n = 0; n < newUniteUnique.length; n++) {
+                if (uniteUnique[i][j] === newUniteUnique[n]) {
+                    repeat = false;
+                }
+            }
+            if (repeat) {
+                newUniteUnique.push(uniteUnique[i][j]);
+            }
+        }
+    }
+
+    for (let i = newUniteUnique.length - 1; i > 0; i--) {
+        for (let j = 0; j < i; j++) {
+            if (newUniteUnique[j] > newUniteUnique[j + 1]) {
+                temp = newUniteUnique[j];
+                newUniteUnique[j] = newUniteUnique[j + 1];
+                newUniteUnique[j + 1] = temp;
+            }
+        }
+    }
+    console.log(newUniteUnique);
+    uniteUnique.forEach(myFunction0);
+    newUniteUnique.forEach(myFunction);
+    function myFunction0(item, index) {
+        textOld += index + ':' + '&nbsp;' + item + '<br>';
+    }
+    textOld += '以上为原数组';
+    function myFunction(item, index) {
+        textNew += index + ':' + item + '&nbsp;';
+    }
+    document.getElementById("array").innerHTML = textOld;
+    document.getElementById("new-array").innerHTML = textNew;
+</script>
+</body>
+</html>

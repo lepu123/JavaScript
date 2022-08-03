@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var uniteUnique = [[1, 3, 2], [5, 2, 1, 4], [2, 1]]
+
+        var newArr = []
+
+        for (var i = 0; i < uniteUnique.length; i++) {
+            // 给原二维数组使用双重循环降维
+            for (var j = 0; j < uniteUnique[i].length; j++) {
+
+                // 如果直接给新数组添加原数组项,后续需要使用删除将新数组去重
+                // 删除方法没学,解决方法 
+                // 在将降维二维数组项添加到新数组中时,进行验证,若当前新数组已经有该项了就不需要再将重复的值加进去了   
+
+                // 先下定义,我们定义每一个二维数组的子项都是不重复的
+                var item = uniteUnique[i][j]
+                var flag = false
+                // 考验二维数组子项是否真的不重复
+                for (var k = 0; k < newArr.length; k++) {
+                    // 表示我们定义不满足,数据是重复数据
+                    if (newArr[k] == item) {
+                        flag = true
+                        break
+                    }
+                }
+
+                // 验证完毕后吧那些真的不重复的二维数组子项添加到newArr中
+                if (!flag) {
+                    newArr.push(item)
+                }
+
+            }
+
+        }
+
+        console.log(newArr);
+
+
+        for (var i = newArr.length - 1; i > 0; i--) {
+            for (var j = 0; j < i; j++) {
+                if (newArr[j + 1] < newArr[j]) {
+                    var temp = newArr[j + 1]
+                    newArr[j + 1] = newArr[j]
+                    newArr[j] = temp
+                }
+            }
+        }
+
+        console.log(newArr);
+
+
+
+        uniteUnique = [[1, 2, 3], [5, 2, 1]] // 应该返回[1, 2, 3, 5]。
+        uniteUnique = [[1, 2, 3], [5, 2, 1, 4], [2, 1], [6, 7, 8]] // 应该返回[1, 2, 3, 4, 5, 6, 7, 8]。
+
+    </script>
+</body>
+
+</html>

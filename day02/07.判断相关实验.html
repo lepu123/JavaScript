@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var weight = 180
+        var height = 188
+
+        var sWeight = (height - 108) * 2
+
+        var dec = weight - sWeight
+
+        if (dec > 10) {
+            console.log('偏胖');
+        } else if (dec < -10) {
+            console.log('偏瘦');
+        } else if (dec <= 10 && dec >= -10) {
+            console.log('标准');
+        } else {
+            console.log('数据异常');
+        }
+
+        // 质数判断
+        var num = 11
+        //  设置一个变量notPrime 用于表示当前数字是否为质数, true 表示不是质数 false表示是质数
+        var notPrime = false
+
+        for (var i = 2; i < num; i++) {
+
+            if (num % i === 0) {
+
+                notPrime = true
+                
+                break
+            }
+
+        }
+
+        console.log(notPrime ? num + '不是质数': num + '是质数')
+
+    </script>
+</body>
+
+</html>

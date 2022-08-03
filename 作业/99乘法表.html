@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        span {
+            border: 1px solid black;
+            display: inline-block;
+            width: 60px;
+            height: 24px;
+            line-height: 24px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    // 双for循环打印
+    let result= '';
+    for (let i = 9; i >= 1; i--){
+        for (let j = 9; j >= i; j--){
+            result += '<span>' + j + '*' + i + '=' + i*j + '</span>';
+            // document.write(j + '*' + i + '=' + i*j + '\t' + '&nbsp;')
+        }
+        for (let n = 0; n < i-1; n++) {
+            result += '<span>' + '1' + '</span>'
+        }
+        // document.write('<br/>');
+        result += '<br/>';
+    }
+    document.write(result);
+    // for (let i = 1; i <= 9; i++){
+    //     for (let j = 1; j <= i; j++){
+    //         document.write(j + '*' + i + '=' + i*j + '\t' + '&nbsp;')
+    //     }
+    //     document.write('<br/>')
+    // }
+    // for (let i = 9; i >= 1; i--){
+    //     for (let j = 1; j <= i; j++){
+    //         document.write(j + '*' + i + '=' + i*j + '\t' + '&nbsp;')
+    //     }
+    //     document.write('<br/>')
+    // }
+    // for (let i = 1; i <= 9; i++){
+    //     for (let j = 9; j >= i; j--){
+    //         document.write(j + '*' + i + '=' + i*j + '\t' + '&nbsp;')
+    //     }
+    //     document.write('<br/>')
+    // }
+</script>
+
+
+</body>
+</html>

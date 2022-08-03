@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        该对象拥有歌曲名、歌手、分钟、秒数、类型（多少年代）、播放状态属性
+        要求对象包含两个方法播放、暂停。
+        当调用播放方法时，若歌曲对象已经是播放状态则无任何反应。若歌曲是未播放状态则修改对象的播放状态属性为 true 并输出"正在播放xx歌手的xxx歌曲"
+        当调用暂停方法时，若歌曲对象已经是暂停状态则无任何反应。若歌曲是播放状态则修改对象的播放状态属性为 false 并输出"歌曲已停止"
+        */
+
+        var music = {
+            musicName: 'ABC',
+            artist: 'GEC',
+            min: 2,
+            sec: 45,
+            type: '80s',
+            status: false, // true 表示正在播放  false表示暂停
+            play: function () {
+                if (!this.status) { // 等价于  this.status === false
+                    // 修改播放状态为true
+                    this.status = true
+                    // 打印"正在播放xx歌手的xxx歌曲"
+                    console.log("正在播放" + this.artist + "歌手的" + this.musicName + "歌曲");
+                }
+            },
+            pause: function () { 
+                if(this.status) {  // 等价于 this.status === true
+                    // 修改播放状态为true
+                    this.status = false
+
+                    console.log("歌曲已停止");
+                }
+            }
+        }
+
+
+        music.play()
+
+        // music.pause()
+
+    </script>
+</body>
+
+</html>

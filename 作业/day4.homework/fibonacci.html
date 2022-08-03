@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // 0,1,1,2,3,5,8,13
+    // 0,1,2,3,4,5,6,7
+
+    //[0]+[1]=[2]
+
+    // 方法1
+    // let n = prompt('请输入斐波那契数下标');
+    // let fibonacciArr = [0, 1];
+    // let fibonacciNum = fibonacci(n);
+    // function fibonacci(n) {
+    //     if (!fibonacciArr[n] && fibonacciArr[n] !== 0) {
+    //         fibonacciArr[n] = fibonacci(n - 1) + fibonacci(n - 2);
+    //     }
+    //     return fibonacciArr[n];
+    // }
+    // document.write(n + '下标的斐波那契数是' + fibonacciNum);
+
+    // 方法2
+    // let fibonacciArr = [0, 1];
+    //
+    // function fibonacci(n) {
+    //     let index = fibonacciArr.length - 2;
+    //     if (n === fibonacciArr.length - 1) {
+    //         return fibonacciArr[n];
+    //     }
+    //     let value = fibonacciArr[index] + fibonacciArr[index + 1];
+    //     fibonacciArr.push(value);
+    //     return fibonacci(n);
+    // }
+    //
+    // console.log(fibonacci(10));
+</script>
+</body>
+</html>

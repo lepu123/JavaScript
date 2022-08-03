@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            display: inline-block;
+            background-color: yellow;
+            margin: 5px;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // 定义一个空字符串,用于拼接99乘法表的html字符
+        var str = ''
+
+        // 开启第一重for循环,生成指定数量的行
+        for (var i = 1; i <= 9; i++) {
+            // 99乘法表中,第i行有i个子元素,实现方法开启双重循环,设置内部循环变量值小于等于i
+            for (var j = 1; j <= i; j++) {
+                str += '<span>' + j + 'x' + i + '=' + i * j + '</span>'
+            }
+
+            str += '<br>'
+        }
+
+        document.write(str)
+    </script>
+</body>
+
+</html>

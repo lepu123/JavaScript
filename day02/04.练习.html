@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // var min = 7
+
+        // var max = 176
+
+        // //  指定范围后找到第一个能被三整除的数
+
+        // for (var i = min; i <= max; i++) {
+        //     if (i % 3 === 0) {
+        //         console.log('当前范围内第一个能被3整除的数为' + i);
+        //         break
+        //     }
+        // }
+
+
+        var min = 6
+        var max = 1000
+        // // 跳过范围内所有能被7整除,或包含7的数    
+        // for (var i = min; i <= max; i++) {
+        //     if (i % 7 === 0) {
+        //         continue
+        //     }
+
+        //     // 个位为7
+        //     if (i % 10 == 7) {
+        //         continue
+        //     }
+
+        //     // 十位为7
+        //     if (parseInt(i / 10) % 10 == 7) {
+        //         continue
+        //     }
+
+        //     // 百位为7
+        //     if (parseInt(i / 100) % 10 == 7) {
+        //         continue
+        //     }
+
+        //     console.log(i)
+
+        // }
+
+        for (var i = min; i <= max; i++) {
+            if (i % 7 === 0) {
+                continue
+            }
+
+            // 个位 
+            var o = i % 10
+            // 十位
+            var t = ((i - o) / 10) % 10
+            // 百位
+            var h = parseInt(i /100) 
+
+            if(o === 7 || t === 7 || h ===7) {
+                continue
+            }
+
+            console.log(i);
+
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

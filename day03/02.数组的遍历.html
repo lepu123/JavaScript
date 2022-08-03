@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = ['一', '二', '三', '四', '五', '六', '七']
+
+        // 我们知道通过数字下标可以访问数组的每一项,配合数组的length就可以使用循环遍历输出/修改数组的每一项
+        // length表示数组的长度,.刚好数组最后一个下标索引值 + 1
+        /*
+                var index = arr.length - 1 // 当前数组的最后一项
+        
+                while (index >= 0) { // 数组的第一项
+        
+                    arr[index] += ':' + index 
+        
+                    console.log(arr[index]);
+                    // 倒叙遍历
+                    index--
+                }
+        */
+
+        for (var index = arr.length - 1; index >= 0; index--) {
+            console.log(arr[index]);
+        }
+
+
+
+        /*
+
+        var i = 0
+
+        while (i < arr.length) {
+            console.log(arr[i]);
+            i++
+        }
+
+        */
+        // 对比while语句循环, for 循环条件代码会更紧密一些,下标与更新逻辑都封装在了循环中,这样代码会更加清晰.所以我们推荐使用for循环来遍历数组   
+        for (var i = 0; i < arr.length; i++) {
+            console.log(arr[i]);
+        }
+    </script>
+</body>
+
+</html>

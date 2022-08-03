@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        em {
+            font-weight: 700;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+
+        /*
+          // .split([分割字符串[,limt]]), 方法使用指定的字符,将原字符串在指定字符位置处进行分割,并返回一个分割数组
+          // 该方法接受参数二 limt ,limt 表示返回的分割数组有几项,分割出多于的项会被忽略掉
+  
+          var str = 'hello word'
+  
+          var arr = str.split('o') // ['hell',' w', 'rd']
+  
+          var arr = str.split('o', 2) // ['hell',' w']
+  
+          var arr = str.split('') // ["h","e","l", "l","o", " ", "w", "o", "r","d"] 使用空字符串分割字符串时,会返回一个每一个字符都被分割数组
+  
+          console.log(arr, str);
+  
+          var textStr = '据美国“旧金山标准”（The San Francisco Standard）新闻网报道，当地时间1日，由美国华裔及“反战人士”等百人组成的抗议群体聚集在旧金山联邦政府大楼外，痛斥美国众议院议长佩洛西欲窜访台湾的计划。抗议者手持“一个中国”标语，高喊“要和平”。1日早间，大批抗议者聚集在旧金山联邦政府大楼外，呼吁佩洛西取消窜访台湾的计划。许多人手持“一个中国”“美国人滚出台湾”“台湾是中国的领土”等中英文标语牌，并高呼“我们要和平”。抗议民众认为，此次出访，是作为加州第12国会选区代表的佩洛西未能优先考虑美国民众利益的又一案例。'
+  
+          var word = '台湾'
+  
+          var splitArr = textStr.split(word)
+  
+          var result = ''
+  
+          for (var i = 0; i < splitArr.length; i++) {
+  
+  
+              result += splitArr[i]
+  
+              if (i < splitArr.length - 1) {
+  
+                  result += '<em>' + word + '</em>'
+  
+              }
+  
+          }
+  
+          document.write(result)
+  
+          */
+
+        // .slice(beginIndex[, endIndex]) 从当前字符串中截取一部分
+        // beginIndex开始截取的字符串下标
+        // endIndex 结束截取的下标,但不包含下标志,即该下标之前
+        /*
+                var str = '报道称，预计佩洛西将于中午在国会大厦礼节性拜访马来西亚国会下议院议长爱资哈尔，随后将与马来西亚总理伊斯梅尔·萨布里举行午餐会。'
+        
+                var str2 = str.slice(4, 8) // 实际值为 4~7的字符
+        
+                var str3 = str.slice(4)  // 如果不传参数二则自动截取到字符串的末尾
+        
+                var str4 = str.slice(-4) // 从倒数第四位开始向后截取
+        
+                var str5 = str.slice(10, -2)
+        
+                console.log(str);
+                console.log(str2);
+                console.log(str3);
+                console.log(str4);
+                console.log(str5);
+        */
+
+        /*
+        // .substring(indexStart[, indexEnd])
+        // indexStart 需要截取的第一个字符的索引，该索引位置的字符作为返回的字符串的首字母。
+        // indexEnd 一个 0 到字符串长度之间的整数，以该数字为索引的字符不包含在截取的字符串内。若省略该属性substring 提取字符一直到字符串末尾。 
+
+        // 注意：indexStart 和 indexEnd 数小于 0 或为 NaN，则被当作 0。
+     
+        var str = '报道称，预计佩洛西将于中午在国会大厦礼节性拜访马来西亚国会下议院议长爱资哈尔，随后将与马来西亚总理伊斯梅尔·萨布里举行午餐会。'
+
+        var str2 = str.substring(4, 8) // 实际值为 4~7的字符
+
+        var str3 = str.substring(4)  // 如果不传参数二则自动截取到字符串的末尾
+
+        var str4 = str.substring(-4) // 等价于 var str4 = str.substring(0)
+
+        var str5 = str.substring(10, -2) // 等价于 10 0  等价于 0 10
+
+        console.log(str);
+        console.log(str2);
+        console.log(str3);
+        console.log(str4);
+        console.log(str5);
+        */
+
+        // .substring(indexStart[, length]) 该方法已经被舍弃,尽量避免使用
+        //  方法返回一个字符串中从指定位置开始到指定字符数长度的字符
+        // indexStart 截取的起始位置
+        // length 截取的字符长度
+
+        var str = '报道称，预计佩洛西将于中午在国会大厦礼节性拜访马来西亚国会下议院议长爱资哈尔，随后将与马来西亚总理伊斯梅尔·萨布里举行午餐会。'
+
+        var str2 = str.substr(4, 8) // 实际值为 4~7的字符
+
+        var str3 = str.substr(4) // 实际值为 4~7的字符
+
+        console.log(str2);
+        console.log(str3);
+        /*
+
+实现替换字符串中所有指定字符为新字符的函数
+
+要求：
+
+创建一个替换字符串函数replaceString
+函数接收三个参数 oldS旧字符, newS新字符, fullS完整字符串
+函数返回一个新字符串，要求将完整字符串中所有旧字符替换成新字符
+部分代码：
+
+replaceString("World", "Web", "Test World  Brave New World"); // "Test Web  Brave New Web"
+    */
+
+        function replaceString(replaceWord, newWord, tagStr) {
+
+            //  var result  = "Test World  Brave New World"
+            var result = tagStr
+
+            var index;
+
+            while (index !== -1) {
+               // 第一次循环  "Test World  Brave New World".indexOf(Word) -> 5
+               // 第二次循环  "Test Web Brave New World".indexOf(Word) -> 19
+                index = result.indexOf(replaceWord)
+
+                // 找到了要替换的单词
+                if (index != -1) {
+
+                    // str = "Test "
+                    // str = "Test Web Brave New "
+                    var str = result.substring(0, index)
+
+                    // str = "Test Web"
+                    // str = "Test Web Brave New Web"
+                    str += newWord
+                    // str = "Test Web" + "  Brave New World"
+                    // str = "Test Web Brave New World"
+
+                    // str = "Test Web Brave New Web" +''
+                    str += result.substring(index + replaceWord.length)
+
+
+                    result = str
+                }
+
+            }
+
+            return result
+
+        }
+
+       var str =  replaceString("World", "Web", "Test World  Brave New World");
+
+       console.log(str);
+
+    </script>
+</body>
+
+</html>

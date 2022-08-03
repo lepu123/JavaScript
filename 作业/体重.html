@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //体重评判
+    let weight = 145,
+        height = 180,
+        sWeight = (height - 108) * 2;
+
+    if (weight === sWeight) {
+        alert('身材完美');
+    } else if (weight > sWeight) {
+        //体重超过标准体重10公斤以上
+        if (weight > sWeight + 10) {
+            alert('真的太胖了，需要减肥了');
+        } else {
+            alert('只是微胖而已，以后要注意了');
+        }
+    } else {
+        //体重低于标准体重10
+        if (weight < sWeight - 10) {
+            alert('太受啦');
+        } else {
+            alert('小受小受')
+        }
+    }
+</script>
+</body>
+</html>

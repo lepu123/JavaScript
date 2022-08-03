@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let song = {
+        music: '孤勇者',
+        singer: '陈奕迅',
+        minute: '3分',
+        seconds: '20秒',
+        type: '现代',
+        state: false,
+        play: function () {
+            let str = '';
+            if (this.state) {
+
+            } else {
+                this.state = true;
+                str += '正在播放' + song.singer + song.music;
+                console.log(str);
+            }
+        },
+        pause: function () {
+            let str = '';
+            if (!this.state) {
+
+            } else {
+                this.state = false;
+                str += '歌曲已停止播放';
+                console.log(str);
+            }
+        }
+    }
+
+    song.play();
+</script>
+</body>
+</html>

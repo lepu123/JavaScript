@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        // 在Js中本身是没有日期类型,但是js中包含一个自带的Date构造函数.,用来创建日期实例对象类型.实例对象中包含大量与时间操作有关的方法属性
+
+        var strA = new String('123123')
+        // 创建一个日期实力
+        // 1. new Date() 当前时间
+        var date = new Date()
+
+        console.log(date);
+        // 2. var date = new Date(时间戳/时间格式) 指定时间
+        // var date2 = new Date('1977/08/01')
+        // var date2 = new Date('1987-08-01')
+        var date2 = new Date(165201540250)
+
+        console.log(date2);
+
+        // 3. var date = new Date(year,月份下标[,日[,时[,分[,秒[,毫秒]]]]]) // 中括号表示可选参数
+        // 月份下标从0开始计算, 0表示1月, 11表示12月
+        var date3 = new Date(2021,5,1,14,35,28,5)
+
+        console.log(date3);
+
+        // 时间戳,就是相对于英国格林威治时间1970年1月1日00:00:00过去了多少毫秒,可以解决全球时区导致的时间不相同问题
+        */
+
+
+
+        // 构造函数方法 直接调用 Date 
+        console.log(Date.now()); // 构造函数的方法,获取当前时间时间戳 1659341658411
+
+        // 实例方法
+        var date = new Date('2022-7-15 18:24:15') //创建一个日期示例,表示当前时间
+
+        // 获取几几年
+        console.log(date.getFullYear());
+        // 设置指定的年份
+        date.setFullYear(2021)
+        console.log(date);
+
+        // 获取月份下标,跟实际月份比较需要加一
+        console.log(date.getMonth());
+        // 设置指定的月份下标
+        date.setMonth(7) // 设置为8月
+        console.log(date);
+
+        // 获取星期几
+        console.log(date.getDay());
+
+        // 获取几号
+        console.log(date.getDate());
+        // 设置指定的几号
+        date.setDate(3) // 设置为3号
+        console.log(date);
+
+        // 获取小时数
+        console.log(date.getHours());
+
+        date.setHours(3) // 设置几点小时
+        console.log(date);
+
+        // 获取分钟数
+        console.log(date.getMinutes());
+
+        date.setMinutes(32) // 设置几分钟
+        console.log(date);
+
+        // 从date当前时间基础上再加5分钟
+        date.setMonth(date.getMinutes() + 5)
+
+        // 获取秒数
+        console.log(date.getSeconds());
+        date.setSeconds(59) // 设置几分钟
+        console.log(date);
+
+
+        // 获取date的时间戳
+        console.log(date.getTime()); // 1657880655000
+
+        // 重新指定时间戳
+        date.setTime(2000)
+        console.log(date);
+
+        console.log(new Date(1657880655000));
+
+        /*
+        创建JSClock函数
+        调用该函数返回指定格式当前时间例： “12: 09: 56 A.M.”
+        0点要显示为12点 AM
+        14点要显示为 02 点 PM
+        时分秒小于10的前面都要补零： 如 9 -> 09
+        */
+
+        function JSClock() {
+
+            var date = new Date()
+            // 获取时    
+            var hours = date.getHours()
+            // 获取分
+            var min = date.getMinutes()
+            // 获取秒
+            var sec = date.getSeconds()
+
+            var tag = hours > 12 ? '.P.M' : '.A.M'
+
+            // 将24小时计时改成12小时    
+            hours = hours > 12 ? hours - 12 : hours
+
+            hours = addZero(hours)
+
+            min = addZero(min)
+
+            sec = addZero(sec)
+
+            console.log(hours + ':' + min + ':' + sec + ' ' + tag);
+
+        }
+
+        // 补0函数,小于10的数字前面都加个0显示
+        function addZero(num) {
+            return num >= 10 ? num : '0' + num
+        }
+
+        JSClock()
+
+
+        
+
+
+    </script>
+</body>
+
+</html>

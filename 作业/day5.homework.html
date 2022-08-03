@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    let a = {
+            name: '小明',
+            age: 19,
+            address: '北京',
+            hobby: ['抽烟', '喝酒', '烫头'],
+            data: {
+                friends: ['lee', 'Tom', 'Jane'],
+                mother: '韩梅'
+            }
+        };
+
+
+    function deepCopy(obj) {
+        // 首先判断进入的是什么数据类型是对象中的对象啊数组啊还是其他的基本数据类
+        let nObj = obj.constructor === Array ? [] : {};
+        // 假如传入的对象存放的数据类型不是对象
+        if (typeof obj !== 'object') {
+            return obj;
+        } else {
+            // Object.keys(对象)用来获取对象的key值储存再一个数组中，再把数组中的key值拉去遍历
+            let objArr = Object.keys(obj);
+            for (let i = 0; i < objArr.length; i++) {
+                if (typeof obj[objArr[i]] === 'object') {
+                    nObj[objArr[i]] = deepCopy(obj[objArr[i]]);
+                } else {
+                    nObj[objArr[i]] = obj[objArr[i]];
+                }
+            }
+        }
+        return nObj;
+    }
+
+    let b = deepCopy(a);
+
+    b['address'] = '上海';
+    console.log(a, b);
+
+
+</script>
+</body>
+</html>

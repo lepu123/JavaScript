@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p id="array"></p>
+<script>
+    let arr = [23, 3, 16, 36, 30, 11, 42, 47, 39, 20];
+    let temp, text = '';
+    for (let i = arr.length - 1; i > 0; i--) {
+        for (let j = 0; j < i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+        console.log('' + arr);
+    }
+
+    function myFunction(item, index) {
+        text += index + ':' + '&nbsp' + item + '<br>';
+    }
+    arr.forEach(myFunction);
+    document.getElementById("array").innerHTML = text;
+
+
+
+
+</script>
+</body>
+</html>

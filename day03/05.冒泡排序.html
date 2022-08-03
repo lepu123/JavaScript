@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [25, 3, 16, 36, 30, 11, 42, 47, 39, 20]
+        /*
+                for (var i = 0; i < arr.length - 1; i++) {
+        
+                    for (var j = arr.length - 1; j > i; j--) {
+        
+                        if (arr[i] > arr[j]) {
+                            var temp = arr[i]
+        
+                            arr[i] = arr[j]
+        
+                            arr[j] = temp
+                        }
+        
+                    }
+        
+                    console.log(arr);
+        
+                }
+        */
+
+        for (var i = 0; i < arr.length - 1; i++) {
+            for (var j = arr.length - 1; j > i; j--) {
+                if (arr[j-1] > arr[j]) {
+                    var temp = arr[j - 1]
+                    arr[j-1] = arr[j]
+                    arr[j] = temp
+                }
+            }
+        }
+
+
+        console.log('最终结果:', arr);
+    </script>
+</body>
+
+</html>

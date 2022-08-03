@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 数字互换
+    // 第一种
+    // let a = 777,
+    //     b = 13,
+    //     tab;
+    // document.write('a:' + a + '&nbsp;' + 'b:' + b + '<br/>');
+    // tab = a;
+    // a = b;
+    // b = tab;
+    // 第二种
+    // let a = 777,
+    //     b = 13
+    // a = a + b;
+    // b = a - b;
+    // a = a - b;
+    // 第三种
+    // let a = 777,
+    //     b = 13;
+    // c = [a, b];
+    // a = c[1];
+    // b = c[0];
+    // document.write('a:' + a + '&nbsp;' + 'b:' + b);
+
+    // 闰年判断
+    // const year = prompt('请输入年份');
+    // if ((year % 4 === 0 && !(year % 100 === 0)) || year % 400 === 0) {
+    //     alert(year + '是闰年');
+    // } else {
+    //     alert(year + '不是闰年');
+    // }
+
+
+    // 成绩判断
+    // const _a = ['a', 'A'],
+    //     _b = ['b', 'B'],
+    //     _c = ['c', 'C'],
+    //     _d = ['d', 'D'],
+    //     _e = ['e', 'E'];
+    // const
+    //     score = prompt('请输入成绩:');
+    // switch (score) {
+    //     case _a[0]:
+    //     case _a[1]:
+    //         document.write('优秀');
+    //         break;
+    //     case _b[0]:
+    //     case _b[1]:
+    //         document.write('良好');
+    //         break;
+    //     case _c[0]:
+    //     case _c[1]:
+    //         document.write('中等');
+    //         break;
+    //     case _d[0]:
+    //     case _d[1]:
+    //         document.write('及格');
+    //         break;
+    //     case _e[0]:
+    //     case _e[1]:
+    //         document.write('不及格');
+    //         break;
+    //     default:
+    //         alert('输入成绩有误')
+    // }
+
+    let blood = 'Ab';
+    const _x = ['AB','Ab','aB'],
+        _y = ['ab'];
+    switch (blood) {
+        case _y[0]:
+            document.write(blood + '是O型血');
+            break;
+        case _x[0]:
+            document.write(blood + '是AB型血');
+            break;
+        case _x[1]:
+            document.write(blood + '是A型血');
+            break;
+        case _x[2]:
+            document.write(blood + '是B型血');
+            break;
+        default:
+            document.write('未找到相对的基因类型');
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var myName = 'GEC'
+        var age = 12
+        var married = false
+        var friends = ['张三', '李四', '小明', '老王']
+
+        // 在js中他是一个弱类型(动态语言),声明的变量都是用var无需提前声明数据类型,在代码执行时类型就会被自动确定
+
+        // 本身数据类型就是用来编程中的数据进行归类,便于数据的处理
+
+        // 堆 栈
+        // 栈(stack) 是由系统自动在内存中开辟的并由系统自动释放
+        // 堆是由程序员手动开辟手动释放(js开辟释放:自动内存管理)的 
+        // 栈的空间大小已知, 存放的是基本数据类型 数字\布尔值\undefined\null\字符串
+        // 堆的空间大小未知  引用数据类型  数组  对象
+        // (栈中的数据)基本数据类型的拷贝都是深拷贝
+        // (堆中的数据)引用数据类型的拷贝都是浅拷贝 
+        // 浅拷贝只是拷贝数据的内存地址,将内存地址赋给了另一个变量,此时两个变量共同操作同一块内存空间
+        // 深拷贝将数据的具体指在内存中重新开辟一段内存地址,将新的内存地址赋给了新的变量
+
+
+        // 基本数据类型,该数据类型也被成为原始数据类型.基本数据类一旦被创建无法更改
+
+        // 数字类型(Number),js ECMScript 规定只有一种数字类型64位浮点数并没整型的概念, 1 与 1.0 是一样的
+
+        var num1 = 1
+        // 负数只需要在数字前加-运算符
+        var num2 = -7.5
+        // 除了基本的数字以外, 数字类型还有三个特殊值 +Infinity无穷大  -Infinity无穷小  NaN(Not a Number 非数值)
+        var num3 = Infinity
+
+        // 数学运算中若出现无法计算的情况其值为NaN, NaN很特殊, NaN 不等于 NaN
+        var num4 = 9 / 'abc'
+        // 自身不等于自身的数据肯定是NaN
+        console.log(NaN == NaN)
+
+        console.log(num4);
+
+        // 了解,数字的其他书写形式
+        var num5 = 2e3  // 2000 2 * 10 三次方
+        console.log(num5)
+
+        // 重点数字精度问题, 编程语言浮点数本身的计数方式导致在做一些数字运算时会产生精度丢失.在开发中要谨慎不要判断两个浮点数是否相等
+        // 解决方案使用一些三方库比如 bignumber
+        var a = 0.1
+        var b = 0.2
+
+        console.log(a + b); // 0.30000000000000004
+
+        // 布尔值类型, 是一个逻辑值 true 或者 false
+        var bool1 = true
+
+        var bool2 = false
+
+        // 字符串类型,也是一个基本数据类型,创建字符串需要使用 一对单引号 或 双引号包裹起来,内部可以包含0个或多个字符
+        var str = "我是一个人"
+
+        // 若字符串本身包含引号,创建字符串时最外层的引号要与字符串内部的引号不同
+        var str1 = '西汉刘向《别录》："《鲁论语》二十篇，皆孔子弟子记诸善言也。"'
+        
+        // 若字符串包含单双引号,这时我们需要对字符串中表示普通文本符号字符串使用 \ 转义符,将其转化为普通的字符 
+        var str2 = "子曰:\"学而时\\习之不亦'说'乎\" \u0041 "
+ 
+        console.log(str2);
+
+        // 转义符号 就是一个反斜线 \ 他可以将那些中长情况下有特殊功能符号转义为普通文本插入到字符串中,或者将一些特殊没有含义的文本抓换为有含义的特殊字符
+        // \n       换行符
+        // \b       空格
+        // \r       回车
+        // \uFFFF  Unicode 万国字符编码
+
+        // 字符串 支持lengt属性,用于获取当前字符串的长度
+
+        var str3 = '哈哈哈哈哈'
+        console.log(str3.length); // 5
+
+        console.log('你好么'.length); // 3
+
+        // 字符串支持字符串的拼接, 字符串本身是不可变的,但是你可以通过 + 运算符将多个字符串拼接成一个新的
+        var str4 = '我叫小明' 
+
+        var str5 = '你好!' + str4 + '。你叫什么？'
+
+        console.log(str5);
+
+        // Null 类型,表示为空.使用方式就是给一个变量赋值为空
+        var nu = null 
+
+        console.log(nu);
+
+        // undefined 表示一个没有赋值的变量,所有的变量在未赋值时默认值都是undefined,开发人员也可以手动将undefined作为值赋值给任何一个变量(不常用)
+        var na;
+        var na = undefined
+        console.log(na);
+
+
+        // typeof 是js内置的函数用于检测基本数据的类型
+        console.log(typeof 17) // number
+        console.log(typeof 'hello') // string
+        console.log(typeof false) // boolean
+        console.log(typeof undefined) // undefined
+        // 重点, 为什么null的类型是object?
+        // 在js设计初衷 所有值包含一个表示类型的标签和自身实际的值, 
+        // 引用型数据类型的类型标签都是0(object) ,null表示就是一个空指针(0*00) 所以类型是对象,但是他只表示自身是一个指针不指向任何堆的空间.这时候null只作为栈中的空的指针存储空间(他又数据基本数据类型)
+        console.log(typeof null) // object
+        console.log(typeof [1,2,3]) // object
+        console.log(typeof {name: '小明', age: 19}); // object
+
+
+        
+
+
+
+    </script>
+</body>
+
+</html>

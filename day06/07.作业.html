@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 创建函数接受时间戳作为参数
+        // 时间戳与当前时间进行比较
+        // 相差2分钟内 显示 刚刚
+        // 2分钟到1小时内分钟都 n分钟前
+        // 相差24小时以内  显示 n小时内
+        // 相差7天内 显示 n天前
+        // 超过七天显示 具体日期 2022-7-15 
+        function updateFunc(time) {
+
+            var oldDate = new Date(time)
+            var nowTimeStr = Date.now();
+            // 两者时间相差多少分钟
+            var dValue = parseInt((nowTimeStr - time) / 1000 / 60)
+            // 两分钟以内 
+            if (dValue <= 2) {
+                return '刚刚'
+            } else if (dValue > 2 && dValue < 60) {
+                return dValue + '分钟前'
+            } else if (dValue >= 60 && dValue < 60 * 24) {
+                // 严谨这里应该是向上取整
+                return parseInt(dValue / 60) + '小时前'
+            } else if (dValue >= 60 * 24 && dValue < 60 * 24 * 7) {
+                // 严谨这里应该是向上取整
+                return parseInt(dValue / 60 / 24) + '天前'
+            } else {
+                return oldDate.getFullYear() + '-' + (oldDate.getMonth() + 1) + '-' + oldDate.getDate()
+            }
+        }
+    </script>
+</body>
+
+</html>

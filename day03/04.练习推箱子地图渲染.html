@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 0;
+        }
+
+        .floor {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background-image: url(./images/block.gif);
+
+        }
+
+        .wall::after {
+            position: relative;
+            top: -11px;
+            display: block;
+            width: 35px;
+            height: 46px;
+            background-image: url(./images/wall.png);
+            content: '';
+        }
+
+        .ball::after {
+            position: relative;
+            top: 2.5px;
+            left: 2.5px;
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-image: url(./images/ball.png);
+            content: '';
+        }
+
+        .box::after {
+            position: relative;
+            top: -10px;
+            display: block;
+            width: 35px;
+            height: 45px;
+            background-image: url(./images/box.png);
+            content: '';
+        }
+
+        .user::after {
+            position: relative;
+            top: -36px;
+            left: -7.5px;
+            display: block;
+            width: 50px;
+            height: 62px;
+            background-image: url(./images/down.png);
+            content: '';
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var gameMap = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0],
+            [0, 0, 1, 1, 1, 3, 0, 3, 2, 1, 0, 0],
+            [0, 0, 1, 2, 0, 3, 4, 1, 1, 1, 0, 0],
+            [0, 0, 1, 1, 1, 1, 3, 1, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+        var mapStr = ''
+
+        for (var i = 0; i < gameMap.length; i++) {
+            // 遍历大数组获取内部的子数组    
+            var subArr = gameMap[i]
+
+            // 遍历内部的子数组,获取子数组的每一项
+            for (var j = 0; j < subArr.length; j++) {
+                // 遍历子数组的每一项获取格子的类型
+                var type = subArr[j]
+
+                var className = 'floor'
+                // 根据不同的格子类型设置不同class名
+                if (type === 1) {
+                    className += ' wall'
+                } else if (type === 2) {
+                    className += ' ball'
+                } else if (type === 3) {
+                    className += ' box'
+                } else if (type === 4) {
+                    className += ' user'
+                }
+                // 字符串拼接创建span元素,并指定计算后的className
+                mapStr += '<span class="'+ className +'"></span>'
+            }
+            // 大数组每一重循环都是单独的一行,字符串拼接在每一行的末尾添加br换行符
+            mapStr += '<br>'
+        }
+
+        document.write(mapStr)
+    </script>
+</body>
+
+</html>

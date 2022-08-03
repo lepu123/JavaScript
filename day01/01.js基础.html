@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+    </script>
+</head>
+
+<body>
+
+    <div>123</div>
+    <!-- 
+        JavaScript  与  Java 毫无关系的编程语言
+        
+        js是一个脚本语言, 在编程领域独树一帜无需手动编译可直接运行,浏览器同时加载同步编译,浏览器发现js代码时会立即分析并执行,
+        为了保证页面效果和js运行效率浏览器会尽可能让你的js代码执行成功,努力的读取后面的js代码,HTML,CSS.避免页面因为js错误而无法显示
+
+        目前运行js效率最高的引擎v8,已经应用在各大主流浏览器上该引擎性十分强大几乎能够让js语言与原生编程语言媲美
+
+
+        js的组成
+        ECMAScript   DOM   BOM
+
+        ECMAScript 是js标准语法规范
+        DOM        文档对象模型,给js提供一些API用于操作页面中HTML元素
+        BOM        浏览器对象模型,操作浏览器窗口 弹出框,浏览器跳转,获取浏览器分辨率,数据持久化等等
+     -->
+
+    <!-- 
+        js书写位置
+        1. 嵌入式:在页面任何地方使用script标签,内部输入js代码
+        2. 外链式:外部引入在页面任何地方使用script标签,使用script标签的src属性引入外部后缀名为.js的脚本文件
+
+        注意:
+            1. js代码是从上往下执行,当浏览器执行到script时他就会立即执行内部代码,开发人员要注意这时下方html元素还没生成.导致js代码无法获取下方的html元素
+            2. 使用外链式script标签内部不能嵌入书写任何js代码,因为写进去代码会被外链js文件中的代码覆盖    
+
+
+       在网页中添加代码时，最常见的方式是在`<head>`元素中添加一个`<script>`元素。
+        这让你的代码更容易找到，但这并非总是js最佳方式。因为浏览器加载网页时，将先加载`<head>`元素内的所有内容，再加载`<body>`元素。
+        因此，如果将js代码放在`<head>`中，用户可能必须等一会儿才能看到网页。
+        如果将代码放在`<body>`的HTML后面，则用户等待这些代码加载时就已经能看到网页的内容。 
+            
+            
+
+        将代码放在独立的文件中，并在HTML中链接该文件。这与链接到CSS文件类似，唯一的差别是，
+        你使用`<script>`标签的 **src** 特性来指定JavaScript文件的路径。
+        放在外部文件中，代码更容易维护（ 独立于 HTML ），还可用于多个网页。
+        将外链代码放在`<body>`的HTML**后面**，这是鱼和熊掌兼得的最佳方式，既有一个可用于任何网页且易于维护的JavaScript文件，又在网页末尾引用它，这样它将在网页加载完毕后再加载。    
+     -->
+    <script>
+
+        // js的注释,双斜杆单行注释.该注释在良好代码风格中有一个约束.注释符号与注释文本之间一定要有一个空格
+
+        /*
+            包围块的注释,多行注释.常用用途:
+            
+            1. 文件注释
+
+            文件注释位于文件的最前面，应包括文件的以下信息：概要说明及版本（必须）项目地址（开源组件必须）版权声明（必须）开源协议（开源组件必须）版本号（必须）修改时间（必须），以ISO格式表示（可使用Sublime Text的InsertDate插件插入）文件注释必须全部以英文字符表示，并存在于文件的开发版本与生产版本中。
+            例如：
+        */
+
+        /*!
+         * jRaiser 2 Javascript Library
+         * waterfall - v1.0.0 (2013-03-15T14:55:51+0800)
+         * http://jraiser.org/ | Released under MIT license
+         */
+
+        //  2. 文档注释
+
+// @module。声明模块，用法：
+
+/**
+ * 模块说明
+ * @module 模块名
+ */
+// 例如：
+
+/**
+ * Core模块提供最基础、最核心的接口
+ * @module Core
+ */
+
+// @class。声明类，用法：
+
+/**
+ * 类说明
+ * @class 类名
+ * @constructor
+ */
+// @class必须搭配@constructor或@static使用，分别标记非静态类与静态类。
+
+/**
+ * 节点集合类
+ * @class NodeList
+ * @constructor
+ * @param {ArrayLike<Element>} nodes 初始化节点
+ */
+
+// @method。声明函数或类方法，用法：
+
+/**
+ * 方法说明
+ * @method 方法名
+ * @for 所属类名
+ * @param {参数类型} 参数名 参数说明
+ * @return {返回值类型} 返回值说明
+ */
+
+// 没有指定@for时，表示此函数为全局或模块顶层函数。当函数为静态函数时，必须添加@static；当函数有参数时，必须使用@param；当函数有返回值时，必须使用@return。
+
+
+/**
+ * 返回当前集合中指定位置的元素
+ * @method
+ * @for NodeList
+ * @param {Number} [i=0] 位置下标。如果为负数，则从集合的最后一个元素开始倒数
+ * @return {Element} 指定元素
+ */
+
+// @property。声明类属性，用法：
+
+/**
+
+ * 属性说明
+ * @property {属性类型} 属性名
+ */
+        // var myName = "GEC"
+
+        // var demo = document.createElement('div')
+    </script>
+
+
+    <script src="./test.js"></script>
+
+    <script>
+        // 输出语句
+        //  提示框,在英文中意为警告.在浏览器窗口弹出一个警告框.此方法弹出警告框后会阻止代码向下继续执行,直到警告框关闭
+        // alert('警告');
+
+        // 该方法用于向body标签内部结尾处添加write()方法括号内的内容 
+        document.write(123123); 
+
+        //  向浏览器开发人员专用控制台console选项卡页面输出内容,log意为"日志",该方法在开发中经常用到用于调试代码
+        //  console.log  支持使用逗号隔开打印多个值
+        console.log('hello',122,'abc');
+
+        // 变量,来源于数学是计算机语言用来存储数据的表示数据值得抽象概念,在js开发肯定会产生一些数据,并需要将其存放起来,方便读取使用.变量就是开辟在内存中一段存储空间,用来存储数据的
+        // JS 提供了一个关键字 var (变量 variable)声明一个变量用于存储数据
+        
+        // 写法一 声明变量且赋值  var 变量名 = 值 (从右向左的赋值操作)
+        var myName = 123;
+
+        var num = 77 * 2;
+
+        // 写法二 先声明后赋值
+        var demo;
+
+        // 等待数据后续生成或者出现,使用前面创建号的变量把他接住
+        demo = 10086
+
+        // 同时声明多个变量
+        // 使用var 关键字配个逗号可以同时声明多个变量
+        // 同时声明多个未赋值的变量
+        var a, b, c;
+
+        // 同时声明多个已赋值的变量
+        var d = 100, e=200; 
+
+        // 同时声明多个变量不管已赋值还是未赋值,不推荐这么操作,会显得代码比较乱
+        var f, g = 44,h;
+
+        // 变量名就像现实中起名一样有一定规范的,
+        // 规范1, 变量名只能用 $ _ 字母开头,后街任意数字,字母,下划线美元符号
+        var $a1;
+        var _a;
+        // var 0a;  数字不可以作为变量的开头
+
+        // 规范2, 变量名能使用js的保留字(例如var就是个保留字,保留字一般都是有特殊含义的),如果以保留字作为变量名会导致代码产生歧义造成页面错误
+        /*
+        保留字
+            break     debugger    finally     int        public     try   
+            boolean   default     float       interface  return     typeof          
+            delete    for         let        short      var
+            byte      do          function    long       static     volatile            
+            case      double      goto        native     super      void       
+            catch     else        if          new        switch     while                        
+            char      enum        implements  null       synchroniz with              
+            class     export      import      package    this       yield       
+            const     extends     in          private    throw      abstract                
+            continue  false       instanceof  protected  true    
+
+            以上保留字中可能有部分单词并没有作为关键字,声明为变量时不会报错.但是大家还是尽量不要使用因为他们在以后都是都是有特殊含义的
+
+            undefined  NaN  Infinity   不允许被创建为变量的, 但是这三个值不叫保留字而是js的特殊值
+
+            全局变量中不能使用 name 作为变量表示的 window.name 他是js的内置属性
+
+        */
+        
+
+        // var name = 123
+        //
+        console.log(name);
+
+
+        /*
+        var a                    合法
+        var 1                    不合法
+        var age18                合法
+        var 18age                不合法
+        var name                 不合法
+        var $name                合法
+        var _sex                 合法
+        var break                不合法
+        var &sex                 不合法
+        var theworld theWorld    不合法
+        */
+
+        // 在js开发中,js变量名推荐使用驼峰命名法,多个单词拼接时首个单词全部小写,接下来的每个单词首字母大写
+
+        var getDataFromServer;
+        var myDiv = document.getElementsByClassName()
+
+        // 下划线命名法单词与单词之间使用下划线拼接,在js中一般用于声明常量(常量名一般全部大写)
+        var POSITIVE_TYPE = 0  // 表示好评
+        var negative_type = 1  // 表示差评
+
+      
+
+
+
+       
+    </script>
+
+</body>
+
+</html>

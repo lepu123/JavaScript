@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 该函数用来做雪糕的函数
+        // 接受四个形参 奶 水 糖 口味
+        // 奶+水混合后每100ml 可生产一个雪糕
+        // 糖的量与 奶+水混合量可以得出几分甜
+        // other 口味
+        function icecreamFunc(milk, water, sugar, other) {
+
+            other = other || '原味'
+
+            // 总的奶和水毫升数
+            var ml = milk + water
+            // 甜度    
+            var sugarRate = parseInt((sugar / ml) * 10)
+
+            var count = parseInt(ml / 100)
+
+            console.log('生产出来' + count + '根雪糕,' + sugarRate + '分甜,口味是' + other)
+        }
+
+        icecreamFunc(600, 1200, 1000, '红烧肉')
+
+
+        icecreamFunc(1200, 1200, 2000,)
+
+        /*
+
+        1. 函数中有多少参数是根据具体业务需求定义的
+        2. 形参和实参的数量并不一定是一样的, 有时形参多于实参有时实参多于形参
+        3. 如果在开发中想要省略一些实参,省略实参后面项不能传入实参
+
+        */
+
+        // 上面的代码中实现了实参少于形参的情况,形参会设置默认值便捷开发人员
+        // 但是有些情况,可能会发生实参多于形参的情况
+        // 解决实参多于形参的情况可以使用一个新的关键字 arguments 
+        // arguments 是函数被调用时自带的关键字,表示函数本次被调用时接受多少个实参的伪数组集合
+        // arguments 是有length属性的
+        // arguments 支持通过下标索引访问值
+        function showYourFriends() {
+            console.log(arguments);
+
+            for (var i = 0; i < arguments.length; i++) {
+                console.log(arguments[i]);
+            }
+        }
+
+
+        showYourFriends('老王', '老张', '老蒋', '老李', '老朱')
+
+
+        // 请创建一个函数叫做maxNumer, 功能接受任意多个数字并打印最大值
+
+        function maxNumber() {
+            var maxN = 0
+            
+            for (var i = 0; i < arguments.length; i++) { 
+                
+                var num = arguments[i]
+
+                if(maxN < num) {
+                    
+                    maxN = num
+                }
+            }
+
+            console.log('最大值为: ' + maxN);
+        }
+
+        maxNumber(1,28,35,14,77,15,99,11,23)
+
+        maxNumber(24,1,9)
+
+        maxNumber(28,23)
+
+        maxNumber(28)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 判断质数
+    let num = Number(prompt('输入一个数'));
+    if (isNaN(num)){
+        alert('输入的不是数字');
+    } else {
+        for (let i = 2; i < num + 1; i++) {
+            if (num % i === 0 && i !== num) {
+                document.write(num + '不是质数');
+                break;
+            } else if (i === num) {
+                document.write(num + '是质数');
+            }
+        }
+    }
+
+
+
+
+</script>
+</body>
+</html>

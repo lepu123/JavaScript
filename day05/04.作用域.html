@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+//         作用域 Scope
+// 介绍：俗称’适用范围’,分 全局作用域 和 局部作用域(函数作用域) 在编程语言中，作用域控制着变量与参数的可见性及生命周期。对程序员来说这是一项重要的服务，因为它减少了名称冲突，并且提供了自动内存管理。
+
+// 概念：在全局作用域下的变量称为全局变量,在局部作用域下的变量称为局部变量
+
+// 全局变量: 声明在函数外,可以在任何地方使用,作用范围比较大,称为全局变量
+// 局部变量: 在函数内使用var声明的变量,只在函数中可以使用,作用范围较小,我们称之为局部变量
+
+// 全局作用域：就是编写在script标签里面的JS代码  都在全局作用域
+    //  var a =123;
+        // function fn(){
+        //     var a = 123
+        //     console.log(1233);
+        // }
+
+        // fn()
+
+        // console.log(a);
+
+
+
+        // function text(){
+        //     var a = 456;
+        //     console.log();
+        // }
+
+        function text(){
+            var b = 123;
+            var c = 456
+
+            function app(){
+                console.log(b);
+            }
+            app();
+        }
+
+        text()
+
+        // 函数内部声明变量的时候，一定要使用var命令。如果不用的话，你实际上声明了一个全局变量。
+        function wwp(){
+            d = "靓仔"
+        }
+
+        wwp()
+        console.log(d,'d');
+        // console.log(window)
+      
+
+
+
+
+    </script>
+</body>
+</html>

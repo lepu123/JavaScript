@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<p id="array"></p>
+
+<script>
+
+    // const scores = [60, 50, 60, 58, 54, 54,
+    //     58, 50, 52, 54, 48, 69,
+    //     34, 55, 51, 52, 44, 51,
+    //     69, 64, 66, 55, 52, 61,
+    //     46, 31, 57, 52, 44, 18,
+    //     41, 53, 55, 61, 51, 44];
+    // let highScore = 0,
+    //     maxNum = 0,
+    //     maxArr = [],
+    //     output;
+    // for (let i = 0; i < scores.length; i++){
+    //     let j = scores[i];
+    //     if (highScore > j){
+    //
+    //     } else {
+    //         highScore = j;
+    //         output = i + 1;
+    //     }
+    // }
+    //
+    // for (let i = 0; i < scores.length; i++) {
+    //     if (highScore === scores[i]){
+    //         maxArr[maxNum] = i + 1;
+    //         maxNum++;
+    //     }
+    // }
+    //
+    // console.log('数组中最大的值是' + highScore + '有' + maxNum + '个' + '是第' + maxArr + '项');
+
+
+
+    //------------------------------------------------------------------------------------------
+    // 冒泡排序while
+    const numbers = [23, 3, 16, 36, 30, 11, 42, 47, 39, 20];
+    let temp,text = '';
+    for (let i = numbers.length - 1; i > 0; i--) {
+        for (let j = 0; j < i; j++) {
+            if (numbers[j] > numbers[j + 1]) {
+                temp = numbers[j];
+                numbers[j] = numbers[j + 1];
+                numbers[j + 1] = temp;
+            }
+        }
+        console.log('' + numbers);
+    }
+    numbers.forEach(myFunction);
+
+    document.getElementById("array").innerHTML = text;
+
+    function myFunction(item) {
+        text += item + "&nbsp;";
+    }
+
+    // let arr = [25,3,16,36,30,11,42,47,39,20],
+    //     text = '',
+    //     temp;
+    // for (let i = arr.length; i > 0; i--) {
+    //     for (let j = 0; j < i - 1; j++) {
+    //         if (arr[j] < arr[j + 1]) {
+    //             temp = arr[j];
+    //             arr[j] = arr[j + 1];
+    //             arr[j + 1] = temp;
+    //         }
+    //     }
+    // }
+
+    // for (let i = 0; i < arr.length - 1; i++) {
+    //     for (let j = arr.length - 1; j > 0; j--){
+    //         if (arr[j] < arr[j - 1]){
+    //             temp = arr[j];
+    //             arr[j] = arr[j - 1];
+    //             arr[j - 1] = temp;
+    //         }
+    //     }
+    // }
+    // function myFunction(item,index) {
+    //     text += index + ':' + '&nbsp' + item + '&nbsp' + '<br>';
+    // }
+    //
+    // arr.forEach(myFunction);
+    // document.getElementById("array").innerHTML = text;
+    //
+    //------------------------------------------------------------------------------------------
+
+
+    //------------------------------------------------------------------------------------------
+    // 插入排序while
+    // const numbers = [23, 3, 16, 36, 30, 11, 42, 47, 39, 20];
+    // let temp, text = '';
+    // for (let i = 0; i < numbers.length; i++) {
+    //     for (let j = i + 1; j > 0; j--) {
+    //         if (numbers[j] > numbers[j - 1]) {
+    //             temp = numbers[j];
+    //             numbers[j] = numbers[j - 1];
+    //             numbers[j - 1] = temp;
+    //         } else {
+    //             break;
+    //         }
+    //     }
+    //     console.log('' + numbers);
+    // }
+    // for (let i = numbers.length - 1; i > 0; i--) {
+    //     for (let j = i - 1; j < numbers.length; j++) {
+    //         if (numbers[j] < numbers[j + 1]) {
+    //             temp = numbers[j + 1];
+    //             numbers[j + 1] = numbers[j];
+    //             numbers[j] = temp;
+    //         } else {
+    //             break;
+    //         }
+    //     }
+    // }
+    //
+    // function myFunction(item,index) {
+    //     text += index + ':' + item + "&nbsp;";
+    // }
+    // numbers.forEach(myFunction);
+    // document.getElementById("array").innerHTML = text;
+    //------------------------------------------------------------------------------------------
+
+
+
+    //------------------------------------------------------------------------------------------
+
+    //------------------------------------------------------------------------------------------
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+<script src="movie.js"></script>
+<script>
+
+    // 现在时间无需重复获取
+    let nowDate = new Date();
+    for (let i = 0; i < coming.length; i++) {
+        let obj = coming[i];
+        movie(obj);
+    }
+
+    function movie(obj) {
+        let nm = obj.nm,
+            star = obj.star,
+            img = obj.img,
+            rt = obj.rt;
+        let inDate = new Date(rt);
+        let time = inDate.getTime() - nowDate.getTime(),
+            day = parseInt(parseInt(time / 1000) / (24 * 60 * 60)),
+            hours = parseInt(parseInt(time / 1000) % (24 * 60 * 60) / (60 * 60));
+
+        document.write('<div>' + '<img src="' + img + '" width="100px" alt="1">' +
+            '<p>' + nm + '<br>' +
+            star + '<br>' +
+            rt + '<br>' +
+            '倒计时' + day + '天' + hours + '小时' +
+            '</p>' + '</div>');
+    }
+
+</script>
+</body>
+</html>

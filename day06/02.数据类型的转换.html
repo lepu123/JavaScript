@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        数据类型转换在开发中很重要,并且掌握此知识可以方便我们后续的开发,解决开发中常见异常问题
+
+        数据类型的转化在开发中分为两类
+        1. 显示转换 使用相关数据类型的构造函数或方法将其他数据类型转为指定数据类型
+            var a = '85'
+            a = Number(a) // 85
+        2. 隐式转换 我们部分运算符,判别式存在自动转换类型的情况,代码中并没主动明确的指定数据类型的变换,运算符或判别式会在运行时自动将其转化为指定的数据类型    
+
+
+        类型转换学习过程中,主要掌握不同数据类型之间,转换关系
+     -->
+
+    <script>
+
+        var str = '12211'
+
+
+
+        if (str) {
+            // c 本来是字符串,if语句是个判别式,他根据布尔值判断是否执行内部语句, 
+            // c是字符串本身应该不满足判别式判断使用,但是为了代码能够成功执行,判别式强制隐式转换字符串数据类型,获取了他的布尔值
+            console.log('str不为空其值为:' + str);
+        }
+
+
+        var num = 85
+
+        var c = prompt('请猜数字')
+
+        // c === ''
+
+        // c === false // c为假时返回真
+
+        // !c // c为假时返回真
+
+        // 显式类型转换,直接将Number中的变量c转化为数字类型
+        c = Number(c)
+
+        // 为了避免bug发生
+
+
+        var go = true // 游戏是否继续 
+
+        while (go) {
+            // 数据类型的隐式转换, == 在判断值是否相等时,会将两边的数据类型隐式的转化为相同数据类型再比较
+            if (c == num) {
+                alert('恭喜你猜对了')
+                go = false // 停止循环
+            } else if (c > num) { // 也会隐式转换, >  数学比较,他会将所有数据类型转化为数字
+                console.log(typeof c , typeof num);
+                c = prompt('猜的有点大,请继续猜')
+                
+            } else if (c < num) { // 也会隐式转换, < 数学比较,他会将所有数据类型转化为数字
+                c = prompt('猜的有点小,请继续猜')
+            } else {
+                alert('请输入合法数字!!')
+            }
+        }
+
+
+
+        /*
+                var go = true // 游戏是否继续 
+        
+                while (go) {
+                    console.log(c);
+                    // 因为我们明确知道c就是一个数字,为了避免隐式转换用全等判断
+                    if (c === num) {
+                        alert('恭喜你猜对了')
+                        go = false // 停止循环
+                    } else if (c > num) { // 也会隐式转换, >  数学比较,他会将所有数据类型转化为数字
+                        console.log(typeof c,typeof num);
+                        c = Number(prompt('猜的有点大,请继续猜'))
+                    } else if (c < num) { // 也会隐式转换, < 数学比较,他会将所有数据类型转化为数字
+                        c = Number(prompt('猜的有点小,请继续猜'))
+                    } else {
+                        alert('请输入合法数字!!')
+                        c = 0
+                    }
+                }
+        */
+
+
+
+    </script>
+</body>
+
+</html>

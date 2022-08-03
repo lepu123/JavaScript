@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //  中间变量
+        // var a = 77, b = 13;
+
+        // var temp = a
+
+        // a = b
+
+        // b = temp
+
+        // 加减法
+        // var a = 77, b = 13;
+
+        // a = a + b // 90
+
+        // b = a - b // 77
+
+        // a = a - b // 13
+
+        // 亦或 
+        // var a = 77, b = 13;
+
+        // var c = a ^ b
+
+        // b = c ^ b  //   77
+
+        // a = c ^ b  //   13
+
+        // console.log( b , a);
+
+
+        var year = prompt('请输入测试年份')
+
+        if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+            alert(year + '年是闰年')
+        } else {
+            alert(year + '年是平年')
+        }
+
+
+    </script>
+</body>
+
+</html>

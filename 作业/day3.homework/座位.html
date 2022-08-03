@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .seats-0 {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+        }
+
+        .seats-1 {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background-image: url("./yz.png");
+            background-size: 100% auto;
+        }
+
+        .seats-2 {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background-image: url("./yz.png");
+            background-position: 0 -120px;
+            background-size: 100% auto;
+        }
+
+        .seats-3 {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background-image: url("./yz.png");
+            background-position: 0 -60px;
+            background-size: 100% auto;
+        }
+
+    </style>
+</head>
+<body>
+<script>
+    let seatsArr = [
+        [1, 1, 0, 0, 0, 0, 0, 0, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 2, 2],
+        [2, 2, 1, 1, 2, 2, 1, 1, 1, 1],
+        [1, 1, 3, 3, 1, 2, 2, 1, 1, 1],
+        [1, 1, 0, 0, 0, 0, 0, 0, 1, 1],
+        [1, 1, 0, 1, 1, 1, 1, 0, 1, 1],
+        [1, 1, 0, 1, 1, 1, 1, 0, 1, 1],
+    ];
+
+    let result = '';
+    for (let i = 0; i < seatsArr.length; i++) {
+        let rowArr = seatsArr[i];
+        for (let j = 0; j < rowArr.length; j++) {
+            result += '<span class="seats-' + rowArr[j] + '" >' + '</span>';
+        }
+        result += '<br>';
+    }
+    document.write(result);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var scores = [60, 50, 60, 58, 54, 54,
+            58, 50, 52, 54, 48, 69,
+            34, 55, 51, 52, 44, 51,
+            69, 64, 66, 55, 52, 61,
+            46, 31, 57, 52, 44, 18,
+            41, 53, 55, 61, 51, 44];
+        var highScore = 0;
+        var output;
+
+
+        for (var i = 0; i < scores.length; i++) {
+
+            var s = scores[i]
+
+            if (highScore < s) {
+                highScore = s
+                output = '第' + i + '项成绩最高'
+            }
+
+        }
+
+
+
+
+        console.log("通过检测: " + output); // 通过检测:  第 n 项成绩最高
+        console.log("最高成绩为？: " + highScore);
+    </script>
+</body>
+
+</html>

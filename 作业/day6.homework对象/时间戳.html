@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function updateFunc(time) {
+        let nowDate = new Date(),
+            inTime = nowDate.getTime() - time,
+            sec = parseInt(String(inTime / 1000)),
+            minutes = parseInt(sec / 60),
+            hours = parseInt(minutes / 60),
+            day = parseInt(hours / 24),
+            oldDate = new Date(time);
+
+        if (minutes < 2) {
+            return '刚刚';
+        } else if (minutes >= 2 && minutes < 60) {
+            return minutes + '分钟前';
+        } else if (hours <= 24) {
+            return hours + '小时前';
+        } else if (day <= 7) {
+            return day + '天前';
+        } else if (day > 7) {
+            return oldDate;
+        } else {
+            alert('未找到准确的时间');
+        }
+    }
+
+
+</script>
+</body>
+</html>

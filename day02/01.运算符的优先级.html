@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 与数学运算一样, js的运算符同样存在着优先级,优先级越高计算将会越先执行
+        var num = (3 + 5) * 4
+        /**
+         * 优先级排序从上往下降序排列:
+         * 1. .属性 [index] () 
+         * 2. ++  --  !  typeof (new)
+         * 3. * / %
+         * 4. + -
+         * 5. >= <= > <
+         * 6. == ===  !=  !==
+         * 7. &&
+         * 8. ||
+         * 9. 三目运算符
+         */
+
+        var str = 'hello world'
+
+
+        console.log(str.length >= 10 ? true && false || true : false && (true || true));
+
+
+        // 表达式(expression): 是一个js的短语,js解释器会将其计算出一个结果, 
+        // 最简单的表达式就是字面量(字符串\数字\布尔值\null\undefined\字面量数组\字面量对象)
+        // 复杂的表达式都是由简单表达式组成的, 将简单表达式配合运算符组成一些常用的表达式
+        // 除了js运算符构成的表达式以外, 变量get是表达式,还有属性提取表达式,函数的调用
+
+
+        parseInt(10086.358) //  返回 10086 是一个表达式
+
+        alert() // undefined 虽然有些函数没有返回值.但是所有没有返回值的函数js会设置其的返回值为undefined.所以没有返回值的函数也还是表达式
+
+
+        console.log(str);
+
+        // 字面量值
+        1.23       // 数字
+        "hello"    // 字符串
+        /pattern/  // 正则表达式
+        // 内置的值
+        true       // 返回一个布尔值
+        false      // 返回一个布尔值
+        null       // 返回一个null
+        // 变量
+        i           // 返回变量i的值
+        sum         // 返回sum的值
+        undefined   // undefined是全局变量，和null不同，它不是一个关键字
+
+        // 以new 开头的调用表达式
+        new Date()
+
+        // 属性提取表达式
+        expression.identifier
+        expression[expression]
+
+        // 前置运算符作前导的表达式
+        !show // show变量值取反操作
+        1 * 2  // 表达式与运算符组合或函数的调用
+        age >= 18 ? '成年' : '未成年'
+
+
+        // 函数的调用
+        f(0)                     // f是一个函数表达式I Q是一个参数表达式
+        Math.max(x, y, z)          // Math.max是一个函数； x, y和z是参数 
+        a.sort()                 // a.sort是一个函数， 它没有参数
+
+
+
+            
+
+
+    </script>
+</body>
+
+</html>

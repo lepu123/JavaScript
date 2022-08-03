@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            Math 是 js 的内置对象,提供了一些与数学有关的属性和相关计算函数方法
+
+        */
+        var M = {
+            name: '',
+            max: function () { }
+        }
+        // Math提供的属性 
+        // Math.PI 提供的圆周率常量属性 (一般)
+        console.log(Math.PI)
+
+        // Math提供的方法
+        var num1 = -7
+        // Math.abs() 返回传入数字的绝对值 (一般)
+        var absNum1 = Math.abs(num1)
+        console.log(absNum1);
+
+        // Math.sqrt() 返回传入数字的开根号值 (一般)
+        var sqrtNum2 = Math.sqrt(25)
+        console.log(sqrtNum2); // 5
+
+        // Math.cbrt() 返回传入数字的开立方根号值 (较少)
+        var sqrtNum3 = Math.cbrt(27)
+        console.log(sqrtNum3); // 3
+
+        //  向上取整 例子 3.1 向上取整 4 ; 3.0向上取整 3 (常用)
+        var sqrtNum4 = Math.ceil(3.00001)
+        console.log(sqrtNum4); // 4
+
+        //  向下取整 例子 2.99999 向下取整 2 ; 2.0向下取整 2 (常用)
+        var sqrtNum4 = Math.floor(3.99999)
+        console.log(sqrtNum4); // 3
+
+        //  四舍五入 例子 2.9 四舍五入 3; 2.4 四舍五入 2 (常用)
+        var sqrtNum5 = Math.round(3.99999)
+        console.log(sqrtNum5);
+
+        // 获取任意数量数字的最大值 (一般)
+        var maxNum = Math.max(1, 25, 38, 14, 58, 147, 22)
+        console.log(maxNum);
+
+        // 获取任意数量数字的最小值 (一般)
+        var minNum = Math.min(1, 25, 38, 14, 58, 147, -22)
+        console.log(minNum);
+
+        // (重点) Math.random() 生成0到1之间但是不等于1的随机数, 
+        console.log(Math.random());
+        // 问如何生成一个0-100等于100的的随机数
+        // Math.random() * 101 生成一个0 - 101但是不等于101的浮点数,对其进行向下取整,刚好是 0-100 随机数
+        var num = Math.floor(Math.random() * 101)
+
+        // 随机数在机器语言的小知识,在编程语言中根本不存在真正随机数
+        /*
+               要求：
+        
+                根据下面所提供的名单数组，实现每次运行代码随机输出名单中两个名字
+                避免随机输出名单中两个名字相同
+        */
+        var nameArr = ["小明", "刘松", "张勇", "孙强", "贺北", "曹丕", "赵维富"]
+
+        // 创建一个函数用于随机点名2人,该函数接受一个用户名单数组作为参数
+        function select2Person(userArr) {
+            // 随机数组的下标, 0 - (最后一个下标 + 1) 等价 0 ~ length
+            var user1Index = Math.floor(Math.random() * userArr.length)
+
+            var user2Index = Math.floor(Math.random() * userArr.length)
+
+
+            // 使用while循环当随机数相同时重新随机,直到两者不相同为止
+            // 为了避免发生极小概率随机数一直相等造成死循环,我们可以做一个强制处理,
+            var whileCount = 0
+
+            while (user1Index == user2Index) {
+                // 只循序循环100次,超过一百次,强制给一个不相等的值
+                if (whileCount >= 100) {
+
+                    user1Index = user1Index === (userArr.length - 1) ? user1Index - 1 : user1Index + 1
+                    
+                    break
+                }
+
+                user2Index = Math.floor(Math.random() * userArr.length)
+                whileCount++
+            }
+
+
+            return [userArr[user1Index], userArr[user2Index]]
+
+        }
+
+        console.log(select2Person(nameArr)); 
+    </script>
+</body>
+
+</html>

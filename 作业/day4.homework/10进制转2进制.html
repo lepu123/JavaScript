@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // let n = prompt('请输入一个十进制数');
+    // let binary = toBins(n);
+    // function toBins(d) {
+    //     if (d > 0) {
+    //         if (d % 2 !== 0) {
+    //             return toBins((d - 1)/2) + 1;
+    //         } else {
+    //             return toBins(d/2) + 0;
+    //         }
+    //     } else {
+    //         return '';
+    //     }
+    // }
+    // document.write(n + '转换为二进制是' + binary);
+
+    let n = Number(prompt('请输入一个十进制数'));
+    console.log(typeof n)
+    let hexadecimal = toHexadecimal(n);
+
+    function toHexadecimal(d) {
+        if (d > 0) {
+            if (d % 16 <= 9) {
+                return toHexadecimal(parseInt(d / 16)) + d % 16;
+            } else {
+                switch (d % 16) {
+                    case 10:
+                        return toHexadecimal(parseInt(d / 16)) + 'A';
+                    case 11:
+                        return toHexadecimal(parseInt(d / 16)) + 'B';
+                    case 12:
+                        return toHexadecimal(parseInt(d / 16)) + 'C';
+                    case 13:
+                        return toHexadecimal(parseInt(d / 16)) + 'D';
+                    case 14:
+                        return toHexadecimal(parseInt(d / 16)) + 'E';
+                    case 15:
+                        return toHexadecimal(parseInt(d / 16)) + 'F';
+                }
+            }
+        } else {
+            return '';
+        }
+    }
+
+    document.write(hexadecimal)
+
+
+</script>
+</body>
+</html>

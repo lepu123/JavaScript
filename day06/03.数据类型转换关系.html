@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Boolean 布尔值
+        // 数字  字符串  null undefined
+        // 数组  对象
+        // 如果需要将其他数据类型显式转化为布尔值 需要使用 Boolean()对象包装器
+
+        // String 字符串, 
+        // 原始String类型的封装.我们在使用字符串字面量时,字符串会跟这个封装进行映射,所有调用方法属性都是通过映射从封装对象中拿到的
+        // var strObj = new String('hello world') 这个封装构造函数不使用 new, 就变成显示类型转换为字符串的函数,除了引用数据类型以外其他数据类型转字符串都是直接加个引号变字面量
+
+
+        // console.log(typeof strObj);
+
+        var num1 = 0
+        console.log(Boolean(num1)); // false
+        console.log(String(num1)); // '0'
+        var num2 = -1
+        console.log(Boolean(num2)); // true
+        console.log(String(num2)); // '-1'
+        var num3 = 1
+        console.log(Boolean(num3)); // true
+        console.log(String(num3)); // '1'
+        var num4 = NaN
+        console.log(Boolean(num4)); // false
+        console.log(String(num4)); // 'NaN'
+        var num5 = -Infinity
+        console.log(Boolean(num5)); // false
+        console.log(String(num5)); // '-Infinity'
+
+        // 数字类型与布尔值转换时,只有0与NaN为false,其余都为true
+
+        
+        // Number 数字对象,将其他类型转为数字类型,转数字类型我们一般很少用Number
+        // 更多使用 parseInt 转为整数
+        //         parseFloat 转为浮点数
+
+
+        var str1 = ''
+        console.log(Boolean(str1)); // false
+        console.log(Number(str1)); // 0
+        var str2 = 'hello'
+        console.log(Boolean(str2)); // true
+        console.log(Number(str2)); // NaN
+        var str3 = 'true'
+        console.log(Boolean(str3)); // true
+        console.log(Number(str3)); // NaN
+        var str4 = 'false'
+        console.log(Boolean(str4)); // true
+
+        var str5 = '123'
+        console.log(Number(str5)); // 数字字符串会转化为对应的数字
+
+        var str6 = '123px12'
+        console.log(Number(str6)); // 只要字符串中携带带英文字母,该字符串转化数字时值为NaN
+        console.log(parseInt(str6)); 
+
+        var str7 = '123.5'
+        console.log(Number(str7)); // 123.5
+        console.log(parseInt(str7)); // 123
+        console.log(parseFloat(str7)); // 123.5
+
+        // 只有空字符串转化为布尔值是为false其余都是true
+
+        var nV = null
+        console.log(Boolean(nV)); // false
+        console.log(String(nV)); // 'null'
+        console.log(Number(null)); // 0
+        var unV = undefined
+        console.log(Boolean(unV)); // false
+        console.log(String(unV)); // 'undefined'
+        console.log(Number(unV)); // undefined转化为数字时值为NaN
+
+        // null空 undefined未赋值,他们对应的布尔值都是false 
+
+        var arr1 = []
+        console.log(Boolean(arr1));
+        console.log(String(arr1)); // ''
+        var arr2 = [false, false]
+        console.log(Boolean(arr2));
+        console.log(String(arr2)); // "false, false" String方法数组转字符串转将数组括号去掉,再加引号包裹.永远用不到
+        // 数组数据类型转化为布尔值永远都是true
+
+        console.log(Number(arr1)); // 空的数组转化为数字时为0,其余数组都为NaN
+
+
+        var obj1 = {}
+        var obj2 = {
+            married: false
+        }
+        // 对象无论如何其对应的布尔值都是true
+        console.log(Boolean(obj1))
+        console.log(Boolean(obj2))
+        // 对象转字符串永远 [object Object] 根本用不到
+        console.log(String(obj1))
+        console.log(String(obj2))
+
+        // 所有对象转为数字时都是NaN
+        console.log(Number(obj1))
+        console.log(Number(obj2))
+        
+
+        // 会造成隐式类型转化为布尔值的运算符或判别式有
+        // > >= <= == != && || 三元运算符 
+        // if  else if  while  for
+/*
+        下面代码等价用于实现默认值逻辑
+        obj ? obj : {
+            name: '测试用例'
+        }
+
+        obj || {
+            name: '测试用例'
+        }
+*/
+
+        function demo(a, b, c) { 
+            c =  c.wife && c.wife.name
+        }
+
+    </script>
+</body>
+
+</html>

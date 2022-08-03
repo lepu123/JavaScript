@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+
+        var dog = {
+            name: '大黄',
+            weight: 45,
+            puppy: ['小白', '小黑', '小花', '老红'],
+            master: {
+                name: '老王',
+                address: '深圳',
+                phone: 13812345678
+            },
+            // 对象的key可以绑定函数
+            // 绑定其他数据类型的key被称为属性
+            // 绑定函数的key被称为属性方法或方法
+            // 方法函数是匿名函数,匿名函数会与对象的key绑定,调用时也是通过对象的key调用
+            eat: function (food) { // 规定 good 也是个对象, 食物 包含 食物名, 食物的重量
+                // 该方法实现一个功能, 他会将食物50%重量吸收为自己的体重
+                // 并且打印 什么狗正在吃什么食物
+
+                // 对象方法想要获取自身的属性或其他方法,请使用this
+                this.weight += (food.kg * 0.5)
+
+                console.log(this.name + '正在吃' + food.name);
+            }
+        }
+
+        // this 是函数内的关键字, 他被视为一个变量 , this 一般情况下指定的是调用该方法的对象, 简单说谁调用该方法this就是谁
+
+        dog.eat({ name: '热狗', kg: 4 })
+
+
+        var cat = {
+            name: '大橘',
+            weight: 7
+        }
+
+        cat.eat = dog.eat
+
+        cat.eat({ name: '小鱼干', kg: 1})
+    </script>
+</body>
+
+</html>

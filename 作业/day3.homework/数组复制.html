@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let cities = ['北京','上海','广州','深圳'];
+    let newCities = [];
+    for (let i = 0; i < cities.length; i++) {
+        const count = newCities.push(cities[i]);
+        console.log(count);
+    }
+    cities[0] = '福建';
+    console.log(cities);
+    console.log(newCities);
+</script>
+</body>
+</html>

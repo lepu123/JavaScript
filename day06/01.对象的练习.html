@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        对象包含name属性描述名字
+        对象包含type属性描述品种
+        对象包含age属性描述年龄
+        对象包含showMsg方法打印当前狗的信息，输出字符串结构为“name + 是一条 + type，今年 age 岁了” 例子： “阿福 是一条柴犬，今年2岁了。”
+        */
+
+
+
+        var bb = function () { }
+
+        var dog = {
+            // key:value 属性 value 值为基本数据类型或数组对象
+            name: '旺财',
+            type: '柴犬',
+            age: 3,
+            // 属性方法的值是一个函数, 函数也是一种数据类型
+            // 值为函数的属性
+            showMsg: function () {
+                // 浏览器打印报错 变量名 is not defined,表示这个变量没有被定义直接访问
+
+                console.log(this.name + "是一条" + this.type + "，今年 " + this.age + " 岁了")
+
+            },
+            add: function () {
+                this.age++
+
+                this.showMsg()
+            }
+        }
+
+        dog.type
+
+        dog.showMsg()
+
+        dog.add()
+
+        /*
+            创建一个手机对象
+                    要求：
+
+                    对象包含make属性描述品牌
+                    对象包含type属性描述品种
+                    对象包含color属性描述颜色
+                    对象包含power属性秒数当前电量0 - 100
+                    对象包含charge方法为当前手机电量冲电，当手机电量为100时显示电量已满无需充电，否则给手机电量充电至100
+                    对象包含use方法使用当前手机，若当手机电量为0时显示手机需要充电暂时无法使用，否则给手机电量值减1
+        */
+
+        var phone = {
+            make: '华为',
+            type: 'P40',
+            color: '远峰蓝',
+            power: 1,
+            charge: function () {
+                // 对象方法内部可以通过this访问当前对象的属性或方法
+                if (this.power >= 100) {
+                    console.log('电量已满无需充电');
+                } else {
+                    this.power = 100
+                    console.log('电量已充满');
+                }
+            },
+            use() {
+                if (this.power <= 0) {
+                    console.log('手机需要充电暂时无法使用');
+                } else {
+                    console.log('使用手机');
+                    this.power--
+                }
+            }
+        }
+
+        console.log(phone);
+
+        // phone.charge()
+
+        phone.use()
+        
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*  
+            while 循环会在每次循环之前判断当前条件表达式是否成立,若成立则执行后面的代码块,
+            代码块执行完毕后就会回到while的语句的开始再次判断条件是否成立,以此类推的循环下去直到条件不满足时,while语句就执行完毕了
+
+            while(条件){
+                // 代码块    
+            }
+        */
+        // 循环的打印0-100之间的数字
+
+        // var num = 0
+
+        // while (num <= 100) {
+
+        //     console.log(num);
+
+        //     num++ // 设置更新条件
+        // }
+
+        // console.log('循环结束');
+
+        // var num1 = 0 
+
+        // while (num1 <= 10) {
+
+        //     console.log(num1);
+
+        //     num1 += 2// 设置更新条件
+        // }
+
+        /*    
+        var num = 4
+
+        var result = 1
+
+
+        while (num >= 1) {
+            
+            result *= num // 7
+
+            num--
+        }
+
+        // result *= num // 7 * 6
+
+        // num--
+
+        // result *= num // 7 * 6 * 5
+
+        // num--
+
+        // result *= num // 7 * 6 * 5 * 4
+
+        // num--
+
+        console.log(result);
+        */
+
+        // 了解 do...while循环,与while几乎是一样的,do后面的代码块无论条件是否成立他都至少要执行一次
+        /*
+        语法:
+        do {
+             // 代码块
+        } while (条件) 
+
+                
+        var num = 11
+
+        do {
+            console.log(num);
+            num++
+        }        
+        while (num < 11) 
+        */
+
+        // for循环将循环的变量声明，判断循环条件，条件值更新放到了for语句后面的括号中并使用分号隔开.每次循环都是先判断条件是否成立,再决定是否执行其内部的代码块
+        /*
+            语法
+            for(循环的变量声明 ; 判断循环条件 ; 条件值更新)  {
+                // 需要循环的代码块
+            }
+        
+        */
+
+        // var n = 0 // 循环的变量值声明
+        // while(n < 11) { // 判断循环条件
+        //     console.log(n); // 重复执行的代码块
+        //     n++ // 条件值更新
+        // }
+
+        // for(var i = 0 ; i < 11; i++) {
+        //     console.log(i);
+        // }
+
+        // 循环支持两个关键字  break 直接跳出循环  continue 跳过本次循环进入下一次循环
+
+        // break的使用场景, 有时循环是为了查找一个指定元素.若目的已经达到并且后续还有很多子元素需要遍历,这时就可以直接使用break跳出循环.避免不必要的循环浪费我们的内存
+
+        var num = prompt('请输入0-100之间的数字,我用最快的时间遍历出来');
+        //  prompt 方法输入的字符串类型
+
+        var i = 0;
+
+        console.log(i , num);
+
+        while (i <= 100) {
+            if (i == num) {
+                console.log(num, i);
+                console.log('你输入的数字是不是' + i);
+                // 目的已经达到停止循环
+                break;
+            }
+
+            i++
+        }
+
+
+        for(var j = 1 ; j <= 100 ; j++) {
+            if(j % 2 !== 0) {
+                continue
+            }
+
+            console.log(j)
+        }
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

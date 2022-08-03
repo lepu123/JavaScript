@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        em {
+            font-weight: 700;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // charAt 返回字符串指定下标的字符,很少用
+        var str = 'hello world'
+        var char = str.charAt(0)
+        var char1 = str[1] // 此代码与上面的方法等价
+        console.log(char1);
+
+        // charCodeAt 返回字符串指定下标的字符的ascii码,很少用
+        var str1 = 'Abcd'
+        var charCode = str1.charCodeAt(0)
+        console.log(charCode);
+
+
+        // 查询字符串中是否包含指定子字符串,如果包含返回子字符串在当前字符串中的下标,否则返回-1
+        // 该方法可以持续调用, 通过设置其参数二(字符串起始查询的位置)每次调用都会在上一次查询到的位置之后进行查询
+        var str2 = '我谢谢你,sdjs谢谢jsdjsdjsdja谢谢'
+        var index1 = str2.indexOf('谢谢') // 1 从字符串开头向字符串末尾查询
+        var index2 = str2.indexOf('谢谢', index1 + 2) // 本次index会从上一次查到位置 + 加字符串自身长度继续向后查询
+        var index3 = str2.indexOf('谢谢', index2 + 2)
+        var index4 = str2.indexOf('谢谢', index3 + 3)
+
+        // lastIndexOf 与上面 indexOf是差不多的,唯一的区别就是一个从阅读起始位置向后查询, 一个是从阅读结束位置向前查询
+        // lastIndexOf 同样接受参数二(字符串起始查询的位置)
+        var lastIndex = str2.lastIndexOf('fuck')  // 从字符串末尾向前查询
+        console.log(index1, index2, index3, index4);
+
+        // 创建一个函数
+        // 函数接受两个参数, 参数一 文章内容 参数二需要高亮的单词
+        // 返回一个html字符串将文章中包含的所有需要高亮的单词全部高亮处理
+
+        var textStr = '据美国“旧金山标准”（The San Francisco Standard）新闻网报道，当地时间1日，由美国华裔及“反战人士”等百人组成的抗议群体聚集在旧金山联邦政府大楼外，痛斥美国众议院议长佩洛西欲窜访台湾的计划。抗议者手持“一个中国”标语，高喊“要和平”。1日早间，大批抗议者聚集在旧金山联邦政府大楼外，呼吁佩洛西取消窜访台湾的计划。许多人手持“一个中国”“美国人滚出台湾”“台湾是中国的领土”等中英文标语牌，并高呼“我们要和平”。抗议民众认为，此次出访，是作为加州第12国会选区代表的佩洛西未能优先考虑美国民众利益的又一案例。'
+
+        var word = '台湾'
+
+        function highLightText(text, word) {
+            var result = ''
+            // 查询位置
+            var index = 0
+            // 上一次的查询位置
+            var nextIndex = 0
+
+            while (index !== -1) {
+
+                // 上次以的位置更新
+                var nextIndex = index === 0 ? 0 : index + word.length
+
+                // 查询下一次单词出现的下标
+                index = text.indexOf(word, nextIndex)
+
+                console.log(index);
+
+                // 字符串拼接结束下标
+                var rang = index === -1 ? text.length : index
+
+                // 一个一个拼接字符串字母
+                for (var i = nextIndex; i < rang; i++) {
+                    result += text[i]
+                }
+
+                // 最后一次查询没有找到指定单词则无需添加加粗单词
+                if (index !== -1) {
+                    result += '<em>' + word + '</em>'
+                }
+
+            }
+
+            return result
+
+
+            /*          
+                        以hello world为例子,
+                        
+                        第一次从 0  开始到  index 的 4
+            
+                        index = result.indexOf(word, 0)
+            
+                        for (var i = 0; i < index; i++) {
+                            result += text[i]
+                        }
+            
+                        result += '<em>' + word + '</em>'
+            
+                        第二次 从上一次的位置4 + 单词长度开始,到 下一个index结束
+            
+                        var nextIndex = index + word.length
+                        index = result.indexOf(word, index + word.length)
+            
+                        for (var i = nextIndex; i < index; i++) {
+                            result += text[i]
+                        }
+                        result += '<em>' + word + '</em>'
+            
+            
+                        第三次 后面已经没有o这个字母, 从上一次位置7 +字母长度 一直到 句子结束
+                        var nextIndex = index + word.length
+                        index = result.indexOf(word, index + word.length)
+            
+                        if (index === -1) {
+                            for (var i = nextIndex; i < text.length; i++) {
+                                result += text[i]
+                            }
+                        }
+            */
+
+
+        }
+
+        var htmlStr = highLightText(textStr, word)
+
+        document.write(htmlStr)
+
+    </script>
+</body>
+
+</html>

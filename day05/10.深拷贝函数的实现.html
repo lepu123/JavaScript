@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            要求：
+    
+            创建deepCopy的方法实现传入一个对象，返回一个新的对象
+            要求新对象与就对象属性值完全相等，但是两个对象不共享同一块内存
+            可以通过 obj.constructor === Array 判断属性是否是数组
+        */
+
+        //  deepCopy 接受一个数组/对象, 内部进行深拷贝逻辑, 返回一个深拷贝后的新数组/新对象      
+        // 该函数只接受数组或对象,其他数据类型是不会被传进来 
+        function deepCopy(obj) {
+            // 深拷贝方法,返回的拷贝值
+            var newObj;
+            // 对象/数组 里面每一项并不都是引用数据类型,遇到基本数据类型直接使用 = 赋值运算符就是深拷贝
+
+            if (obj.constructor === Array) {
+                newObj = []
+                // 遍历旧数组
+                for (var i = 0; i < obj.length; i++) {
+                    // 数组的每一项,先考虑拷贝基本数据类型, 基本数据类型赋值就是深拷贝
+                    var item = obj[i]
+                    // 如果是基本数据类型直接push
+                    if (item === null || typeof item != "object") {
+                        newObj.push(item)
+                    } else {
+                        // 如果是引用数据类型,我们就要对此数据进行深拷贝,深拷贝的方法就是我们自己
+                        newObj.push(deepCopy(item))
+                    }
+                }
+            } else {
+                newObj = {}
+                // 遍历旧对象
+                for (var key in obj) {
+                    var value = obj[key]
+                    // 遍历对象键值对的value是否是基本数据类型
+                    if (value === null || typeof value != "object") {
+                        // 如果是基本数据类型直接赋值操作
+                        newObj[key] = value
+                    } else {
+                        // 引用数据类型,使用我们正在开发的deepCopy函数返回深拷贝对象进行赋值
+                        newObj[key] = deepCopy(value)
+                    }
+                }
+            }
+
+            // 把深拷贝的值return出去    
+            return newObj
+        }
+
+        var a = {
+            name: '小明',
+            age: 19,
+            address: '北京',
+            hobby: ['抽烟', '喝酒', '烫头'],
+            data: {
+                friends: [{
+                    name: 'lee',
+                    age: 15,
+                    family: ['哥哥', '姐姐', '爸爸', '妈妈']
+                },
+                {
+                    name: 'Tom',
+                    age: 16,
+                    family: ['姐姐', '爸爸', '妈妈']
+                }, {
+                    name: 'Jane',
+                    age: 19,
+                    family: ['弟弟1', '弟弟2', '爸爸', '妈妈']
+                }],
+                mother: '韩梅'
+            }
+        };
+
+        // 应用, 明确开发中需要对某个对象或数组进行深拷贝,只需要将对象或数组传入deepCopy函数,等待期返回就好了
+        var newA = deepCopy(a)
+
+
+        newA.data.mother = '韩梅梅'
+
+        console.log(newA, a);
+
+    </script>
+</body>
+
+</html>

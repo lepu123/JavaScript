@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 数组是引用数据类型, 他是存放在堆中, 变量只是指向该数组内存空间的指针地址
+        // 数组的拷贝是浅拷贝
+        // 数组其实就是一个数据集合,理论上数组的每一项都可以存放任意数据类型.但是在真实开发中数组都是单一类型数组(数组每一项值得数据类型都是统一的)
+        // 我们一般认为数组就是一组数据的集合,当这一组数据需要相同的逻辑对齐处理时,我们推荐将这些数据存放在数组中通过循环遍历将其一一处理
+        var arr = [1, true, 'str', 4, 5, [1, 2, 3, 4], {}]
+
+        // typeof 无法获取数组的数据类型的,数组typeof 是 object '对象',后面的课程我们有方法区分数组与对象
+        console.log(typeof 12); // number
+
+        console.log(typeof arr); // object
+
+        // 数组的创建
+
+        // 1. 字面量创建(推荐)
+        var arr1 = ['a', 'b', 'c']
+
+        // 2. 构造函数创建(不推荐)
+        var arr2 = new Array('a', 'b', 'c') // 返回 ['a', 'b', 'c']
+
+        console.log(arr1, arr2);
+
+        // 访问数组中指定指定的元素,通过数组的下标值.从0开始计算逐一累加的索引
+        // 语法:
+        //   访问  arr[index]
+        //   修改  arr[index] = 新值
+        var arr3 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+        // 
+        console.log(arr3[0]) // 获取数组第0项的值1
+
+        console.log(arr3[3]) // 获取数组第3项的值4
+
+
+        arr3[5] = '六'
+
+        console.log(arr3);
+
+        // 数组包含一个属性,length表示当前数组的长度
+        console.log(arr3.length);
+
+        // 注意: 概念不是很重要length值并不是表示当前数组中有多少个元素,只表示数组的长度(数组最后一项下标 + 1)
+        var arr4 = []
+
+        arr4[100] = 'A'
+
+        console.log(arr4, arr4.length);
+        // 注意: 数组的length可以被修改,但是在开发中一定要避免这么使用
+        var arr5 = ['a','b','c','d']
+        arr5.length = 2
+        console.log(arr5);
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [25, 3, 16, 36, 30, 11, 42, 47, 39, 20]
+
+        for (var i = 0; i < arr.length - 1; i++) {
+
+            for (var j = i + 1; j > 0; j--) {
+
+                if (arr[j - 1] > arr[j]) {
+                    var temp = arr[j - 1]
+                    arr[j - 1] = arr[j]
+                    arr[j] = temp
+                } else {
+                    //  插入排序是先将数组内部一部分元素进行排序,
+                    //  后排序的元素再插入到这个有序项子序列中
+                    //  若后插入的元素不满足交换条件就表示此元素不可比后面比较的元素更小上面的代码从小往大排(更大从大往小)
+                    //  此时没有必要再继续比较了,使用break跳出本次插入循环(子循环,j的循环) 
+                    break
+                }
+
+            }
+
+        }
+
+        console.log(arr);
+
+        // 插入排序, 让有序子序列在数组右边并实现降序排列
+
+        for (var i = arr.length - 1; i > 0; i--) {
+
+            for (var j = i - 1; j < arr.length - 1; j++) {
+
+                if (arr[j] < arr[j + 1]) {
+                    var temp = arr[j]
+                    arr[j] = arr[j + 1]
+                    arr[j + 1] = temp
+                } else {
+                    break
+                }
+
+            }
+
+        }
+
+        console.log(arr);
+
+        // 数组的末尾添加方法,push用于给数组在末尾处添加一个新的子项目, 该方法很重要
+
+        arr.push('10086')
+
+        console.log(arr);
+
+        arr.push('10086')
+
+        console.log(arr);
+
+    </script>
+
+</body>
+
+</html>
