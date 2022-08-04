@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script src="lyric.js"></script>
+<script>
+
+    function parsingFunc(lStr) {
+        let lrcArr = [];
+        let strArr = lStr.split('\n');
+        for (let i = 0; i < strArr.length; i++) {
+            let lTime = Number((strArr[i].slice(1, 10)).slice(0, 2) * 60) + Number((strArr[i].slice(1, 10)).slice(3)),
+                lText = strArr[i].slice(11);
+            lrcArr.push({
+                time: lTime.toFixed(3),
+                lrc: lText
+            })
+        }
+
+        return lrcArr
+    }
+
+    console.log(parsingFunc(LYRIC));
+</script>
+</body>
+</html>

@@ -70,6 +70,18 @@ substr 一个将被 newSubStr 替换的 字符串。
 
         console.log('      a    b     '.trim());
         console.log('            '.trim());
+
+        // repeat(number) 方法接受一个大于0的正整数，返回一个新字符串让字符串重复number次
+        var rStr = 'hello'
+
+        // rStr.repeat(-1) // 报错Uncaught RangeError 值不能小于0
+
+        console.log(rStr.repeat(3));
+
+        // 将大写转小写
+        var lStr = 'hello WORLD';
+        console.log(lStr.toLowerCase());
+        console.log(lStr.toUpperCase());
     </script>
 </body>
 
