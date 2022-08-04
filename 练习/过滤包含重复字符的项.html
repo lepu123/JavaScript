@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr = ['abc', 'abbc', 'cac', 'fcd', 'aaa', 'fg']
+
+    let filterArr = arr.filter(function (value) {
+        return isRepeatChar(value);
+    })
+
+    function isRepeatChar(str) {
+        let strArr = str.split('');
+        for (let i = 0; i < strArr.length; i++) {
+            if (strArr.indexOf(strArr[i],i + 1) !== -1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    console.log(filterArr)
+</script>
+
+</body>
+</html>

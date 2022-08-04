@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // concat(arr1[,arr2[,arr3]]) 方法，将多个数组合并成一个，该方法不会修改原数组，该方法将会返回一个合并的新数组
+
+    let arr1 = ['A', 'B', 'C'];
+    let arr2 = ['1', 2, 3];
+    let newArr = arr1.concat(arr2, ['m'])
+    console.log(newArr)
+    // .slice(start[, end]) 方法返回数组的片段或子数组，从start开头到end(不包括end所对应的元素)
+    // 如果省略end参数则截取到数组的最后一项
+
+    let animal = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+    console.log(animal.slice(2));
+    console.log(animal.slice(2, 4));
+
+    let anm = animal.slice();
+    anm[0] = 'pig';
+    console.log(animal);
+    console.log(anm);
+
+    // .splice(start[, deleteCount[, item1[, item2, ...]]])
+    // 在数组中插入，删除，替换的通用方法，并以数组形式返回被修改的内容(此方法会改变原数组)
+
+    // star 指定修改的开始位置 (按照数组下标定位)，如果超出了数组的长度，则会从数组末尾开始添加新的内容
+    // deleteCount 整数，表示要移除的数组元素的个数
+    // item 要添加进数组的元素从数组下标为start处开始向后添加，如果不指定那么将只删除元素
+    // 本质就是数组在start处删除start之后的第deleteCount个数并且插入count(item)个数
+
+    let months = ['Jan', 'March', 'April', 'June'];
+
+    months.splice(1, 1, 'Feb');
+    console.log(months);
+
+    // .lastIndexOf(searchElement[, fromIndex]) 方法返回指定元素 (也即有效的JavaScript值或变量)
+    // 在数组中的最后一个的索引，如果不存在则返回-1
+
+    let arr = [1, 2, 3, 5, 5, 7, 6, 4, 4, 3, 4, 3, 7];
+
+    console.log(arr.indexOf(7));
+    console.log(arr.indexOf(0));
+    console.log(arr.indexOf(7, 9));
+
+    // .forEach 遍历数组对数组的每个元素执行一次给定的函数
+    // item 自动遍历数组中每一项的值
+    // index 自动遍历数组中每一项的下标
+    // array 原数组
+
+    arr.forEach(function (item, index, array) {
+        console.log('数组下标为' + index + '的值是' + item)
+        return array
+    })
+
+
+    // .filter 遍历数组将数组中的每个元素调用一遍函数筛选原数组中符合函数测试的元素去组成一个新的数组
+    // 该方法接受自定义函数包含return值，return为ture时表示保留该项为false时过滤该项
+
+    let arr4 = [12, 25, 8, 26, 17, 11, 21, 32, 22]
+
+    let filterArr = arr4 .filter(function (value, index, array){
+        return value % 2 !== 0;
+    })
+
+    console.log(filterArr, arr4)
+
+
+
+    // .map 遍历数组将数组中的每个元素都调用一次函数然后将调用得到的元素去组成一个新的数组
+    let arr3 = [1, 2, 3, 4, 5, 6, 7]
+
+    let newArr3 = arr3.map(function (item) {
+        return item*2;
+    })
+    console.log(newArr3)
+
+
+
+</script>
+</body>
+</html>

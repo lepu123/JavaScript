@@ -16,6 +16,7 @@
     // console.log(setFirstLetterUpperCase("apples", a))
 
     // .push 数组最后添加元素，返回新数组的长度(改变原数组长度)
+
     let animals = ['pigs', 'goats', 'sheep'];
     console.log(animals.push('cows'));
     console.log(animals);
@@ -27,14 +28,14 @@
 
     // .unshift 方法将一个或多个元素添加到数组的开头，并且返回该数组的新长度(改变原数组长度)
 
-    console.log(animals.unshift('cats', 'dogs', 'iKun'));
+    console.log(animals.unshift('cats', 'dogs', 'chicken'));
     console.log(animals);
 
     // .shift 方法将数组中第一个元素删除，并返回该元素的值(改变原数组长度)
 
     console.log(animals.shift());
 
-    // .sort([compareFunction]) 方法用原地算法对数组的元素进行排序，返回数组
+    // .sort([compareFunction]) 方法用原地算法对数组的元素进行排序，返回数组。如果不传入参数他将会按照每个字符的Unicode码进行排序
     // .sort(function(firstEI, secondEI){})
     // firstEI 第一个用于比较的元素
     // secondEI 第二个用于比较的元素
@@ -46,6 +47,10 @@
         return a - b;
     });
     console.log(array);
+
+    // 面试题: 数组长度小于等于10 是插入排序
+    //        数组长度大于 10 < 1000 使用三路快速排序
+    //        数组长度大于 1000 会将数组拆分为小数组进行排序
 
     // .reverse() 方法将数组中元素的位置颠倒，并返回数组 (reverse会改变原数组的排序方式)
 
@@ -59,41 +64,7 @@
     let elements = ['Fire', 'Air', 'Water'];
     console.log(elements.join(','))
 
-    // .slice(start[, end]) 方法返回数组的片段或子数组，从start开头到end(不包括end所对应的元素)
-    // 如果省略end参数则截取到数组的最后一项
 
-    let animal = ['ant', 'bison', 'camel', 'duck', 'elephant'];
-    console.log(animal.slice(2));
-    console.log(animal.slice(2, 4));
-
-    let anm = animal.slice();
-    anm[0] = 'pig';
-    console.log(animal);
-    console.log(anm);
-
-    // .splice(start[, deleteCount[, item1[, item2, ...]]])
-    // 在数组中插入，删除，替换的通用方法，并以数组形式返回被修改的内容(此方法会改变原数组)
-
-    // star 指定修改的开始位置 (按照数组下标定位)，如果超出了数组的长度，则会从数组末尾开始添加新的内容
-    // deleteCount 整数，表示要移除的数组元素的个数
-    // item 要添加进数组的元素从数组下标为start处开始向后添加，如果不指定那么将只删除元素
-    // 本质就是数组在start处删除start之后的第deleteCount个数并且插入count(item)个数
-
-    let months = ['Jan', 'March', 'April', 'June'];
-
-    months.splice(1, 1, 'Feb');
-    console.log(months);
-
-    // .lastIndexOfp(searchElement[, fromIndex]) 方法返回指定元素 (也即有效的JavaScript值或变量)
-    // 在数组中的最后一个的索引，如果不存在则返回-1
-
-    console.log(animals.lastIndexOf('iKun'));
-
-    // .filter 遍历数组将数组中的每个元素调用一遍函数筛选原数组中符合函数测试的元素去组成一个新的数组
-
-    // .map 遍历数组将数组中的每个元素都调用一次函数然后将调用得到的元素去组成一个新的数组
-
-    // .forEach 遍历数组对数组的每个元素执行一次给定的函数
 </script>
 </body>
 </html>

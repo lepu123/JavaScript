@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        b {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let textStr = '据美国“旧金山标准”（The San Francisco Standard）新闻网报道，当地时间1日，由美国华裔及“反战人士”等百人组成的抗议群体聚集在旧金山联邦政府大楼外，痛斥美国众议院议长佩洛西欲窜访台湾的计划。抗议者手持“一个中国”标语，高喊“要和平”。1日早间，大批抗议者聚集在旧金山联邦政府大楼外，呼吁佩洛西取消窜访台湾的计划。许多人手持“一个中国”“美国人滚出台湾”“台湾是中国的领土”等中英文标语牌，并高呼“我们要和平”。抗议民众认为，此次出访，是作为加州第12国会选区代表的佩洛西未能优先考虑美国民众利益的又一案例。'
+
+    let word = '台湾'
+
+    function highLightText(text, word) {
+        let textArr = text.split(word);
+        return textArr.join('<b>' + word + '</b>');
+    }
+
+    document.write(highLightText(textStr,word));
+</script>
+</body>
+</html>

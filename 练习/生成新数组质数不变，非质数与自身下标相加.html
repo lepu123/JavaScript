@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr = [33, 14, 25, 6, 7, 11, 97, 112];
+    let newArr = arr.map(function (item, index) {
+        if (isPrime(item)) {
+            return item;
+        }
+        return item + index;
+    })
+
+    function isPrime(num) {
+        let i = 2
+        // 在除法运算中 开根号数字就是数字整除运算中对称中心，小于开根号的数都会跟大于开根号的数一一配对，无需多循环
+        while (i <= Math.sqrt(num)) {
+            if (num % i === 0) {
+                return false;
+            }
+            i++;
+        }
+        return true;
+    }
+
+    console.log(newArr);
+</script>
+</body>
+</html>
