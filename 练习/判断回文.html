@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let text = 'A man a plan a canal Panama'
+
+    function palindrome(str) {
+        let strArr = [];
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] !== ' ') {
+                strArr.push(str[i].toLowerCase());
+            }
+        }
+        return strArr.join() === strArr.reverse().join();
+    }
+
+    console.log(palindrome(text));
+</script>
+</body>
+</html>
