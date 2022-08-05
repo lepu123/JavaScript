@@ -9,12 +9,10 @@
     let text = 'A man a plan a canal Panama'
 
     function palindrome(str) {
-        let strArr = [];
-        for (let i = 0; i < str.length; i++) {
-            if (str[i] !== ' ') {
-                strArr.push(str[i].toLowerCase());
-            }
-        }
+        let strArr = str.toLowerCase().split('').filter(function (value) {
+            return value !== ' ';
+        });
+        console.log(strArr)
         return strArr.join() === strArr.reverse().join();
     }
 

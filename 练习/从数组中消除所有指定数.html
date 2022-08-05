@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function destroyer() {
+        let arr = [];
+        for (let i = 1; i < arguments.length; i++) {
+            arr.push(arguments[i]);
+        }
+        return arguments[0].filter(function (value) {
+            return  arr.lastIndexOf(value) === -1;
+        });
+    }
+
+
+    let arr = [1, 2, 3, 1, 2, 3];
+    console.log(destroyer(arr, 2, 3))
+</script>
+</body>
+</html>
