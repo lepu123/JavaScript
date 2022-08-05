@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1 class="title">头部标题1</h1>
+    <p>段落1</p>
+    <p>段落2 <span>!</span></p>
+</div>
+
+<script>
+    let title = document.getElementsByClassName('title')[0];
+    // 获取元素后一个兄弟节点,有可能会获取文本节点
+    // 如果元素和元素之间有空格回车，那么该方法会获取一个空白文本节点
+    // 注意:大多数浏览器都会将元素与元素之间的空白当作文本节点来处理，在使用nextSibling一定要注意这个问题
+    let textNode = title.nextSibling;
+    let nextNode = textNode.nextSibling;
+    console.log(title);
+    console.log(textNode);
+    console.log(nextNode);
+
+    // nextElementSibling 属性可以获取当前节点下一个元素节点
+    let nextP = title.nextElementSibling;
+    console.log(nextP);
+
+
+    // previousSibling 获取当前节点前一个结点，在使用该属性时注意 空白文本节点问题
+    console.log(nextP.previousSibling);
+
+    // previousElementSibling 获取当前节点前一个兄弟元素节点
+    console.log(nextP.previousElementSibling);
+
+    let p2 = nextP.nextElementSibling;
+    // firstChild 获取当前元素的第一个子节点 (文本/元素)
+    console.log(p2.firstChild);
+    // firstChildElementChild 获取当前元素的第一个子元素节点
+
+    // lastChild 获取当前元素内的最后一个子节点 (文本/元素)
+    console.log(p2.lastChild);
+    // lastChildElementChild 获取当前元素内的最后一个子元素节点
+
+    // 将字符串以纯文本形式展示在页面上，特殊字符都会失去其功能在页面上仅以纯文本的形式展示
+    // 若需要将用户输入的内容展示在页面上，一定要将用户输入的内容插入到文本节点中显示从而避免xss攻击
+
+    // nodeValue 用于访问和修改文本节点的值，很重要
+    p2.firstChild.nodeValue = '<em>hello</em>';
+    // 直接修改文本节点是不行的，必须使用dom提供的方法
+    console.log(p2.firstChild.nodeValue);
+
+    // NodeName 获取当前节点的名称 了解
+    console.log(p2.nodeName); //元素节点 返回元素的标签名
+    console.log(p2.firstChild.nodeName); //文本节点 #text
+
+    // nodeType 获取当前节点的类型 了解
+    console.log(document.doctype.nodeType);
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p class="demo">hello world</p>
+<p class="demo1">hello <em>world</em></p>
+
+<script>
+    // textContent 获取当前元素以及其后代元素内部的文本节点值
+
+    let demo = document.getElementsByClassName('demo')[0];
+    console.log(demo.firstChild.nodeValue);
+    console.log(demo.textContent);
+
+    let demo1 = document.getElementsByClassName('demo1')[0];
+    console.log(demo1.firstChild.nodeValue);
+    console.log(demo.textContent);
+
+    // 注意: 如果你对document取textContent值会返回null
+    //      如果节点是文本|注释，textContent 等价于 nodeValue
+    //      textContent返回值是当前元素内所有子元素的文本节点合并
+    //      textContent 能避免xss攻击
+
+    // innerHtml 返回当前元素对称性标签内的值
+    console.log(demo.innerHTML);
+    console.log(demo1.innerHTML); //hello <em>world</em>
+    // innerHtml 没有办法预防xss攻击，他的赋值操作是将html字符串插入到元素，如果html字符串是个标签，该标签会以html元素的形式展示在页面而不是一个纯文本
+    demo1.textContent = '<h1>123</h1>';
+    demo1.innerHTML = '<h1>123</h1>';
+    // innerHtml 因为会造成xss攻击，所以该方法不能暴露给用户
+    // textContent 具有更好的性能，他是以纯文本的形式显示在页面上
+</script>
+</body>
+</html>
