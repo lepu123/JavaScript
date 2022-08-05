@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li class="list-item">1</li>
+    <li class="list-item">2</li>
+    <li class="list-item">3</li>
+    <li class="list-item">4</li>
+    <li class="list-item">5</li>
+    <li class="list-item">6</li>
+    <li class="list-item">7</li>
+    <li class="list-item">8</li>
+    <li class="list-item">9</li>
+    <li class="list-item">10</li>
+</ul>
+
+<script>
+    let getLists = document.getElementsByClassName('list-item');
+
+    console.log(getLists);
+
+    let queryList = document.querySelectorAll('.list-item');
+
+    console.log(queryList);
+
+    // getElementsByClassName 与 querySelectorAll 方法的区别
+    // 1. getElementsByClassName 返回的时HTMLCollection, querySelectorAll 返回的是一个 NodeList
+    //      1.1 HTMLCollection 与 NodeList 都是伪数组(有length属性，支持下标访问但是不支持数组方法)，但是NodeList支持forEach方法
+    //      1.2 HTMLCollection 是一个动态合集(页面中元素删除，增加动态会自动更新无需手动重新获取)，
+    //      而 NodeList 是一个静态列表(页面中元素删除，增加静态列表不会自动更新，需要手动获取)
+    // HTMLCollection, NodeList都有item(index)方法等价于[index]
+
+
+    // 不常用访问DOM元素的方法
+    // document.getElementsByName('')  通过表单的name属性获取元素 name
+    // document.getElementsByTagName()
+</script>
+</body>
+</html>
