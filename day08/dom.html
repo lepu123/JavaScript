@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="demo">hello world</div>
+
+<p class="my">我是一个段落标签 <span class="important">!</span></p>
+
+<ul class="ul">
+    <li class="list-item">1</li>
+    <li class="list-item">2</li>
+    <li class="list-item" id="demo1">3</li>
+    <li class="list-item">4</li>
+    <li class="list-item">5</li>
+</ul>
+
+<script>
+    // document 文档节点
+    // 元素节点 html标签元素
+    // 属性节点 元素的属性
+    // 文本节点 对称型标签内部的文本内容
+
+    // 访问页面上的元素
+    // 常用的方法有四种
+    // 获取单一元素
+
+    // 方法一通过id获取页面中唯一元素，注意该方法性能不太好尽量避免使用
+    // document.getElementById(id) 接受元素的id值作为参数
+    let demoDiv = document.getElementById('demo');
+    console.log(demoDiv);
+
+    // 方法二通过css选择器语法，获取页面中第一个符合选择器条件的元素
+
+    // document.querySelector ('css selector')接受一个css选择器字符串作为参数，返回页面中第一个符合条件的元素
+    // HTMLElement.querySelector('css selector')接受一个css选择器字符串作为参数，返回指定元素内部第一个符合条件的元素
+    let demo = document.querySelector('div');
+    console.log(demo)
+
+    // document.querySelector ('css selector')接受一个css选择器字符串作为参数，返回页面中第一个符合条件的元素
+    // HTMLElement.querySelector('css selector')接受一个css选择器字符串作为参数，返回指定元素内部第一个符合条件的元素
+    // let div = document.querySelectorAll('')
+
+
+    // 获取元素集合
+    // 通过className获取页面中元素集合
+    // document.getElementsByClassName()
+    // HTMLElement.getElementsByClassName()
+    let listItem = document.getElementsByClassName('list-item');
+    console.log(listItem);
+    // 返回一个包含了所有满足条件的元素伪数组(有length值，可以通过下标访问，但是没有数组方法)
+
+    // 选择器优化，我们在开发中一般不会使用id选择器作为访问页面中指定元素的api，因为他性能很差
+    // 避免: document.getElementById() 方法的使用
+    // 避免: document.querySelector("#id") id选择器作为参数
+
+    // 优化方式，通过元素的包含关系访问指定元素
+    // 首先通过其他选择器获取id元素的祖先元素
+    let myUi = document.getElementsByClassName('ul')[0];
+    let demo1 = myUi.getElementsByClassName('list-item')[2];
+    let demo2 = myUi.querySelectorAll('.list-item')[2];
+</script>
+</body>
+</html>
