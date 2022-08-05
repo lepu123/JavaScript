@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input placeholder="内容">
+<script>
+    let input = document.querySelector('input');
+    // 跟 id className 相同
+    // 表单元素支持 value \ placeholder
+    // value 可以设置/访问表单输入的内容
+
+    input.value = '赋值内容就变成输入框内的值'
+    console.log(input.value); // 获取表单内输入的值
+
+    // 设置表单的预留文字
+    input.placeholder = '输入点东西把';
+    // 获取表单的预留文字
+    console.log(input.placeholder);
+
+    // 上面这两个js的属性value/placeholder对应的元素的value/placeholder属性
+
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="seller">
+    <h3>商家名</h3><span class="distance">30</span>
+</div>
+<div class="seller">
+    <h3>KFC</h3><span class="distance">1800</span>
+</div>
+<div class="seller">
+    <h3>麦当劳</h3><span class="distance">600</span>
+</div>
+<div class="seller">
+    <h3>汉堡王</h3><span class="distance">2752</span>
+</div>
+<div class="seller">
+    <h3>海底捞</h3><span class="distance">4412</span>
+</div>
+<div class="seller">
+    <h3>喜茶</h3><span class="distance">5300</span>
+</div>
+
+<script>
+    let shopL = document.querySelectorAll('.distance');
+    console.log(shopL)
+    shopL.forEach(function (value, index) {
+        let distance = value.innerHTML;
+        if (distance < 50) {
+            shopL[index].firstChild.nodeValue = '<50M';
+        } else if (distance < 1000) {
+            shopL[index].firstChild.nodeValue = distance + 'M';
+        } else if (distance >= 1000) {
+            shopL[index].firstChild.nodeValue = (distance/1000).toFixed(1) + 'KM';
+        } else {
+            shopL[index].firstChild.nodeValue = '找不到了呢';
+        }
+    })
+
+</script>
+</body>
+</html>

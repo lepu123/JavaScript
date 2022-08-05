@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h2>购物车列表</h2>
+    <ul class="shopcart">
+        <li class="food">
+            <span name="food-name">肉夹馍</span>
+
+            <span class="unit-price">15.3</span>
+            <span class="count">3</span>
+        </li>
+        <li class="food">
+            <span name="food-name">烧鹅饭</span>
+            <span class="unit-price">21</span>
+            <span class="count">2</span>
+        </li>
+        <li class="food">
+            <span name="food-name">水饺</span>
+            <span class="unit-price">18</span>
+            <span class="count">1</span>
+        </li>
+        <li class="food">
+            <span name="food-name">可乐</span>
+            <span class="unit-price">9</span>
+            <span class="count">4</span>
+        </li>
+    </ul>
+</div>
+<div class="shopcart-bar">
+    <h3 class="total-price"></h3>
+    300元起送
+    <div class="pay-btn"></div>
+</div>
+
+<script>
+    // 商品总额
+    let totalPriceSum = document.getElementsByClassName('total-price')[0],
+        totPrice = 0,
+        // 起送金额
+        okPrice = 300,
+        // 打印价格元素节点
+        price = document.getElementsByClassName('unit-price'),
+        // 打印按钮元素节点
+        payBtn = document.getElementsByClassName('pay-btn')[0];
+    for (let i = 0; i < price.length; i++) {
+        let shopPrice = price[i];
+        let shopNum = price[i].nextElementSibling;
+        console.log(shopPrice, shopNum);
+        totPrice += (shopPrice.innerHTML * shopNum.innerHTML);
+        totalPriceSum.innerHTML = '共计' + totPrice + '元';
+    }
+    if (okPrice > totPrice) {
+        payBtn.innerHTML = '还差' + (okPrice - totPrice) + '起送';
+    } else {
+        payBtn.innerHTML = '立即购买';
+    }
+
+</script>
+</body>
+</html>
