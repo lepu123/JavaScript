@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .table {
+            border-collapse: collapse;
+        }
+
+        .table td {
+            width: 350px;
+            height: 30px;
+            border: 1px solid grey;
+        }
+
+        .change-div {
+            position: relative;
+        }
+
+        .changeInput {
+            position: relative;
+            top: 0;
+            width: 75%;
+            height: 100%;
+            border: none;
+            margin-right: 10px;
+        }
+
+        .btn-smt {
+            position: relative;
+            width: 20%;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="tr-input">
+    <label><input type="text" class="tr">行</label>
+</div>
+<div id="td-input">
+    <label><input type="text" class="td">列</label>
+</div>
+<button class="btn-table">生成表格</button>
+<table class="table">
+
+</table>
+
+<script>
+    let trInput = document.querySelector('.tr');
+    let tdInput = document.querySelector('.td');
+    let btnTable = document.querySelector('.btn-table');
+    let table = document.querySelector('.table');
+
+    btnTable.addEventListener('click', function () {
+        let trNum = trInput.value;
+        let tdNum = tdInput.value;
+        for (let i = 0; i < trNum; i++) {
+            let tr = document.createElement('tr');
+            for (let j = 0; j < tdNum; j++) {
+                let td = document.createElement('td');
+                let span = document.createElement('span');
+                td.className = 'td-change';
+                span.className = 'td-span';
+                span.textContent += (i + 1) + '行' + (j + 1) + '列';
+                td.appendChild(span);
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+    })
+
+    table.ondblclick = function (e) {
+
+        // 通过e.target判断双点就是修改
+        if (e.target.className === 'td-change') {
+            changeTitle({target: e.target})
+        } else if (e.target.className === 'td-span') {
+            changeTitle({target: e.target.parentElement});
+        }
+    }
+
+    table.onclick = function (e) {
+        if (e.target.className === 'btn-smt') {
+            e.target.parentElement.style.display = 'none';
+            e.target.parentElement.previousElementSibling.textContent = e.target.previousElementSibling.value;
+            e.target.parentElement.previousElementSibling.style.display = 'block';
+        }
+    }
+
+
+    function changeTitle(item) {
+        // 隐藏我的span标签啊
+        // target就是表格td元素的节点
+        let tdChange = item.target;
+        let s = tdChange.children[0];
+        s.style.display = 'none';
+
+        if (tdChange.children.length <= 1) {
+            // 设置div
+            let changeDiv = document.createElement('div');
+            changeDiv.className = 'change-div';
+
+            // 创建修改的input
+            let input = document.createElement('input');
+            input.value = s.textContent;
+            input.className = 'changeInput'
+            changeDiv.appendChild(input);
+
+            // 创建提交按钮
+            let btnSmt = document.createElement('button');
+            btnSmt.className = 'btn-smt';
+            btnSmt.textContent = '确认';
+            changeDiv.appendChild(btnSmt);
+
+            tdChange.appendChild(changeDiv);
+        }
+
+        let d = tdChange.children[1];
+        d.style.display = 'block';
+        d.children[0].onblur = function () {
+            d.style.display = 'none';
+            d.previousElementSibling.textContent = this.value;
+            d.previousElementSibling.style.display = 'block';
+        }
+    }
+</script>
+</body>
+</html>
