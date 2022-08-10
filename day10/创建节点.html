@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 如何创建一个dom元素
+    // 传入一个html标签名，查询文档中所有h3
+    // let h3 = document.getElementsByTagName('h3');
+    // 传入一个html标签名，用js创建一个指定元素
+    let h3 = document.createElement('h3');
+
+    h3.textContent = '你好我是使用js创建的h3标签啊';
+
+    console.log(h3);
+
+    // 添加元素的方法，HTMLEl.appendChild(HTMLEl)
+
+    // 文档对象有一个属性 document.body 表示就是当前页面的的body元素
+
+    document.body.appendChild(h3);
+
+    let em =document.createElement('em');
+    em.innerHTML = 'a';
+
+    h3.appendChild(em);
+
+    // 创建一个文本节点
+    let textNode = document.createTextNode('</n>一个文本');
+
+    // 文本节点只能通过nodeValue修改
+    textNode.nodeValue = '111';
+
+    console.log(textNode);
+
+    h3.appendChild(textNode);
+
+    // 以后操作添加文本节点有很多种方法
+    // 通过 firstChild | lastChild 获取元素内部文本节点并通过 nodeValue 修改
+    // 通过 textContent 修改获取元素内所有文本节点
+    // 用过 createTextNode 创建一个文本节点，并通过 appendChild 添加到指定元素的内部
+
+    // HTMLEl.removeChild(childNode)
+    h3.removeChild(textNode);
+    // h3.removeChild(em);
+
+
+</script>
+
+</body>
+</html>
