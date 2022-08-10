@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .btn {
+            position: absolute;
+            top: 200px;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+
+        }
+    </style>
+</head>
+<body>
+<div class="btn">click</div>
+
+<script>
+    let btn = document.getElementsByClassName('btn')[0];
+    // 在事件的监听中，时间的回调函数会默认接受一个事件描述对象作为参数
+    // 事件描述对象形参命名是有要求的，一般写为 event | evt | e
+
+    btn.onmousedown = function (event) {
+        console.log(event);
+
+        console.log('clientY:' + event.clientY);
+        console.log('screenY:' + event.screenY);
+        console.log('pageY:' + event.pageY);
+        console.log('offsetY:' + event.offsetY);
+
+        // btn.onmouseup = function () {
+        //     console.log(1)
+        //     btn.onmouseup = null;
+        // }
+    }
+
+    /*
+     * 事件表述对象的属性
+     * clientX, clientY  事件发生时鼠标元素与窗口可视区域顶部左上角的距离
+     * screenX, screenY 事件发生时鼠标元素与屏幕顶部的距离
+     * pageX, pageY     事件发生时鼠标元素与页面顶部左上角的距离
+     * offsetX,offsetY  事件发生时鼠标元素与真实触发元素的距离
+     *
+     * button 代表按下的鼠标按键
+     *      0: 鼠标的主按键(按键)
+     *      1: 辅助按键(中键)
+     *      2: 次按键(右键)
+     *      3: 第四个键(浏览器后退键) 不重要
+     *      4: 第五个键(浏览器前进键) 不重要
+     * 注意: ie不考虑，早期ie浏览器中按键值跟上面的是不相同的
+     */
+</script>
+</body>
+</html>
