@@ -7,7 +7,7 @@
 <body>
 <div>
     <h2>购物车列表</h2>
-    <ul class="shopcart">
+    <ul class="shop-cart">
         <li class="food">
             <span name="food-name">肉夹馍</span>
 
@@ -31,7 +31,7 @@
         </li>
     </ul>
 </div>
-<div class="shopcart-bar">
+<div class="shop-cart-bar">
     <h3 class="total-price"></h3>
     300元起送
     <div class="pay-btn"></div>
@@ -47,13 +47,14 @@
         price = document.getElementsByClassName('unit-price'),
         // 打印按钮元素节点
         payBtn = document.getElementsByClassName('pay-btn')[0];
+
     for (let i = 0; i < price.length; i++) {
         let shopPrice = price[i];
         let shopNum = price[i].nextElementSibling;
-        console.log(shopPrice, shopNum);
         totPrice += (shopPrice.innerHTML * shopNum.innerHTML);
         totalPriceSum.innerHTML = '共计' + totPrice + '元';
     }
+
     if (okPrice > totPrice) {
         payBtn.innerHTML = '还差' + (okPrice - totPrice) + '起送';
     } else {
