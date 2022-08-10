@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<!--
+     若所有checked都被选择了,按钮的文字会自动变成取消全选,点击功能也会变为取消全选功能
+ -->
+<button class="all-btn">全选</button>
+<button class="nega-btn">反选</button>
+
+<ul>
+    <li>
+        <label>
+            <input class="checkbox" type="checkbox" > HTML从入门到放弃
+        </label>
+    </li>
+    <li>
+        <label>
+            <input class="checkbox" type="checkbox" > css权威摆烂指南
+        </label>
+    </li>
+    <li>
+        <label>
+            <input class="checkbox" type="checkbox" > JavaScript十五天快速躺平
+        </label>
+    </li>
+</ul>
+
+<script>
+    var allBtn = document.getElementsByClassName('all-btn')[0]
+    var negaBtn = document.getElementsByClassName('nega-btn')[0]
+    var inputs = document.getElementsByClassName('checkbox')
+
+    // 手动给checkbox 绑定点击事件
+    for (var i = 0; i < inputs.length; i++) {
+
+        var input = inputs[i]
+        input.onclick = refreshBtn
+    }
+
+
+    function refreshBtn() {
+        // 表示当前表单元素是否已经被全选
+        var flag = true
+        for (var i = 0; i < inputs.length; i++) {
+
+            var input = inputs[i]
+            if (!input.checked) {
+                flag = false
+            }
+        }
+
+        if (flag) {
+            allBtn.innerHTML = '取消全选'
+        } else {
+            allBtn.innerHTML = '全选'
+        }
+    }
+
+    refreshBtn()
+
+    allBtn.onclick = function () {
+
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].checked = allBtn.innerHTML !== '取消全选';
+        }
+
+        refreshBtn()
+    }
+
+    negaBtn.onclick = function () {
+
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].checked = !inputs[i].checked
+        }
+
+        refreshBtn()
+    }
+
+</script>
+</body>
+
+</html>
