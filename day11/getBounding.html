@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            position: absolute;
+            left: 250px;
+            top: 400px;
+            width: 100px;
+            height: 100px;
+            background: aqua;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<script>
+    let box = document.querySelector('.box');
+    // dom编程给我们的元素提供了一个方法用于返回一个元素相对于当前视口位置的对象
+    let boxObj = box.getBoundingClientRect();
+    console.log(boxObj);
+    /*
+     * 返回值是一个 DOMRect 对象，
+     * 是包含整个元素的最小矩形(包括 padding 和 border-width)
+     * 该对象使用 left,top,right,bottom,x,y,width 和 height 这几个以像素为单位的只读属性描述
+     * 除了 width 和 height 以外的属性是相对于视口的左上角来计算的
+     */
+</script>
+</body>
+</html>
