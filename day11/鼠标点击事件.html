@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">mouse click</button>
+
+<script>
+    let btn = document.getElementById('btn');
+    btn.onmousedown = function (event) {
+        if (event.button === 0) {
+            btn.onmouseup = function (event) {
+                if (event.button === 0) {
+                    console.log(1)
+                    btn.onmouseup = null;
+                } else {
+                    switch (event.button) {
+                        case 1:
+                            console.log('鼠标中键松开');
+                            break;
+                        case 2:
+                            console.log('鼠标右键松开');
+                            break;
+                        default:
+                            console.log('其他按键松开');
+                            break;
+                    }
+                }
+            }
+        } else {
+            switch (event.button) {
+                case 1:
+                    console.log('鼠标中键按下');
+                    break;
+                case 2:
+                    console.log('鼠标右键按下');
+                    break;
+                default:
+                    console.log('其他按键按下');
+                    break;
+            }
+        }
+
+    }
+
+    // TODO: 上述方法还是存在bug鼠标按下后不松开移除元素onmouseup不会解绑，下次只在元素上松开会触发一次click
+    // 点击左键右键都能实现 (通过学习event控件参数的设置已解决)
+    // 解决方法就是掌握鼠标移出事件
+    // btn.addEventListener('mousedown', function () {
+    //     btn.addEventListener('mouseup', function mouseupHandle () {
+    //         console.log('click');
+    //         btn.removeEventListener('mouseup', mouseupHandle);
+    //     })
+    // })
+
+
+
+
+</script>
+</body>
+</html>

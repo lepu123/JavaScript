@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: aqua;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    // 鼠标相关事件
+    let box = document.getElementById('box');
+    // 点击事件
+    box.onclick = function () {
+        console.log('点击');
+    }
+    // 鼠标按下松开事件
+    box.onmousedown = function () {
+        console.log('鼠标按下');
+    }
+    box.onmouseup = function () {
+        console.log('鼠标松开');
+    }
+    // 鼠标双击
+    box.ondblclick = function () {
+        console.log('鼠标双击');
+    }
+    // 鼠标移入某个元素
+    box.onmouseenter = function () {
+        console.log('鼠标移入');
+    }
+    // 鼠标移出某个元素
+    box.onmouseleave = function () {
+        console.log('鼠标移出');
+    }
+    // 鼠标的移动
+    box.onmousemove = function () {
+        console.log('鼠标移动');
+    }
+</script>
+</body>
+</html>
