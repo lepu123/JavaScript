@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">click me</button>
+<button id="btn2">click me two</button>
+<script>
+    let btn = document.getElementById('btn');
+
+    // 注意点语法 .on 事件绑定，同一个事件只支持绑定一个函数
+    // 多次绑定同一个事件，后者会替换前者
+    btn.onclick = function () {
+        console.log('click1');
+    }
+    btn.onclick = function () {
+        console.log('click2');
+    }
+
+    // 因为上面的特性，取消 .on 语法绑定事件只需要将需要取消的事件 .on 属性设置为null就可以了
+
+    btn.onclick = null; // onclick 被解绑了
+
+    let btn2 = document.getElementById('btn2');
+
+    let demo = function () {
+        console.log('btn2 click1');
+    }
+
+    // addEventListener 事件监听方法，支持在同一个时间下绑定多个处理函数
+    btn2.addEventListener('click', demo)
+    btn2.addEventListener('click', function () {
+        console.log('btn2 click2');
+    })
+    // 这样就导致了我们无法将事件函数设置为null的形式取消该事件的监听
+    btn2.addEventListener('click', null);
+
+    // js 专门为addEventListener添加了删除事件监听的方法
+    // removeEventListener 该方法接受三个参数
+    // 参数一: 需要取消事件监听的时间名
+    // 参数二: 因为 addEventListener 它支持同一个事件绑定多个事件函数，参数二就是想要删除的某个指定事件处理函数
+
+    btn2.removeEventListener('click', demo);
+</script>
+</body>
+</html>
