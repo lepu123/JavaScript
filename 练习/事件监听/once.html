@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">once click</button>
+<script>
+    let btn = document.getElementById('btn');
+
+    btn.onclick = function () {
+        console.log('我只会触发一次');
+        btn.onclick = null;
+    }
+
+    btn.addEventListener('click', function test () {
+        console.log('我只会触发一次');
+        btn.removeEventListener('click', test)
+    })
+
+    btn.onmousedown = function () {
+        console.log('鼠标按下')
+    }
+    btn.onmouseup = function () {
+        console.log('鼠标松开')
+    }
+</script>
+</body>
+</html>

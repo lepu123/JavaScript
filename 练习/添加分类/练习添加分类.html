@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <input type="text" class="input">
+        <button class="add">添加分类</button>
+        <button class="remove">删除分类</button>
+    </header>
+
+    <ul class="tabbar">
+        <li>首页</li>
+        <li>政治</li>
+        <li>篮球</li>
+    </ul>
+    <script>
+        let input = document.querySelector('.input')
+        let add = document.querySelector('.add')
+        let remove = document.querySelector('.remove')
+        let tabbar = document.querySelector('.tabbar')
+
+        add.onclick = function () {
+            // 给元素绑定点击事件监听函数
+            // 当元素被点击时,该函数会被自动触发
+            console.log('add被点击了');
+            // 先拿到用户输入,顺便去除首尾连续空格
+            let typeStr = input.value.trim()
+            // !typeStr 等价于 typeStr == false 等价于  typeStr == ''
+            if (!typeStr) {
+                alert('输入框不能为空')
+            } else {
+                // querySelectorAll 静态的每次查询是否重复时需要重新获取所有li
+                let lis = tabbar.querySelectorAll('li')
+                // 定义标记,表示当前输入的内容是否不重复, 默认true 表示不重复
+
+                if (DOMindexOf(typeStr, lis) !== -1) {
+                    alert('该分类已经存在!')
+                } else {
+                    let li = document.createElement('li')
+                    // li.textContent = typeStr
+                    let liTextNode = document.createTextNode(typeStr)
+
+                    li.appendChild(liTextNode)
+
+                    tabbar.appendChild(li)
+                }
+            }
+
+            input.value = ''
+
+        }
+
+
+        remove.onclick = function () {
+            console.log('remove被点击了');
+            // 获取用户的输入
+            let typeStr = input.value.trim()
+
+            // 通过用户输入查询,tabbar中是否存在li
+            let lis = tabbar.querySelectorAll('li')
+            let index = DOMindexOf(typeStr, lis)
+            if(index === -1) {
+                alert('不存在此分类!!')
+            }else {
+               tabbar.removeChild(lis[index])  
+            }
+
+            input.value = ''
+        }
+
+        function DOMindexOf(str, lis) {
+            for (let i = 0; i < lis.length; i++) {
+
+                let liStr = lis[i].textContent.trim()
+
+                if (str === liStr) {
+
+                    return i
+
+                }
+            }
+
+            return -1
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <input type="text" class="input">
+    <button class="add">添加分类</button>
+    <button class="remove">删除分类</button>
+</header>
+
+<ul class="tabBar">
+    <li>首页</li>
+    <li>篮球</li>
+    <li>足球</li>
+</ul>
+
+<script>
+    let add = document.querySelector('.add');
+    let remove = document.querySelector('.remove');
+    let liArr = [];
+        add.onclick = function () {
+            // 给元素绑定点击事件监听函数
+            // 当前元素被点击时，该函数会被自动触发
+            let li = document.querySelectorAll('li');
+            let addDom = document.querySelector('.input');
+            let ul = document.querySelector('.tabBar');
+            let addText = addDom.value;
+            for (let i = 0; i < li.length; i++) {
+                let liText = li[i].textContent;
+                if (liArr.indexOf(liText) === -1) {
+                    liArr.push(liText);
+                }
+            }
+            if (!addText) {
+                alert('输入不能为空');
+            } else {
+                if (liArr.indexOf(addText) === -1) {
+                    let liNode = document.createElement('li');
+                    liNode.textContent = addText;
+                    ul.appendChild(liNode);
+                } else {
+                    alert('添加的分类已存在');
+                }
+                addDom.value = '';
+            }
+        }
+
+    remove.onclick = function () {
+        let li = document.querySelectorAll('li');
+        let addDom = document.querySelector('.input');
+        let ul = document.querySelector('.tabBar');
+        let removeText = addDom.value;
+        for (let i = 0; i < li.length; i++) {
+            let liText = li[i].textContent;
+            if (liArr.indexOf(liText) === -1) {
+                liArr.push(liText);
+            }
+        }
+        if (!removeText) {
+            alert('输入不能为空');
+        } else {
+            if (liArr.indexOf(removeText) !== -1) {
+                let n = liArr.indexOf(removeText);
+                liArr.splice(n,1)
+                ul.removeChild(li[n]);
+            } else {
+                alert('删除的数不存在');
+            }
+        }
+        addDom.value = '';
+    }
+
+
+</script>
+</body>
+</html>
