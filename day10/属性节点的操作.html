@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="input" value="123" name="usr-name">
+<script>
+    let input =document.getElementById('input');
+    // 属性的操作方法
+    input.id += 'test';
+    input.className += 'demo';
+    input.style.color = 'red';
+    input.value = 'hello';
+    console.log(input.value);
+    input.placeholder = '111';
+
+    // 操作属性节点一般是使用他的读(获取某个属性的值)写(修改属性的)方法
+    // 访问元素某个属性节点的属性值的方法
+    console.log(input.getAttribute('name'));
+    console.log(input.getAttribute('id'));
+    console.log(input.getAttribute('class'));
+    console.log(input.getAttribute('style'));
+    console.log(input.getAttribute('value'));
+
+    // 修改元素某个属性值的方法
+    input.setAttribute('name', 'ji');
+    // value属性不要使用 setAttribute 去修改或获取
+    // setAttribute 指定的是默认值，如果需要修改当前值，请使用.属性名
+    input.setAttribute('value', 'va');
+
+</script>
+
+<input type="checkbox" id="checkbox">
+<select id="demo">
+    <option value="1">广州</option>
+    <option value="2">广州</option>
+    <option value="3">广州</option>
+    <option value="4">广州</option>
+</select>
+<script>
+    let checkbox = document.getElementById('checkbox');
+
+    // checkbox.setAttribute('checked', 'checked');
+    checkbox.setAttribute('checked', null);
+
+    // 一些特殊性比如checked，设置该属性表示勾选，没有设置该属性表示没有勾选
+    // 上面的属性取消掉他需要使用
+    checkbox.removeAttribute('checked');
+    console.log(checkbox.getAttribute('checked'));
+
+    // h5中很多属性只需要设置属性值无需设置属性名就表示了设置，使用了getAttribute就不太好判断元素是否开启属性
+    // dom提供了一个新方法，用来判断当前元素是否设置了某个属性
+
+    console.log(checkbox.hasAttribute('checked'))
+
+    // 表单的其他属性，支持读写
+    console.log(checkbox.disabled); // 判断表单是否被警用
+    console.log(checkbox.checked);
+
+    // select 选择器使用value 读写用户的选择
+</script>
+</body>
+</html>
