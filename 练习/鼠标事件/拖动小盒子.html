@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .big-box {
+            position: relative;
+            margin: 20px auto;
+            width: 50vw;
+            height: 50vh;
+            background-color: #eee;
+        }
+
+        #box {
+            position: absolute;
+            left: 100px;
+            top: 200px;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="big-box">
+        <div id="box"></div>
+    </div>
+
+    <script>
+        var box = document.getElementById('box')
+
+        var bigBox = document.querySelector('.big-box')
+
+        console.log(bigBox.offsetTop);
+        console.log(bigBox.offsetLeft);
+
+
+        box.onmousedown = function (e) {
+            var x = e.offsetX
+            var y = e.offsetY
+
+            bigBox.onmousemove = function (evt) {
+                console.log(evt.offsetX, evt.offsetY);
+                var offsetLeft = evt.clientX - x - bigBox.offsetLeft
+                var offsetTop = evt.clientY - y - bigBox.offsetTop
+
+                if (offsetLeft < 0) {
+                    offsetLeft = 0
+                } else if (offsetLeft > bigBox.clientWidth - box.clientWidth) {
+                    offsetLeft = bigBox.clientWidth - box.clientWidth
+                }
+
+                if (offsetTop < 0) {
+                    offsetTop = 0
+                } else if (offsetTop > bigBox.clientHeight - box.clientHeight) {
+                    offsetTop = bigBox.clientHeight - box.clientHeight
+                }
+
+                box.style.left = offsetLeft + 'px'
+                box.style.top = offsetTop + 'px'
+            }
+            document.onmouseup = function () {
+                box.onmouseup = null
+                bigBox.onmousemove = null
+            }
+        }
+
+    </script>
+</body>
+
+</html>
