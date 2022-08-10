@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #big {
+            width: 400px;
+            height: 400px;
+            background: red;
+        }
+
+        #middle {
+            margin: auto;
+            width: 200px;
+            height: 200px;
+            background: green;
+        }
+
+        #small {
+            margin: auto;
+            width: 50px;
+            height: 50px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<div id="big">
+    <div id="middle">
+        <div id="small">
+
+        </div>
+    </div>
+</div>
+<script>
+    let big = document.getElementById('big');
+    let middle = document.getElementById('middle');
+    let small = document.getElementById('small');
+
+    document.onclick = function () {
+        console.log('document被点击了');
+    }
+
+    small.onclick = function () {
+        console.log('small被点击了');
+    }
+
+    middle.onclick = function () {
+        console.log('middle被点击了');
+    }
+
+    big.onclick = function (e) {
+        // console.log(this);// big
+        // e.target 可以获取真实触发该事件的元素 *
+        console.log(e.target);
+        console.log('big被点击了');
+    }
+</script>
+</body>
+</html>
