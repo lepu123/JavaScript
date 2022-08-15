@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        function getStyle(el, attr) {
+            return getComputedStyle(el, null)[attr]
+        }
+
+        function animation(el, styleObj, cb) {
+            clearInterval(el.timer)
+
+            el.timer = setInterval(function () {
+                var finish = true
+
+                for (var attr in styleObj) {
+                    // 获取元素的当前值
+                    var value = parseInt(getStyle(el, attr))
+                    // console.log(value);
+
+                    // 定义一个速度
+                    // styleObj[attr] 目标
+                    // 
+                    var speed = (styleObj[attr] - value) / 80
+
+                    console.log(speed);
+
+                    if (speed != 0) {
+                        finish = false
+                        //  speed > 0 运动正向运动
+                        // speed < 0 运动反向运动
+                        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed)
+                        // speed = speed > 0 ? 1 : -1
+                        el.style[attr] = value + speed + 'px'
+                    }
+                }
+
+                if (finish) {
+                    clearInterval(el.timer)
+                }
+
+            }, 30);
+
+        }
+
+        var box = document.querySelector('.box')
+
+        animation(box, { width: 200, height: 400 })
+    </script>
+</body>
+
+</html>
