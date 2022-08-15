@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            position: fixed;
+            left: 0;
+            bottom: 50px;
+            background: #0cb;
+            height: 80px;
+            width: 600px;
+        }
+
+        #play {
+            float: right;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            font-weight: 700;
+            color: #fff;
+            background: rgb(255, 149, 0);
+        }
+
+        #btn {
+            float: right;
+            width: 27px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            font-weight: 700;
+            color: #fff;
+            background: rgb(0, 30, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="btn">&gt;</div>
+        <div id="play">播放</div>
+    </div>
+    <script>
+        window.onload = function () {
+            var box = document.getElementById('box')
+            var btn = document.getElementById('btn')
+
+            function jsAnimate(el, styleObj, cb) {
+
+                clearInterval(el.timer)
+
+                el.timer = setInterval(function () {
+                    var animateStop = true
+
+                    // 枚举 styleObj
+                    for (attr in styleObj) {
+                        // 获取目标动画样式
+                        var targetValue = styleObj[attr]
+
+                        // 获取当前元素的样式
+                        var currentValue = parseInt(getComputedStyle(el, null)[attr])
+
+                        // 目标值减去当前值
+                        var speed = (targetValue - currentValue) / 10
+
+                        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed)
+                        // 只要有一个样式动画还在继续,动画函数就不能停止
+                        if (speed !== 0) {
+                            animateStop = false
+                        }
+
+                        el.style[attr] = currentValue + speed + 'px'
+
+                        if (animateStop) {
+                            clearInterval(el.timer)
+                            // cb callback 异步函数执行完毕后的回调函数
+                            cb && cb() // cb并不是一个必传参数,所以在调用时先判断该参数是否传递
+                            // if(cb) {
+                            //     cb()
+                            // }
+                            console.log('动画结束了');
+                        }
+
+                    }
+                }, 30)
+            }
+
+            // 点击按钮收回元素
+            btn.onclick = function () {
+                console.log(123);
+                jsAnimate(box, { left: -573 }, function () {
+                    jsAnimate(box, { left: -493 })
+                })
+
+                // 
+            }
+        }
+
+    </script>
+</body>
+
+</html>
