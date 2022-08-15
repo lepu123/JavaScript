@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // 异步函数记住，在js中代码从上向下执行，所有的异步函数必须等待同步函数执行完毕后再执行
+    // 异步函数会根据他在代码中声明的位置逐个注册到异步函数队列中Queue
+    // 当同步代码执行完毕后，js线程回去一部队列中按顺序询问是否有异步代码满足条件可以执行
+    // 找到可以执行的异步代码，将其代码块放入主线程中执行，执行完毕后主线会再次去异步队列中
+    var i = 0;
+
+    var timer = setInterval(function () {
+        i++;
+        console.log(i);
+        if (i >= 10) {
+            clearInterval(timer);
+        }
+
+    }, 1000)
+
+    var arr = ['a', 'b', 'c', 'd', 'e']
+
+    for (var j = 0; j < arr.length; j++) {
+        console.log(arr[j]);
+    }
+
+    // 面试题 问:setInterval 和 setTimeout 都可以设置先吃nms的事件执行，请问这个延迟时间准确吗？
+    // 如果不准确，导致他不准确的原因是什么
+    // 主线程较长妨碍了异步队列的执行
+
+    // setTimeout setInterval 共享同一个id池所导致
+    // setTimeout 可以使用 clearInterval 取消延迟函数注册
+    // setInterval 可以使用 clearTimeout 取消计时器函数注册
+    // 注意: 在开发中一定要清醒的区分两者不要混用
+
+</script>
+</body>
+</html>
