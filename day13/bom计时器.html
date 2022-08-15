@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #test {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="test"></div>
+
+<button>stop</button>
+
+<script>
+    // DOM document Object Model
+    // BOM browser Object Model
+
+    // BOM 编程是window对象所提供的属性方法，在浏览器js中 window也是全局对象顶层对象
+
+    let test = document.getElementById('test');
+
+    let test1 = window.document.getElementById('test');
+
+    // window顶层对象，在js中调用window的属性方法时，可以省略window
+    // 我们常用的document也是window
+
+
+    // 计时器 setInterval 接受连个参数
+    // 参数一: 函数用于频繁触发
+    // 参数二: 函数频繁触发的间隔时间毫秒数(1000ms是1s)
+    let left = 0;
+    let timer = setInterval(function () { //这里的this对象是 window
+        left += 7;
+        test.style.left = left + 'px';
+    }, 100)
+
+    // setInterval 会返回一个计时器id，可以用于取消计时器
+    // clearInterval(timer) 取消计时器方法
+
+    let stop = document.querySelector('button');
+
+    stop.onclick = function () {
+        clearInterval(timer);
+    }
+
+    // 游戏的帧数fps: 一秒页面刷新多少次
+    // 肉眼一般30fps就够了，
+</script>
+</body>
+</html>
