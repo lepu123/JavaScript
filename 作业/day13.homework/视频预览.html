@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .video-card {
+            width: 206px;
+        }
+
+        .card-img {
+            position: relative;
+            width: 100%;
+            height: 116px;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 116px;
+        }
+
+        .video-info {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            padding-left: 5px;
+            padding-bottom: 10px;
+            padding-top: 20px;
+            color: #ffffff;
+            font-size: 14px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .7));
+        }
+
+        .video-info div {
+            display: inline-block;
+            padding-left: 22px;
+            margin-right: 10px;
+        }
+
+        .mask {
+            display: none;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-image: url("762279371_8bf9eb-0001.jpg");
+        }
+
+        .card-img:hover .mask {
+            display: block;
+        }
+
+        .mask .line {
+            position: relative;
+            width: 100%;
+            height: 10px;
+            background-color: #000;
+        }
+
+        .mask .line div {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -98px;
+            margin-top: -1px;
+            width: 196px;
+            max-width: 196px;
+            height: 2px;
+
+        }
+
+        .mask .line .bottom {
+            background-color: #444;
+        }
+
+        .mask .line .top {
+            width: 100px;
+            background-color: white;
+        }
+
+        .title {
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            margin-top: 10px;
+            height: 40px;
+            line-height: 20px;
+            font-size: 14px;
+        }
+
+        .up {
+            margin-top: 10px;
+            color: #999;
+            font-size: 12px;
+        }
+
+        .bili {
+            position: absolute;
+            font-size: 15px;
+            white-space: nowrap;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+<div class="video-card">
+    <div class="card-img">
+        <img src="./h.jpg@672w_378h_1c.webp" alt="x">
+
+        <div class="video-info">
+            <div class="play">1.0万</div>
+            <div class="likes">114514</div>
+        </div>
+
+        <div class="mask">
+            <div class="line">
+                <div class="bottom"></div>
+                <div class="top"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="title">【野兽先辈】原声大碟身临其境哼哼哼啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</div>
+    <div class="up">up 田所浩二</div>
+</div>
+
+
+<script>
+    window.onload = function () {
+
+        let mask = document.getElementsByClassName('mask')[0];
+        let progressBar = document.getElementsByClassName('top')[0];
+        let data = {
+            len: 10,
+            width: 206,
+            height: 116,
+        }
+        // let span = document.createElement('span');
+        // span.className = 'bili';
+        // span.textContent = '哼哼哼啊'
+        // mask.appendChild(span);
+        // let left = -span.scrollWidth;
+        // setInterval(function () {
+        //     left += 7;
+        //     span.style.left = left + 'px';
+        // }, 100)
+
+        mask.onmousemove = function (evt) {
+
+            console.log(evt);
+
+            let t = evt.offsetX; // 鼠标在元素之中的位置
+
+            let a = 100, // 图片数量
+                e = data.height / data.width * this.scrollWidth, // 计算宽高比
+                i = Math.floor(t / this.scrollWidth * a); // 多少百分比换行
+            this.size = this.scrollWidth * data.len; // 从头开始
+            this.progress = Math.floor(t / this.scrollWidth * 100);
+            this.x = -i % data.len * this.scrollWidth;
+            this.y = -Math.floor(i / data.len) * e;
+
+            progressBar.style.width = this.progress + '%';
+
+
+            mask.style.backgroundPosition = this.x + 'px ' + this.y + 'px';
+            mask.style.backgroundSize = this.size + 'px';
+            console.log(mask.style.backgroundPosition)
+
+            // ----------------------------以上为雪碧图计算函数-----------------------------------
+
+
+        }
+
+
+    }
+</script>
+</body>
+</html>
