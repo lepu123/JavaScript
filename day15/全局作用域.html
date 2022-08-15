@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // BOM 的核心对象是window，window在浏览器中有两个含义
+    // 1. 浏览器接口对象
+    // 2. 也是ECMAScript定义的全局对象
+
+    // 定义在全局作用域下的变量，就是一个全局变量，就会自动成为全局对象的属性
+    var age = 18
+    console.log(age);// window对象有个特点，调用他的属性方法都可以省略window直接调用
+    console.log(window.age);
+
+    // 注意: 在开发中在开发中尽量避免去创建全局变量，减少、避免全局环境污染
+
+    // window包含一个属性叫name,所以我们在开发中不要创建name作为全局变量名
+    console.log(window.name)
+
+    function b() {
+        // 局部变量name没问题，全局会造成冲突
+        var name = 'hello';
+        console.log(name);
+        console.log(window.name);
+
+    }
+
+    b();
+
+    function demo() {
+        // 在代码的任何地方 不使用 var 创建的变量都会成为全局变量
+        test = 'hello'
+        // 不要在开发中这样声明全局变量
+    }
+
+    demo()
+
+    console.log(test);
+
+    delete age
+    console.log(age);
+    // var 声明的全局变量不可以被delete删除
+    // delete关键本身功能就是删除对象的某个属性
+    // var 声明的变量有两种含义 1. 变量 2. window的属性
+    // 不使用var声明的全局变量，他只不过是利用了window可以省略的特性，本质上只是一个全局属性
+</script>
+</body>
+</html>
