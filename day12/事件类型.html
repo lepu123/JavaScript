@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .main {
+            background: #eee;
+            height: 500px;
+            padding: 10px 5px 0;
+            overflow: auto;
+        }
+
+        .box {
+            background: red;
+            height: 3000px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="box">
+
+    </div>
+</div>
+<script>
+    // onload 页面元素包括图片，多媒体资源加载完成
+    // 在该事件内执行dom操作，可以正确访问到页面中的任何元素
+    // 即使将script标签写到文档的最下方，还是建议配合load一起使用
+    // 保证需要请求的资源正确的渲染在页面上，并且可以保证不会造成全局变量污染(事件处理函数内部，变量不再是全局)
+    // 在开发中尽量避免使用全局变量，会暴露全局导致所有人都能访问到
+    // 容易造成重名
+    window.onload = function () {
+        // 以后开发都在此事件回调中进行开发
+
+        let main = document.querySelector('.main');
+        // scroll 元素的滚动事件
+        window.onscroll = function () {
+            console.log(document.documentElement.scrollTop);
+            console.log(main.scrollTop);
+        }
+
+        main.scrollTop = 1000;
+
+        main.onscroll = function () {
+            console.log(document.documentElement.scrollTop);
+            console.log(main.scrollTop)
+        }
+    }
+
+
+</script>
+</body>
+</html>
