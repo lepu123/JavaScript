@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .big {
+            display: flex;
+            width: 300px;
+            height: 300px;
+            background: aqua;
+        }
+
+        .middle {
+            display: flex;
+            margin: auto;
+            width: 120px;
+            height: 120px;
+            background: red;
+        }
+
+        .small {
+            margin: auto;
+            width: 50px;
+            height: 50px;
+            background: skyblue;
+        }
+    </style>
+</head>
+<body>
+<div class="big">
+    <div class="middle">
+        <div class="small">
+
+        </div>
+    </div>
+</div>
+
+<script>
+    let big = document.querySelector('.big'),
+        middle = document.querySelector('.middle'),
+        small = document.querySelector('.small');
+
+    big.onclick = function () {
+        console.log('big被点击了');
+    }
+
+    middle.onclick = function () {
+        console.log('middle被点击了');
+    }
+
+    small.onclick = function () {
+        console.log('small被点击了');
+    }
+
+    big.addEventListener('click', function (event) {
+        console.log('big addEventListener click事件被触发了');
+        event.stopPropagation();
+    }, true);
+
+    middle.addEventListener('click', function () {
+        console.log('middle addEventListener click事件被触发了');
+    }, true);
+
+
+    function smallClick () {
+        console.log('small addEventListener click事件被触发了');
+    }
+    small.addEventListener('click', smallClick ,true);
+
+    // js专门为 addEventListener 添加了删除事件监听的方法
+    // removeEventListener 该方法接受三个参数
+    // 参数一: 需要取消事件监听的事件名
+    // 参数二: 因为 addEventListener 他支持同一个事件绑定多个事件函数,参数二就是想要删除的某个指定事件处理函数
+    // 参数三: 删除的事件是冒泡的还是捕获的
+    // 注意,要删除某一个addEventListener事件必须要保证removeEventListener的三个参数与addEventListener三个参数必须完全匹配
+
+    // small.removeEventListener('click', smallClick, true)
+
+    // 事件的触发顺序
+    // 先捕获在冒泡
+    // 阻止事件冒泡/捕获传递，是event提供的event.stopPropagation()方法
+    // 你在事件触发顺序的某一段阻止实现冒泡/捕获的继续传递,后面的事件监听就不会再执行了
+
+    // 并不是所有的事件都会冒泡 blur,focus,load,mouseenter,mouseleave...
+    // 冒泡的顶层对象在不同浏览器有所不同,大部分浏览器会冒泡到window,IE8 到 document
+    // 旧版IE浏览器不支持event.stopPropagation(),ie阻止冒泡使用 e.cancelBubble = true
+
+    // 兼容 event.stopPropagation ? event.stopPropagation():e.cancelBubble = true
+
+</script>
+</body>
+</html>
