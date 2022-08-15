@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box" style="color: red">
+    一个盒子
+    <p>盒子的子元素</p>
+</div>
+
+<script>
+    let box = document.querySelector('.box');
+    console.log(box)
+    box.onclick = function () {
+        console.log('hello');
+    }
+
+    // 节点的克隆 node.cloneNode(deep)
+    // node: 将要被克隆的节点
+    // deep(可选): 是否采用深度克隆(克隆其后代节点)，默认值为false
+    // 克隆一个元素节点会拷贝它所有的HTML属性以及属性值，但不会拷贝那些使用addEventListener()方法或者node.onclick 这种事件
+    let box1 = box.cloneNode(true)
+    console.log(box1);
+    document.body.appendChild(box1);
+
+    /*
+     * 注意: 为了防止一个文档中出现两个ID重复的元素
+     */
+</script>
+</body>
+</html>
