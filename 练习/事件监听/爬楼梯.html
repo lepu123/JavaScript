@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 50px;
+            height: 50px;
+            border: 2px solid grey;
+            margin-bottom: 10px;
+        }
+
+        .active {
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+<div>5</div>
+<div>4</div>
+<div>3</div>
+<div>2</div>
+<div class="active">1</div>
+<button>爬楼梯</button>
+
+<script>
+
+    let btn = document.querySelector('button');
+
+    btn.addEventListener('click', function () {
+        let active = document.getElementsByClassName('active')[0];
+        if (active.previousElementSibling) {
+            active.previousElementSibling.className = active.className;
+            active.removeAttribute('class');
+        }
+    })
+</script>
+</body>
+</html>

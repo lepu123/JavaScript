@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        .nav {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 120px;
+            padding: 0 20px;
+            background-color: #eee;
+        }
+
+        .nav li {
+            padding: 10px 0;
+            width: 80px;
+            height: 40px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .nav .move {
+            position: absolute;
+        }
+
+        .nav .nav-item:hover {
+            border-radius: 10px;
+            background-color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="nav">
+        <li class="nav-item">动画</li>
+        <li class="nav-item">番剧</li>
+        <li class="nav-item">国创</li>
+        <li class="nav-item">综艺</li>
+        <li class="nav-item">漫画</li>
+        <li class="nav-item">音乐</li>
+        <li class="nav-item">舞蹈</li>
+        <li class="nav-item">游戏</li>
+        <li class="nav-item">直播</li>
+        <li class="nav-item">知识</li>
+        <li class="nav-item">课堂</li>
+        <li class="nav-item">科技</li>
+        <li class="nav-item">运动</li>
+        <li class="nav-item">汽车</li>
+        <li class="nav-item">生活</li>
+        <li class="nav-item">美食</li>
+        <li class="nav-item">动物圈</li>
+        <li class="nav-item">鬼畜</li>
+    </ul>
+    <script>
+        window.onload = function () {
+            var nav = document.querySelector('.nav')
+
+            var navRect = nav.getBoundingClientRect()
+
+            nav.onmousedown = function (e) {
+                // 有一个用于占位元素插入到了当前li的位置
+                var el = e.target
+                // 说明不是需要拖拽的元素,代码就不需要往下执行了
+                if (el.className !== 'nav-item') {
+                    return
+                }
+
+                // 动画绝对定位移动
+                // 一开始为了保证列表项,不会因为设置绝对定位而丢失了初始位置
+                console.log(el.offsetTop, el.offsetTop);
+                // 将初始位置的offsetTop,offsetTop 设置给 top 和 left定位属性
+
+                el.className += ' move'
+                el.style.top = el.offsetTop + 'px'
+                el.style.left = el.offsetLeft + 'px'
+                // 创建占位元素    
+                var emptyli = document.createElement('li')
+                // 插入到当前元素之前
+                nav.insertBefore(emptyli, el)
+
+                // TODO 部分需要配合鼠标移动的逻辑后面在写
+                // 按下的一瞬间获取鼠标相对于当前li的偏移量
+                var x = e.offsetX
+                var y = e.offsetY
+                // 拖拽li跑
+                el.onmousemove = function (evt) {
+                    console.log('123');
+                    // li横轴偏移量 鼠标相对于视口的距离-ul容器相对于视口的距离-鼠标相对于元素左上角的距离
+                    var offsetX = evt.clientX - navRect.x - x
+                    var offsetY = evt.clientY - navRect.y - y
+
+                    console.log(offsetX,);
+
+                    el.style.top = offsetY + 'px'
+                    el.style.left = offsetX + 'px'
+
+                }
+
+
+                // 鼠标松开,移出父元素都还原鼠标按下造成的副作用
+                function moveEnd() {
+                    // 还原li取消他的绝对定位
+                    el.className = 'nav-item'
+                    // 删除掉手动设置的定位属性样式
+                    el.removeAttribute('style')
+                    // 删除掉鼠标按下时创建的空白li
+                    this.removeChild(emptyli)
+                    // 清除鼠标按下时注册的事件
+                    nav.onmouseup = null
+                    nav.onmouseleave = null
+                    el.onmousemove = null
+                }
+
+                nav.onmouseup = moveEnd
+                nav.onmouseleave = moveEnd
+            }
+        }
+
+    </script>
+</body>
+
+</html>

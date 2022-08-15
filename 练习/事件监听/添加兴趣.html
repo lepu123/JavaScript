@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .classify {
+            display: flex;
+            width: 300px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .classify li {
+            margin: 10px 0;
+            border-radius: 8px;
+            width: 100%;
+            line-height: 50px;
+            height: 50px;
+            text-align: center;
+            background: #666666;
+        }
+        .classify li.active {
+            background-color: green;
+            color: white;
+        }
+
+
+    </style>
+</head>
+<body>
+<ul class="classify">
+    <li>直播</li>
+    <li>动画</li>
+    <li>番剧</li>
+    <li>音乐</li>
+    <li>舞蹈</li>
+    <li>游戏</li>
+    <li>科技</li>
+    <li>生活</li>
+    <li>鬼畜</li>
+</ul>
+
+
+<script>
+
+    window.onload = function () {
+        // 克隆一个ul列表以存放克隆的分类
+        let ul = document.querySelector('.classify');
+        let addClassify = ul.cloneNode();
+        document.body.appendChild(addClassify);
+
+        ul.ondblclick = function (e) {
+            let target = e.target;
+            let type = target.tagName.toLowerCase();
+
+            if (type === 'li') {
+                target.className = 'active';
+                let addLi = target.cloneNode(true);
+                let del = document.createElement('button');
+                del.innerHTML = '×';
+                addLi.appendChild(del);
+                addClassify.appendChild(addLi);
+            }
+        }
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            display: flex;
+            align-content: center;
+            align-items: center;
+        }
+
+        span {
+            display: inline-block;
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid black;
+            margin: 10px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+    <label><input type="text"></label>
+</div>
+
+<script>
+    window.onload = function () {
+        let arr = ['小明', '小刚', '小王'];
+
+        let box = document.getElementsByClassName('box')[0];
+        for (let i = 0; i < arr.length; i++) {
+            let span = document.createElement('span');
+            span.innerHTML = arr[i];
+            box.appendChild(span);
+
+            span.onclick = function () {
+                let input = document.querySelector('input');
+                let newSpan = document.createElement('span');
+                newSpan.textContent = input.value;
+                box.insertBefore(newSpan, this)
+            }
+        }
+
+    }
+</script>
+</body>
+</html>

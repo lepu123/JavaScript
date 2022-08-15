@@ -53,6 +53,7 @@
     let table = document.querySelector('.table');
 
     btnTable.addEventListener('click', function () {
+        table.innerHTML = '';
         let trNum = trInput.value;
         let tdNum = tdInput.value;
         for (let i = 0; i < trNum; i++) {

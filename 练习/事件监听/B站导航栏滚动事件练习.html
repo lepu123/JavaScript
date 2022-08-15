@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #biliNav {
+            position: fixed;
+            width: 32px;
+            top: 150px;
+            right: 30px;
+            border: 1px solid #ddd;
+        }
+
+        #biliNav li {
+            position: relative;
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            border: 1px solid #ddd;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #biliNav li.last {
+            background: red;
+            color: #fff;
+            display: block;
+        }
+
+        span {
+            width: 32px;
+            height: 32px;
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .active {
+            background: red;
+            color: #fff;
+            display: block;
+        }
+
+        #main {
+            width: 1000px;
+            margin: 0 auto;
+            padding-bottom: 300px;
+        }
+
+        #main .bili {
+            height: 600px;
+            line-height: 600px;
+            width: 100%;
+            font-size: 50px;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="biliNav">
+    <ul id="menu">
+        <li>1F<span>直播</span></li>
+        <li>2F<span>动画</span></li>
+        <li>3F<span>番剧</span></li>
+        <li>4F<span>音乐</span></li>
+        <li>5F<span>舞蹈</span></li>
+        <li>6F<span>游戏</span></li>
+        <li>7F<span>科技</span></li>
+        <li>8F<span>生活</span></li>
+        <li>9F<span>鬼畜</span></li>
+        <li>10F<span>时尚</span></li>
+        <li>11F<span>广告</span></li>
+        <li class="last">Top</li>
+    </ul>
+</div>
+<!--楼层内容-->
+<div id="main">
+    <div class="bili" style="background: red">
+        直播
+    </div>
+    <div class="bili" style="background: orange">
+        动画
+    </div>
+    <div class="bili" style="background: yellow">
+        番剧
+    </div>
+    <div class="bili" style="background: green">
+        音乐
+    </div>
+    <div class="bili" style="background: cadetblue">
+        舞蹈
+    </div>
+    <div class="bili" style="background: blue">
+        游戏
+    </div>
+    <div class="bili" style="background: purple">
+        科技
+    </div>
+    <div class="bili" style="background: aqua">
+        生活
+    </div>
+    <div class="bili" style="background: brown">
+        鬼畜
+    </div>
+    <div class="bili" style="background: crimson">
+        时尚
+    </div>
+    <div class="bili" style="background: darkorange">
+        广告
+    </div>
+</div>
+
+<script>
+    // 避免使用全局变量
+    window.onload = function () {
+        // 获取页面中所有模块
+        let biliBox = document.getElementsByClassName('bili');
+
+        // 遍历各个模块，生成一个高度数组，数组中对应的是每个模块距离页面顶部的距离
+        // 每个模块顶部距离页面顶部的值为0+前几个模块的高度
+        let heightArr = [];
+
+        let indexHeight = 0;
+
+        for (let i = 0; i < biliBox.length; i++) {
+            heightArr.push(indexHeight);
+            // 把本模块的高度累加到indexHeight高度中用于指定下一个模块的顶部高度
+            indexHeight += biliBox[i].offsetHeight;
+        }
+
+        // 获取导航列表
+
+        let navRightList = document.querySelectorAll('#menu li');
+
+
+        for (let i = 0; i < navRightList.length; i++) {
+            // 这里面不能套用for因为用户能点击时循环已经结束了
+            let nav = navRightList[i];
+            console.log(nav)
+            nav.index = i;
+            nav.onclick = function () {
+                let offsetTop = 0
+                if (this.className.indexOf('last') === -1) {
+                    // console.log(this.index);
+                    offsetTop = heightArr[this.index]
+                }
+                document.documentElement.scrollTop = offsetTop
+            }
+            // 闭包
+            /*
+            function returnClickFunc () {
+                return function () {
+                    console.log(i);
+                }
+            }
+            nav.onclick = returnClickFunc(i);
+            */
+
+            window.onscroll = function () {
+                let scrollTop = document.documentElement.scrollTop
+                console.log(scrollTop);
+                // heightArr.length - 1 数组的最后一位是页面模块最低部的位置
+                for (let i = 0; i < heightArr.length - 1; i++) {
+                    // 判断滚动的距离满足大于等于当前模块的顶部,小于下一个模块的顶部,高亮对应的元素
+                    if (scrollTop >= heightArr[i] && scrollTop < heightArr[i + 1]) {
+                        navRightList[i].className = 'active'
+                    } else {
+                        navRightList[i].removeAttribute('class');
+                    }
+                }
+
+            }
+
+        }
+
+
+    }
+</script>
+</body>
+</html>

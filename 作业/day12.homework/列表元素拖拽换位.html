@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            float: right;
+            width: 124px;
+            border: 1px solid black;
+        }
+
+        .nav .nav-head {
+            display: flex;
+            height: 50px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .nav .nav-warp {
+            position: relative;
+            padding: 0 15px;
+        }
+
+        .nav .nav-warp .nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            height: 40px;
+        }
+
+        .nav .nav-warp .nav-item:hover {
+            background-color: rgba(227, 215, 215, 0.5);
+        }
+
+        .nav .nav-warp .nav-item.active {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <div class="nav-head">
+        <h3>分区</h3>
+    </div>
+    <div class="nav-warp">
+        <div class="nav-item">专栏</div>
+        <div class="nav-item">漫画</div>
+        <div class="nav-item">知识</div>
+        <div class="nav-item">动物圈</div>
+        <div class="nav-item">国创</div>
+        <div class="nav-item">综艺</div>
+        <div class="nav-item">科技</div>
+        <div class="nav-item">动画</div>
+        <div class="nav-item">鬼畜</div>
+        <div class="nav-item">游戏</div>
+    </div>
+</div>
+
+<script>
+    window.onload = function () {
+
+        let navWarp = document.querySelector('.nav-warp'),
+            navItem = document.getElementsByClassName('nav-item');
+
+        // 创建储存高度的数组，起始位置为navWarp的顶部距离可视窗口的距离是60px
+        let heightArr = [],
+            indexHeight = 60;
+
+        // 获取每个列表的高度
+        for (let i = 0; i < navItem.length; i++) {
+
+            heightArr.push(indexHeight);
+            indexHeight += navItem[i].offsetHeight;
+
+        }
+
+        console.log(heightArr)
+
+        // 遍历给每个div元素都绑定上事件
+        for (let i = 0; i < navItem.length; i++) {
+
+            let moveItem = navItem[i];
+
+            moveItem.onmousedown = function (event) {
+                // console.log(moveItem)
+                // 创建占位元素
+                let selectMove = moveItem.cloneNode(),
+                    x = event.offsetX,
+                    y = event.offsetY;
+
+                navWarp.insertBefore(selectMove, moveItem.nextElementSibling);
+
+                moveItem.className += ' active';
+
+
+                navWarp.onmousemove = function (evt) {
+                    // console.log(evt.offsetX, evt.clientY);
+                    let mouseX = evt.clientX,
+                        mouseY = evt.clientY;
+
+                    let offsetLeft = mouseX - x - navWarp.offsetLeft,
+                        offsetTop = mouseY - y - navWarp.offsetTop;
+
+                    if (offsetLeft < 0) {
+
+                        offsetLeft = 0;
+
+                    } else if (offsetLeft > navWarp.clientWidth - moveItem.clientWidth) {
+
+                        offsetLeft = navWarp.clientWidth - moveItem.clientWidth;
+
+                    }
+
+                    if (offsetTop < 0) {
+
+                        offsetTop = 0;
+
+                    } else if (offsetTop > navWarp.clientHeight - moveItem.clientHeight) {
+
+                        offsetTop = navWarp.clientHeight - moveItem.clientHeight;
+
+                    }
+
+                    moveItem.style.top = offsetTop + 'px';
+                    moveItem.style.left = offsetLeft + 'px';
+
+                    // console.log(evt.clientY)
+                    let insertIndex = 0;
+                    for (let i = 0; i < heightArr.length; i++) {
+                        if (mouseY >= heightArr[i] && mouseY < heightArr[i + 1]) {
+                            insertIndex = i;
+                            break;
+                        }
+
+                    }
+                    selectMove.remove();
+                    // console.log('在第' + (i + 1) + '个区块')
+                    // 占位插入当前位置
+                    if (!navItem[insertIndex+1]) {
+                        navWarp.appendChild(selectMove);
+                    } else {
+                        console.log(insertIndex)
+                        navWarp.insertBefore(selectMove, navItem[insertIndex].nextElementSibling);
+                    }
+
+
+                }
+
+                document.onmouseup = function () {
+
+                    moveItem.className = 'nav-item';
+                    navWarp.insertBefore(moveItem, selectMove);
+                    selectMove.remove();
+
+                    moveItem.onmouseup = null;
+                    navWarp.onmousemove = null;
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let btn = document.createElement('button');
+    btn.innerHTML = '换个随机背景颜色';
+    document.body.appendChild(btn);
+    function bgChange() {
+        document.body.style.backgroundColor = 'rgb(' + (Math.random() * 255) + ',' + (Math.random() * 255) + ',' + (Math.random() * 255) + ')';
+    }
+    btn.onclick = bgChange;
+</script>
+</body>
+</html>

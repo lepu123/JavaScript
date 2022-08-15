@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label>
+    <textarea cols="30" rows="10"></textarea>
+    <button type="submit">发送</button>
+</label>
+
+<script>
+    window.onload  = function () {
+        let label = document.querySelector('label');
+
+
+        label.onclick = function (e) {
+            if (e.target.tagName.toLowerCase() === 'button') {
+                let text = e.target.previousElementSibling;
+                let p = document.createElement('p');
+
+                p.textContent = text.value;
+                document.body.appendChild(p);
+            }
+        }
+
+        label.onkeydown = function (e) {
+
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                let text = document.querySelector('textarea');
+
+                if (text.value) {
+                    let p = document.createElement('p');
+                    p.textContent = text.value.trim();
+                    document.body.appendChild(p);
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
