@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .carousel {
+            position: relative;
+            border: 1px solid black;
+            width: 460px;
+        }
+
+        .carousel ul {
+            width: 2300px;
+            overflow: hidden;
+        }
+
+        .carousel ul li {
+            width: 460px;
+            float: left;
+        }
+
+        .carousel ul li img {
+            display: block;
+            width: 100%;
+        }
+
+        .carousel .btn {
+            display: block;
+            box-sizing: border-box;
+            position: absolute;
+            top: calc(50% - 16px);
+            right: 0px;
+            border-radius: 999px 0 0 999px;
+            padding-left: 10px;
+            height: 32px;
+            width: 24px;
+            line-height: 32px;
+            color: #fff;
+            background: rgba(7, 17, 27, .4);
+        }
+
+        .carousel .btn.lt {
+            left: 0;
+            padding-left: 2px;
+            border-radius: 0 999px 999px 0;
+        }
+
+        .carousel .page-control {
+            position: absolute;
+            display: flex;
+            left: 20px;
+            bottom: 40px;
+        }
+
+        .carousel .page-control .dot {
+            display: block;
+            margin-right: 5px;
+            border-radius: 999px;
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .carousel .page-control .dot.active {
+            background-color: #fff;
+            /* 隐形x-偏移量 y-偏移量 模糊度 阴影大小 阴影颜色 */
+            box-shadow: 0 0 0px 3px rgba(128, 128, 128, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel">
+        <ul>
+            <li><img src="./images/1.jpg"></li>
+            <li><img src="./images/2.jpg"></li>
+            <li><img src="./images/3.jpg"></li>
+            <li><img src="./images/4.jpg"></li>
+            <li><img src="./images/5.jpg"></li>
+        </ul>
+        <div class="page-control">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        <div class="btn lt">&lt;</div>
+        <div class="btn">&gt;</div>
+    </div>
+</body>
+
+<script>
+    window.onload = function () {
+        var carousel = document.querySelector('.carousel')
+        var carouselUl = carousel.querySelector('ul')
+        var carouselItem = carouselUl.querySelectorAll('li')
+        var lBtn = carousel.querySelector('.btn')
+        var rBtn = carousel.querySelectorAll('.btn')[1]
+        var dots = carousel.querySelectorAll('.dot')
+
+        // 标记,用于记录当前显示第几张图片
+        var index = 0
+
+        var timer = carouselStart()
+
+        // 将鼠标移动封装成函数
+        function carouselStart() {
+
+            return setInterval(function () {
+                // 展示下一张图
+                index++
+                // 如果最后一张回到第一张
+                index = index % carouselItem.length
+
+                for (var i = 0; i < carouselItem.length; i++) {
+                    carouselItem[i].style.display = 'none'
+                    dots[i].className = 'dot'
+                }
+
+                carouselItem[index].style.display = 'block'
+                dots[index].className = 'dot active'
+            }, 1000)
+        }
+
+
+        carousel.onmouseenter = function () {
+            clearInterval(timer)
+        }
+
+        carousel.onmouseleave = function () {
+            timer = carouselStart()
+        }
+
+        // dot悬停事件,切换图片
+        for (var i = 0; i < dots.length; i++) {
+            dots[i].index = i
+            dots[i].onmouseenter = function () {
+                console.log(this.index);
+
+                for (var i = 0; i < carouselItem.length; i++) {
+                    carouselItem[i].style.display = 'none'
+                    dots[i].className = 'dot'
+                }
+
+                carouselItem[this.index].style.display = 'block'
+                this.className = 'dot active'
+
+                index = this.index
+            }
+        }
+
+        // 下一张
+        rBtn.onclick = function () {
+            index++
+            // 如果最后一张回到第一张
+            index = index % carouselItem.length
+
+            for (var i = 0; i < carouselItem.length; i++) {
+                carouselItem[i].style.display = 'none'
+                dots[i].className = 'dot'
+            }
+
+            carouselItem[index].style.display = 'block'
+            dots[index].className = 'dot active'
+        }
+
+        // 上一张
+        lBtn.onclick = function () {
+            index--
+            // 如果最后一张回到第一张
+            index = index < 0 ? carouselItem.length - 1 : index
+
+            for (var i = 0; i < carouselItem.length; i++) {
+                carouselItem[i].style.display = 'none'
+                dots[i].className = 'dot'
+            }
+
+            carouselItem[index].style.display = 'block'
+            dots[index].className = 'dot active'
+        }
+    }
+</script>
+
+</html>
