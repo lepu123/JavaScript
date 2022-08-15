@@ -21,7 +21,12 @@
             width: 600px;
         }
 
+        #box.open #play {
+            display: none;
+        }
+
         #play {
+            display: block;
             float: right;
             width: 80px;
             height: 80px;
@@ -46,8 +51,8 @@
 </head>
 
 <body>
-    <div id="box">
-        <div id="btn">&gt;</div>
+    <div id="box" class="open">
+        <div id="btn">&lt;</div>
         <div id="play">播放</div>
     </div>
     <script>
@@ -97,9 +102,22 @@
 
             // 点击按钮收回元素
             btn.onclick = function () {
-                console.log(123);
+
+                var that = this
+                // 计时器内部函数是异步代码, 他会被存入队列中满足条件时才被触发
+                // 这时候如果要等待异步函数执行完毕后再执行某段代码,只能通过异步函数回调的形式
+                // 因为同步代码会现实执行,无法等待异步代码执行完毕
                 jsAnimate(box, { left: -573 }, function () {
-                    jsAnimate(box, { left: -493 })
+                    // 根据box的class值判断,当前动画是展开还是隐藏
+                    if (!box.className) {
+                        box.className = 'open'
+                        btn.innerHTML = '<'
+                        jsAnimate(box, { left: 0 })
+                    } else {
+                        box.className = ''
+                        btn.innerHTML = '>'
+                        jsAnimate(box, { left: -493 })
+                    }
                 })
 
                 // 
