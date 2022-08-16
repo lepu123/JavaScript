@@ -18,9 +18,7 @@
 <body>
     <div class="box"></div>
     <script>
-        function getStyle(el, attr) {
-            return getComputedStyle(el, null)[attr]
-        }
+
 
         function animation(el, styleObj, cb) {
             clearInterval(el.timer)
@@ -30,17 +28,18 @@
 
                 for (var attr in styleObj) {
                     // 获取元素的当前值
-                    var value = parseInt(getStyle(el, attr))
+                    var value = parseInt(getComputedStyle(el, null)[attr])
                     // console.log(value);
 
                     // 定义一个速度
                     // styleObj[attr] 目标
-                    // 
-                    var speed = (styleObj[attr] - value) / 80
+                    var targetValue = styleObj[attr]
+
+                    var speed = (targetValue - value) / 80
 
                     console.log(speed);
 
-                    if (speed != 0) {
+                    if (speed !== 0) {
                         finish = false
                         //  speed > 0 运动正向运动
                         // speed < 0 运动反向运动
@@ -52,6 +51,8 @@
 
                 if (finish) {
                     clearInterval(el.timer)
+                    // cb callback 异步函数执行完毕后的回调函数
+                    cb && cb() // cb并不是一个必传参数，所以再调用时先判断该参数是否传递
                 }
 
             }, 30);
