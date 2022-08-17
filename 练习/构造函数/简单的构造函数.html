@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Cat(name, master, age, color) {
+            this.name = name
+            this.master = master
+            this.age = age
+            this.color = color
+
+            this.say = function () {
+                console.log('Meow!');
+            }
+        }
+
+        function Dog(name, master, age, color) {
+            this.name = name
+            this.master = master
+            this.age = age
+            this.color = color
+
+            this.say = function () {
+                console.log('Woof!');
+            }
+
+            this.showSelf = function () {
+                console.log('我叫' + this.name + ',今年' + this.age + '岁了,我的主人是' + this.master + '.');
+            }
+        }
+
+        var cat1 = new Cat('大橘', '胖虎', 3, '橘色')
+
+        var cat2 = new Cat('哆啦A梦', '大熊', 10, '蓝色')
+
+        var dog1 = new Dog('旺财', '阿福', 6, '黑色')
+
+        var dog2 = new Dog('小白', '小新', 3, '白色')
+
+        console.log(cat1 instanceof Cat);
+        console.log(cat1 instanceof Dog);
+        console.log(cat2.name);
+        dog1.say()
+        cat1.say()
+        dog2.showSelf()
+    </script>
+
+</body>
+
+</html>
