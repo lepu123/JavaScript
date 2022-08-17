@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .carousel {
+            position: relative;
+            border: 1px solid black;
+            width: 460px;
+            height: 366px;
+            overflow: hidden;
+        }
+
+        .carousel ul {
+            position: absolute;
+            width: 2300px;
+            overflow: hidden;
+        }
+
+        .carousel ul li {
+            width: 460px;
+            float: left;
+        }
+
+        .carousel ul li img {
+            display: block;
+            width: 100%;
+        }
+
+        .carousel .page-control {
+            position: absolute;
+            display: flex;
+            left: 20px;
+            bottom: 40px;
+        }
+
+        .carousel .page-control .dot {
+            display: block;
+            margin-right: 5px;
+            border-radius: 999px;
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .carousel .page-control .dot.active {
+            background-color: #fff;
+            /* 隐形x-偏移量 y-偏移量 模糊度 阴影大小 阴影颜色 */
+            box-shadow: 0 0 0 3px rgba(128, 128, 128, 0.3);
+        }
+    </style>
+    <script src="工厂模式carousel.js"></script>
+</head>
+
+<body>
+    <!-- 
+        面向对象(OOP)包含三大特征,封装\继承\多态.
+        将上面所学的轮播图封装,以便复用
+     -->
+
+    <div id="app"></div>
+
+
+    <div class="demo"></div>
+
+    <script>
+        var img1 = ["./images/1.jpg", "./images/2.jpg", "./images/3.jpg"]
+        var app = document.querySelector('#app')
+        var carousel1 =  createCarousel(img1, app)
+        console.log(carousel1);
+
+
+        var img2 = ["./images/5.jpg", "./images/4.jpg", "./images/3.jpg", "./images/2.jpg","./images/1.jpg"]
+        var demo = document.querySelector('.demo')
+        createCarousel(img2, demo)
+
+    </script>
+
+</body>
+
+</html>
