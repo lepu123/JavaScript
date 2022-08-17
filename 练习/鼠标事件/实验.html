@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .a {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,.4);
+        }
+
+        .box {
+            position: absolute;
+            display: none;
+            width: 100px;
+            height: 100px;
+            background: #666;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="box"></div>
+<div class="a"></div>
+
+
+
+<script>
+    var a = document.querySelector('.a')
+    var box = document.querySelector('.box')
+    var bWidth = parseInt(getComputedStyle(box, null).width)
+    var bHeight = parseInt(getComputedStyle(box, null).height)
+
+    a.onmouseenter = function () {
+        box.style.display = 'block';
+
+
+        a.onmousemove = function (e) {
+            console.log(e.offsetX, e.offsetY)
+
+            var x = e.offsetX - bWidth / 2
+            var y = e.offsetY - bHeight / 2
+
+            if (x < 0) {
+                x = 0
+            } else if (x > a.scrollWidth - bWidth) {
+                x = a.scrollWidth - bWidth
+            }
+
+            if (y < 0) {
+                y = 0
+            } else if (y > a.scrollHeight - bHeight) {
+                y = a.scrollHeight - bHeight
+            }
+
+            box.style.left = x + 'px'
+            box.style.top = y + 'px'
+
+        }
+
+    }
+    a.onmouseleave = function () {
+        box.style.display = 'none';
+        a.onmousemove = null
+    }
+
+</script>
+
+</body>
+</html>
