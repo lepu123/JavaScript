@@ -49,7 +49,6 @@
 
 
         bigBox.onmousemove = function (evt) {
-            console.log(evt.offsetX, evt.offsetY);
 
             var offsetLeft = evt.clientX - boxObj.width / 2 - bigBox.offsetLeft
             var offsetTop = evt.clientY - boxObj.height / 2 - bigBox.offsetTop
@@ -68,6 +67,12 @@
 
             box.style.left = offsetLeft + 'px'
             box.style.top = offsetTop + 'px'
+
+
+            let wTen = Math.floor((offsetLeft / (bigBox.clientWidth - box.clientWidth))*100) + '%',
+                hTen = Math.floor((offsetTop / (bigBox.clientHeight - box.clientHeight))*100) + '%'
+            // 计算所在父元素中百分比
+            console.log(wTen, hTen)
         }
         bigBox.onmouseleave = function () {
             box.style.display = 'none'
