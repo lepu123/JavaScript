@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    // 构造函数存在一个弊端就是存在内存的浪费以下构造函数为例
+    // 其中属性 type, 方法 say() showMsg() 在所有的狗的实例中都是一样的
+    // 但是在开发中，创建了多个狗的实例 ，每个狗的实例都会独自的创建自己的属性方法开辟独立的存储空间
+    // 这些重复的属性方法没办法复用，导致构造函数实例对象或多或少造成了内存的浪费
+    function Dog(params) {
+        this.type = '犬科'
+        this.name = params.name
+        this.age = params.age
+        this.master = params.master
+        this.say = function () {
+            console.log('Woof!')
+        }
+        this.showMsg = function () {
+            console.log(this.name + '今年' + this.age + '岁，主人是' + this.master)
+        }
+        this.showSelf = params.showSelf;
+    }
+
+    var dog1 = new Dog({
+        name: '小白',
+        age: 4,
+        master: '小新',
+        showSelf: function () {
+            console.log('动感光波')
+        }
+    })
+
+    var dog2 = new Dog({
+        name: '史努比',
+        age: 2,
+        master: '查理布朗',
+        showSelf: function () {
+            console.log('会说英语')
+        }
+    })
+
+    console.log(dog1, dog2)
+
+    // 为了解决构造函数模式造成内存浪费的问题js提供了一个原型式继承方案，我们可以将公共的属性方法存储在构造函数的原型中
+    // 供实例对象来继承这些属性与方法
+    // 构造函数包含一个原型属性 prototype, 开发人员可以通过该属性将公告的属性方法或实例对象储存到原型中
+    function Cat(params) {
+        this.name = params.name
+        this.age = params.age
+        this.master = params.master
+        this.showSelf = params.showSelf
+    }
+
+    // 将构造函数中公共的属性方法抽离出来存放在当前构造函数的原型对象中
+    Cat.prototype.type = '猫科'
+
+    Cat.prototype.say = function () {
+        console.log('Mio!')
+    }
+
+    Cat.prototype.showMsg = function () {
+        console.log(this.name + '今年' + this.age + '岁，主人是' + this.master)
+    }
+
+    var cat = new Cat({
+        name: '小花', master: '老赵', age: 9, showSelf: function () {
+            console.log('抓老鼠')
+        }
+    })
+
+    console.log(cat);
+
+    cat.say()
+    cat.showMsg()
+    cat.showSelf()
+</script>
+</body>
+</html>
