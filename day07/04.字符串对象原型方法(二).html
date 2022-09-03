@@ -106,11 +106,11 @@
         // indexStart 截取的起始位置
         // length 截取的字符长度
 
-        var str = '报道称，预计佩洛西将于中午在国会大厦礼节性拜访马来西亚国会下议院议长爱资哈尔，随后将与马来西亚总理伊斯梅尔·萨布里举行午餐会。'
+        var str1 = '报道称，预计佩洛西将于中午在国会大厦礼节性拜访马来西亚国会下议院议长爱资哈尔，随后将与马来西亚总理伊斯梅尔·萨布里举行午餐会。'
 
-        var str2 = str.substr(4, 8) // 实际值为 4~7的字符
+        var str2 = str1.substring(4, 8) // 实际值为 4~7的字符
 
-        var str3 = str.substr(4) // 实际值为 4~7的字符
+        var str3 = str1.substring(4) // 实际值为 4~7的字符
 
         console.log(str2);
         console.log(str3);
@@ -141,7 +141,7 @@ replaceString("World", "Web", "Test World  Brave New World"); // "Test Web  Brav
                 index = result.indexOf(replaceWord)
 
                 // 找到了要替换的单词
-                if (index != -1) {
+                if (index !== -1) {
 
                     // str = "Test "
                     // str = "Test Web Brave New "
