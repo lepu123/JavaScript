@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Animal() {
+        // 每个构造函数都有一个原型对象 (prototype属性)
+        // 原型对象都包含一个指向构造函数的指针(constructor)
+    }
+    Animal.prototype.species = '动物'
+    Animal.prototype.eat = function () {
+        console.log('我在吃东西');
+    }
+
+    function F() { }
+    F.prototype = Animal.prototype
+
+</script>
+</body>
+</html>
