@@ -11,7 +11,7 @@
     // 2. 也是ECMAScript定义的全局对象
 
     // 定义在全局作用域下的变量，就是一个全局变量，就会自动成为全局对象的属性
-    var age = 18
+    let age = 18
     console.log(age);// window对象有个特点，调用他的属性方法都可以省略window直接调用
     console.log(window.age);
 
@@ -22,7 +22,7 @@
 
     function b() {
         // 局部变量name没问题，全局会造成冲突
-        var name = 'hello';
+        let name = 'hello';
         console.log(name);
         console.log(window.name);
 
