@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+
+
+
+<script>
+    // 1. 闭包实现私有变量
+    // 构造函数的属性方法都可以通过外部访问到
+    // 在开发中有些属性方法我们想让他私有化，外部无法访问，保证外部无法恶意篡改
+    // 私有属性方法只能通过实例特定的接口在内部访问时
+    function Dog (age) {
+        age = age || 1
+
+        this.addAge = function () {
+            console.log(++age)
+        }
+    }
+
+    let doge = new Dog()
+
+    console.log(doge.age);
+    doge.addAge();
+
+    // 2. 闭包实现单例模式
+    let singleDog = (function () {
+        let singleInstance;
+        return function () {
+            if (!singleInstance) {
+                singleInstance = new Dog(5);
+            }
+            return singleInstance;
+        }
+    })()
+
+    let dog = singleDog();
+    let dog1 = new singleDog();
+
+    dog.addAge()
+
+    console.log(dog, dog1)
+
+    let Cat = (function () {
+        let instance; //闭包实现的单例变量
+
+        function Cat() { // 构造函数私有化
+            this.type = '猫科'
+        }
+
+        return function () {
+            if (!instance) {
+                instance = new Cat()
+            }
+
+            return instance
+        }
+    })
+
+    let cat = Cat();
+    let cat1 = new Cat();
+
+    console.log(cat, cat1)
+
+
+    // 闭包的记忆功能
+    /*
+    let fibonacci = function (n) {
+        return n < 2 ? n : fibonacci(n-1) + fibonacci(n-2);
+    }
+     */
+
+
+    // 闭包解决事件循环绑定问题
+
+    let lis = document.querySelectorAll('li')
+    for (let i = 0; i < lis.length; i++) {
+        // 点击事件是一个异步函数
+        // 用户可以点击时循环早已结束所以点击的都是最后一项
+        /*
+        lis[i].onclick = function () {
+            console.log(i); // 10
+        }
+        */
+        lis[i].onclick = (function (n) {
+           return function () {
+               console.log('下标为' + n);
+           }
+        })(i)
+    }
+
+
+
+    // (function(){ }) () // 立即调用
+
+    let rating = (function () {
+       let stars = 5 // 闭包存储了评分系统的
+       return function (score) {
+           let percent = score /100
+           let ratingScore = stars * percent
+           if (ratingScore - Math.floor(ratingScore) >= 0.5) {
+               return Math.floor(ratingScore) + 0.5
+           }
+
+           return Math.floor(ratingScore)
+       }
+    })()
+
+    rating(100)
+
+</script>
+</body>
+</html>
