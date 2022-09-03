@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button type="button" id="btn">创建单例</button>
+
+<script>
+    let loginBox = () => {
+        let div = document.createElement('div');
+        div.innerHTML = 'this is a loginLay';
+        div.style.display = 'none';
+        document.body.appendChild(div);
+        return div
+    }
+
+    let getSingle = fn => {
+        let result;// 保存loginBox对象
+        return function () {
+            return result || (result = fn.apply(this, arguments))
+        }
+
+    }
+
+    let create = getSingle(loginBox);// 此处创建以后result就是存在的不会再创建
+    let btn = document.getElementById('btn').onclick = () => {
+        let login = create();
+        login.style.display = 'block';
+    }
+</script>
+</body>
+</html>
