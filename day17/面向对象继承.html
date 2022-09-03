@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 原型链的继承
+    function Animal() {
+        console.log(arguments)
+        this.species = '动物'
+        this.eat = function () {
+            console.log('我正在吃东西');
+        }
+    }
+
+    function Cat(name, color) {
+        // js 提供了三种方法修改this的指向
+        // 方法一. bind 根据当前方法返回一个新的重新修改this的新函数
+        // func.bind(重新绑定的this对象[,arg1[,arg2]...])
+        // var newAnimal = Animal.bind(this, 1)
+        //
+        // newAnimal('happy') // 传入两个参数1 happy
+
+        // 方法二 apply(重新绑定的this对象 ,[argarr])
+        // 立即执行该函数,函数内的this由apply方法的参数一指定
+        // apply的参数二是一个数组,数组的每一项会分别作为实参传入函数
+
+        // Animal.apply(this, [1, 2, 'b'])
+
+        // Animal()
+        // 方法三 call (重新绑定的this对象 [,arg1[,arg2]....])
+        // 立即执行该函数,函数内的this由call方法的参数一指定,后面的每个参数会作为调用当前方法的实参
+        Animal.call(this, 1, 2, 'b') // 与apply等价
+
+        // Animal() //这里的this不会改变，this是window
+
+
+        this.name = name
+        this.color = color
+    }
+    var cat = new Cat('大菊', '#fc0')
+    console.log(cat);
+
+    // 原型继承
+
+    function Dog (name, color) {
+        this.name = name
+        this.color = color
+
+        this.break = function () {
+            console.log('Woof');
+        }
+    }
+
+    Dog.prototype = new Animal()
+
+    Dog.prototype.constructor = Dog
+
+    var dog = new Dog('小白', '白色')
+
+    console.log(dog); //Animal
+
+    // js语法精粹推荐的继承方法
+
+    function Bird(name, color) {
+        this.name = name
+        this.color = color
+    }
+
+    // 原型继承父类实例模式，在多个子类都需要继承父类时需要new 很多个父类实例容易造成内存浪费
+    // Bird.prototype = new Animal()
+    // 解决方法理论上让子类直接继承父类的原型
+    // 但是实际不能直接继承，因为直接继承时引用数据类型的浅拷贝
+    // 所以在后续修改
+    // 子类与父类之间创建一个空的构造函数实例作为中介，父类将原型属性传给中介
+    // 中介再把值赋给子类
+
+    var F = function () {}
+
+    F.prototype = Animal.prototype
+
+    Bird.prototype = new F()
+
+
+    Bird.prototype.constructor = Bird
+
+    var a = new Animal()
+
+
+</script>
+</body>
+</html>
