@@ -18,10 +18,10 @@
         // 方法返回一个延迟执行id用于取消延迟执行
 
 
-        var timer = setTimeout(function () {
+        let timer = setTimeout(() => {
             console.log(this);
             console.log('5秒后执行此代码');
-        }, 1000)
+        }, 5000)
 
 
         // 清除延迟执行的方法
