@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let dog = {
+        name: '小白',
+        age: 4
+    }
+
+    // Object.create会生成一个新的对象，新的对象的__ proto__指向传入create的参数
+
+    // dog作为了obj的原型对象
+    console.log(Object.create(dog))
+
+    // Object.create(设置原型对象，对象中给我们返回的对象添加属性并指定修饰符)
+
+
+    let animal = {
+        type: 0,
+        eat: function () {
+            console.log('吃');
+        }
+    }
+
+    let cat = Object.create(animal, {
+        type: {
+            value: 1,
+            writable: false
+        },
+        test: {
+            value: true,
+            enumerable: false
+        }
+    })
+
+    console.log(cat)
+
+
+</script>
+</body>
+</html>
